@@ -21,14 +21,24 @@ namespace WeSplit.User_Control
     /// </summary>
     public partial class DetailsTripUserControl : UserControl
     {
-        public DetailsTripUserControl()
+        private string MaCD;
+
+
+
+        public DetailsTripUserControl(string mA_CHUYENDI)
         {
             InitializeComponent();
+            this.MaCD = mA_CHUYENDI;
         }
 
         private void DetailsUserControl_Loaded(object sender, RoutedEventArgs e)
         {
-            table_THANHVIEN.ItemsSource = DataProvider.Ins.DB.THANHVIEN.ToList();
+            var queryTrip = from trip in DataProvider.Ins.DB.CHUYENDI
+                            where trip.MA_CHUYENDI == MaCD
+                            select trip;
+            table_THANHVIEN.ItemsSource = (from tg in DataProvider.Ins.DB.THAMGIA join tv in DataProvider.Ins.DB.THANHVIEN on tg.MATV equals tv.MATV select new { tv.TENTV, tv.SDT, tg.TIENTHU, tg.MACD })
+                                            .Where(tg => tg.MACD == MaCD).ToList();
+                                          
         }
     }
 }

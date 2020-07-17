@@ -46,9 +46,9 @@
             <ListView Grid.Row="2" Name="table_THANHVIEN" Foreground="#0133CD" >
                 <ListView.View>
                     <GridView >
-                        <GridViewColumn Header="Mã" DisplayMemberBinding="{Binding MATV}"/>
-                        <GridViewColumn Header="Họ Tên" DisplayMemberBinding="{Binding TENTV}"/>
+                        <GridViewColumn Header="HoTen" DisplayMemberBinding="{Binding TENTV}"/>
                         <GridViewColumn Header="SĐT" DisplayMemberBinding="{Binding SDT}"/>
+                        <GridViewColumn Header="Tiền thu" DisplayMemberBinding="{Binding TIENTHU}"/>
                     </GridView>
                 </ListView.View>
             </ListView>

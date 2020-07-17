@@ -37,5 +37,15 @@ namespace WeSplit.User_Control
             DataContext = new AddTripUserControl();
             this.Content = new AddTripUserControl();
         }
+
+
+
+        private void table_CHUYENDI_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            
+            var data = table_CHUYENDI.SelectedItem as CHUYENDI;
+            DataContext = new DetailsTripUserControl(data.MA_CHUYENDI);
+            this.Content = new DetailsTripUserControl(data.MA_CHUYENDI);
+        }
     }
 }

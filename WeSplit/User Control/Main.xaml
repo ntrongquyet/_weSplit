@@ -35,9 +35,13 @@
             </Border>
 
             <Rectangle Fill="#fff" Grid.Row="1" Grid.ColumnSpan="2"/>
-            <ListView Grid.Row="1" Name="table_CHUYENDI" Foreground="#0133CD" Grid.ColumnSpan="2">
+            <ListView Grid.Row="1" 
+                      Name="table_CHUYENDI" 
+                      Foreground="#0133CD" Grid.ColumnSpan="2"
+                      MouseDoubleClick="table_CHUYENDI_MouseDoubleClick">
+
                 <ListView.View>
-                    <GridView >
+                    <GridView>
                         <GridViewColumn Header="Khởi hành" DisplayMemberBinding="{Binding NGAYDI}"/>
                         <GridViewColumn Header="Ngày về" DisplayMemberBinding="{Binding NGAYVE}"/>
                         <GridViewColumn Header="chuyến đi" DisplayMemberBinding="{Binding TEN_CHUYENDI}"/>

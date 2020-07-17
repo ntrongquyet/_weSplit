@@ -35,8 +35,7 @@ namespace WeSplit
         }
         private void Button_TripHasGone(object sender, MouseButtonEventArgs e)
         {
-            //Data Temp
-            DataContext = new DetailsTripUserControl();
+
         }
 
         private void Button_Member(object sender, MouseButtonEventArgs e)
