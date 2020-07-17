@@ -46,11 +46,12 @@ namespace WeSplit
 
         private void Button_Sites(object sender, MouseButtonEventArgs e)
         {
-
+            DataContext = new siteUserControl();
         }
 
         private void Button_Search(object sender, MouseButtonEventArgs e)
         {
+            DataContext = new searchUserControl();
         }
 
         private void Button_Infomation(object sender, MouseButtonEventArgs e)
