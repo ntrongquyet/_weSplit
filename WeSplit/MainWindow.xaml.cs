@@ -40,8 +40,8 @@ namespace WeSplit
 
         private void Button_Member(object sender, MouseButtonEventArgs e)
         {
-            DataContext = new MemberUserControl();
-
+            DataContext = new MemberUserControl();   
+            
         }
 
         private void Button_Sites(object sender, MouseButtonEventArgs e)

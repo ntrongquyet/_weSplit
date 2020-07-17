@@ -167,6 +167,9 @@
     <Compile Include="User Control\Add_UserControl.xaml.cs">
       <DependentUpon>Add_UserControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="User Control\DetailsTripUserControl.xaml.cs">
+      <DependentUpon>DetailsTripUserControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="User Control\Infomation_UserControl.xaml.cs">
       <DependentUpon>Infomation_UserControl.xaml</DependentUpon>
     </Compile>
@@ -213,6 +216,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="User Control\Add_UserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="User Control\DetailsTripUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -328,6 +335,8 @@
     </None>
     <Resource Include="Image\Main\Image 2%402x.png" />
     <Resource Include="Image\Main\New_Background.png" />
+    <Resource Include="Image\Main\Image 5%402x.png" />
+    <Resource Include="Image\Main\calendar_v2.png" />
     <Content Include="QLCD.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>QLCD.edmx</DependentUpon>

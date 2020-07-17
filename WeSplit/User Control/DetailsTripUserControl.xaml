@@ -1,0 +1,112 @@
+﻿<UserControl x:Class="WeSplit.User_Control.DetailsTripUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WeSplit.User_Control"
+             mc:Ignorable="d" 
+             RenderOptions.BitmapScalingMode="HighQuality"
+             d:DesignHeight="450" d:DesignWidth="800"
+             Loaded="DetailsUserControl_Loaded">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="3.5*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+        <!--The frist Grid Column-->
+        <Grid Margin="50 0 0 50">
+
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="45"/>
+                <RowDefinition/>
+                <RowDefinition Height="25"/>
+            </Grid.RowDefinitions>
+            <Rectangle  Margin="10 10 10 10" RadiusX="25" RadiusY="25">
+                <Rectangle.Fill>
+                    <ImageBrush ImageSource="/Image/Main/Image 5@2x.png"  Stretch="UniformToFill"/>
+                </Rectangle.Fill>
+            </Rectangle>
+            <!--Shadow Background-->
+            <Border Grid.Row="1" Grid.RowSpan="3"  Margin="0,0,0,-0.667">
+                <Border.Effect>
+                    <DropShadowEffect BlurRadius="20" Opacity=".1"/>
+                </Border.Effect>
+                <Rectangle Fill="#fff" Margin="0" RadiusX="25" RadiusY="25"/>
+            </Border>
+            <Border Grid.Row="1" CornerRadius="25 25 0 0" Background="#0133CD">
+                <TextBlock Text="Thành viên tham gia" 
+                           FontWeight="Bold" FontSize="18"
+                           Foreground="#fff"
+                           HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Border>
+
+            <Rectangle Fill="#fff" Grid.Row="2" />
+            <ListView Grid.Row="2" Name="table_THANHVIEN" Foreground="#0133CD" >
+                <ListView.View>
+                    <GridView >
+                        <GridViewColumn Header="HoTen" DisplayMemberBinding="{Binding TENTV}"/>
+                        <GridViewColumn Header="SĐT" DisplayMemberBinding="{Binding SDT}"/>
+                        <GridViewColumn Header="Tiền thu" DisplayMemberBinding="{Binding TIENTHU}"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+
+            <Border Grid.Row="3" Background="White" CornerRadius="0 0 25 25" Grid.ColumnSpan="2" Margin="0,0,0,-0.667"/>
+        </Grid>
+
+        <!--The Second Grid Column-->
+        <Grid Grid.Column="1" Margin="20 0 0 0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="70"/>
+                <RowDefinition Height="80"/>
+                <RowDefinition Height="80"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <!--The frist Grid Row-->
+            <StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Chuyến đi: " FontSize="15" FontWeight="Bold"
+                           Foreground="#FF6665"/>
+                    <TextBlock Text="Data Biding" FontSize="15" FontWeight="Light"
+                           Foreground="#FF6665"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Ngày đi: " FontSize="15" FontWeight="Bold"
+                           Foreground="#808080"/>
+                    <Image Height="17" Source="/Image/Main/calendar_v2.png" Margin="4 0 4 0"/>
+
+                    <TextBlock Text="Data Binding" FontSize="15" FontWeight="Light"
+                           Foreground="#808080"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Ngày về: " FontSize="15" FontWeight="Bold"
+                           Foreground="#808080"/>
+                    <Image Height="17" Source="/Image/Main/calendar_v2.png" Margin="4 0 4 0"/>
+
+                    <TextBlock Text="Data Binding" FontSize="15" FontWeight="Light"
+                           Foreground="#808080"/>
+                </StackPanel>
+            </StackPanel>
+            <!--The second Grid Row-->
+            <!--Add List View data-->
+            <StackPanel Grid.Row="1" Orientation="Horizontal">
+                <Ellipse Fill="#D6E3ED" Height="60" Width="60"/>
+                <Ellipse Fill="#D6E3ED" Height="60" Width="60"/>
+                <Ellipse Fill="#D6E3ED" Height="60" Width="60"/>
+                <Ellipse Fill="#D6E3ED" Height="60" Width="60"/>
+                <Ellipse Fill="#D6E3ED" Height="60" Width="60"/>
+                <Ellipse Fill="#D6E3ED" Height="60" Width="60"/>
+                <Ellipse Fill="#D6E3ED" Height="60" Width="60"/>
+            </StackPanel>
+            <ListView Grid.Row="2">
+                <!--Binding LOTRINH-->
+            </ListView>
+            <ListView Grid.Row="3">
+                <!--Binding ANHCHUYENCHI-->
+            </ListView>
+        </Grid>
+
+    </Grid>
+</UserControl>
