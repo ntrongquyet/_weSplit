@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="85f8023a941c47e38f08149104a886dc" Name="Diagram1">
+        <EntityTypeShape EntityType="DataWSModel.CHUYENDI" Width="1.5" PointX="3" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataWSModel.DD_DULICH" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataWSModel.DD_DUNGCHAN" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataWSModel.HINHANH_CHUYENDI" Width="1.5" PointX="5.25" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataWSModel.HINHANH_DDDL" Width="1.5" PointX="3" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataWSModel.KHOANCHI" Width="1.5" PointX="7.5" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataWSModel.LOTRINH" Width="1.5" PointX="5.25" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataWSModel.THAMGIA" Width="1.5" PointX="5.25" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataWSModel.THANHVIEN" Width="1.5" PointX="3" PointY="10.625" IsExpanded="true" />
+        <AssociationConnector Association="DataWSModel.FK_CHUYENDI_DDDL" ManuallyRouted="false" />
+        <AssociationConnector Association="DataWSModel.FK_HINHANH_CHUYENDI" ManuallyRouted="false" />
+        <AssociationConnector Association="DataWSModel.FK_LOTRINH_CHUYENDI" ManuallyRouted="false" />
+        <AssociationConnector Association="DataWSModel.FK_THAMGIA_CHUYENDI" ManuallyRouted="false" />
+        <AssociationConnector Association="DataWSModel.FK_HINHANH_DDDL" ManuallyRouted="false" />
+        <AssociationConnector Association="DataWSModel.FK_LOTRINH_DDDC" ManuallyRouted="false" />
+        <AssociationConnector Association="DataWSModel.FK_KHOANGCHI_LOTRINH" ManuallyRouted="false" />
+        <AssociationConnector Association="DataWSModel.FK_THAMGIA_THANHVIEN" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
