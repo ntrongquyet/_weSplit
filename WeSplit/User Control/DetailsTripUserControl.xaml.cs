@@ -28,6 +28,7 @@ namespace WeSplit.User_Control
         public SeriesCollection SeriesCollection { get; }
         public SeriesCollection SeriesCollectionKC { get; }
 
+
         public DetailsTripUserControl(string mA_CHUYENDI)
         {
             InitializeComponent();
@@ -120,6 +121,12 @@ namespace WeSplit.User_Control
             {
                 route_trip.Visibility = Visibility.Visible;
             }
+        }
+
+        private void click_AddMembers(object sender, MouseButtonEventArgs e)
+        {
+            DataContext = new AddMemberUserControl();
+            this.Content = new AddMemberUserControl();
         }
     }
 }
