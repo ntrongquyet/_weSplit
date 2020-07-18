@@ -69,23 +69,24 @@
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="Chuyến đi: " FontSize="15" FontWeight="Bold"
                            Foreground="#FF6665"/>
-                    <TextBlock Text="Data Biding" FontSize="15" FontWeight="Light"
-                           Foreground="#FF6665"/>
+                    <TextBlock Text="{Binding TEN_CHUYENDI}" FontSize="15" FontWeight="Bold"
+                           Foreground="#FF6665" Name="DepartureDay"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="Ngày đi: " FontSize="15" FontWeight="Bold"
                            Foreground="#808080"/>
                     <Image Height="17" Source="/Image/Main/calendar_v2.png" Margin="4 0 4 0"/>
 
-                    <TextBlock Text="Data Binding" FontSize="15" FontWeight="Light"
+                    <TextBlock Text="{Binding NGAYDI}" FontSize="15" FontWeight="Light"
                            Foreground="#808080"/>
+
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="Ngày về: " FontSize="15" FontWeight="Bold"
                            Foreground="#808080"/>
                     <Image Height="17" Source="/Image/Main/calendar_v2.png" Margin="4 0 4 0"/>
 
-                    <TextBlock Text="Data Binding" FontSize="15" FontWeight="Light"
+                    <TextBlock Text="{Binding NGAYVE}" FontSize="15" FontWeight="Light"
                            Foreground="#808080"/>
                 </StackPanel>
             </StackPanel>
@@ -100,12 +101,31 @@
                 <Ellipse Fill="#D6E3ED" Height="60" Width="60"/>
                 <Ellipse Fill="#D6E3ED" Height="60" Width="60"/>
             </StackPanel>
-            <ListView Grid.Row="2">
-                <!--Binding LOTRINH-->
-            </ListView>
-            <ListView Grid.Row="3">
-                <!--Binding ANHCHUYENCHI-->
-            </ListView>
+            <StackPanel Grid.Row="2">
+                <DockPanel>
+                    <TextBlock Text="Tổng thu: " FontSize="14" FontWeight="Bold"
+                               Foreground="#0133CD"/>
+                    <TextBlock Text="{Binding}" FontSize="14" FontWeight="Light"
+                               Foreground="#FF6665"/>
+                </DockPanel>
+                <DockPanel>
+                    <TextBlock Text="Tổng Chi: " FontSize="14" FontWeight="Bold"
+                               Foreground="#0133CD"/>
+                    <TextBlock Text="{Binding}" FontSize="14" FontWeight="Light"
+                               Foreground="#FF6665"/>
+                </DockPanel>
+                <Button Content="Xem chi tiết Thu Chi" Width="200" Margin="0 10 0 0"
+                        Background="#0133CD" BorderThickness="0"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Grid.Row="3">
+                <Ellipse Fill="#D6E3ED" Height="60" Width="60"/>
+                <Ellipse Fill="#D6E3ED" Height="60" Width="60"/>
+                <Ellipse Fill="#D6E3ED" Height="60" Width="60"/>
+                <Ellipse Fill="#D6E3ED" Height="60" Width="60"/>
+                <Ellipse Fill="#D6E3ED" Height="60" Width="60"/>
+                <Ellipse Fill="#D6E3ED" Height="60" Width="60"/>
+                <Ellipse Fill="#D6E3ED" Height="60" Width="60"/>
+            </StackPanel>
         </Grid>
 
     </Grid>
