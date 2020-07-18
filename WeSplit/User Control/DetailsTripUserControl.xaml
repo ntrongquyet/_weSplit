@@ -4,7 +4,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WeSplit.User_Control"
-               xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
              mc:Ignorable="d" 
              RenderOptions.BitmapScalingMode="HighQuality"
              d:DesignHeight="450" d:DesignWidth="800"
@@ -59,12 +60,8 @@
 
                 <Border Grid.Row="3" Background="White" CornerRadius="0 0 25 25" Grid.ColumnSpan="2" Margin="0,0,0,-0.667"/>
             </Grid>
-
             <!--The Second Grid Column-->
-
             <StackPanel Grid.Column="1" Margin="20 0 0 0">
-
-
                 <StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Text="Chuyến đi: " FontSize="15" FontWeight="Bold"
@@ -90,8 +87,6 @@
                            Foreground="#808080"/>
                     </StackPanel>
                 </StackPanel>
-
-
                 <StackPanel Margin="0 20 0 0">
                     <TextBlock Text="Xem lộ trình đi" FontSize="15" FontWeight="Bold"
                                Foreground="#FF6665"/>
@@ -141,10 +136,30 @@
                         <Rectangle Fill="#D6E3ED" Height="60" Width="60" RadiusX="10" RadiusY=" 10"/>
                         <Rectangle Fill="#D6E3ED" Height="60" Width="60" RadiusX="10" RadiusY=" 10"/>
                         <Rectangle Fill="#D6E3ED" Height="60" Width="60" RadiusX="10" RadiusY=" 10"/>
-
                     </StackPanel>
-
                 </StackPanel>
+            </StackPanel>
+            <StackPanel Grid.Column="2">
+                <lvc:PieChart Series="{Binding SeriesCollection, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                              Width="150"
+                              Height="150">
+                </lvc:PieChart>
+                <TextBlock Text="Bảng tiền thu"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Center"
+                           FontSize="15"
+                           FontWeight="Light"
+                           Foreground="#0133CD"/>
+                <lvc:PieChart Series="{Binding SeriesCollectionKC, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                              Width="150"
+                              Height="150">
+                </lvc:PieChart>
+                <TextBlock Text="Bảng chi tiêu"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Center"
+                           FontSize="15"
+                           FontWeight="Light"
+                           Foreground="#0133CD"/>
             </StackPanel>
         </Grid>
     </ScrollViewer>
