@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,80 +24,79 @@ namespace WeSplit.User_Control
     /// </summary>
     public partial class AddPlaceUserControl : UserControl
     {
-        ObservableCollection<DD_DULICH> addressList = new ObservableCollection<DD_DULICH>();
-        private class Temp
-        {
-            private string maDiaDanh;
-            public string MaDiaDanh { get => maDiaDanh; set => maDiaDanh = value; }
 
-            private string tenDiaDanh;
-            public string Tendiadanh { get => tenDiaDanh; set => tenDiaDanh = value; }
-
-            private string diaChi;
-            public string DiaChi { get => diaChi; set => diaChi = value; }
-
-            private string thongTin;
-            public string ThongTin { get => thongTin; set => thongTin = value; }
-
-        }
         public AddPlaceUserControl()
         {
             InitializeComponent();
-        } 
+        }
         private void UserControl_Initialized(object sender, EventArgs e)
         {
-            foreach (DD_DULICH itemTT in DataProvider.Ins.DB.DD_DULICH.ToList())
-            {
-                addressList.Add(itemTT);
-            }
-            loadList.ItemsSource = addressList.ToList();
+            loadList.ItemsSource = DataProvider.Ins.DB.DD_DULICH.ToList();
         }
         private void addPlace(object sender, RoutedEventArgs e)
         {
-            var id = idPlace.Text.Trim();
-            var namePl = namePlace.Text.Trim();
-            var nameAddr = nameAddress.Text.Trim();
-            if(id.Length == 0)
+            if (namePlace.Text.Trim().Length == 0)
             {
-                MessageBox.Show("Chưa nhập Mã Địa Điểm");
+                MessageBox.Show("Chưa nhâp tên địa danh");
             }
-            else if (namePl.Length == 0)
+            else if (nameAddress.Text.Trim().Length == 0)
             {
-                MessageBox.Show("Chưa nhập Tên Địa Điểm");
+                MessageBox.Show("Chưa nhâp địa chỉ");
             }
-            else if(nameAddr.Length == 0)
+            else if (path.Length == 0)
             {
-                MessageBox.Show("Chưa nhập Địa Chỉ");
+                MessageBox.Show("Ảnh đại diện địa điểm chưa có kìa!!!!");
             }
             else
             {
-                var item = new Temp()
+                var info = new FileInfo(path);
+                string baseFolder = AppDomain.CurrentDomain.BaseDirectory;
+                baseFolder += "Image\\dd\\";
+                string name = Guid.NewGuid().ToString();
+                File.Copy(path, baseFolder + name + info.Extension);
+                var dd = new DD_DULICH()
                 {
-                    MaDiaDanh = idPlace.Text,
-                    Tendiadanh = namePlace.Text,
-                    DiaChi = nameAddress.Text,
-                    ThongTin = infomation.Text
+                    MA_DIEMDEN = $"DD{DataProvider.Ins.DB.DD_DULICH.ToList().Count + 1}",
+                    TEN_DIEMDEN = namePlace.Text.Trim(),
+                    DCHI_DIEMDEN = nameAddress.Text.Trim(),
+                    THONGTIN_DD = infomation.Text.Trim(),
                 };
-                loadAdd.Items.Add(item);
-            }
-            idPlace.Text = "";
-            namePlace.Text = "";
-            nameAddress.Text = "";
-            infomation.Text = "";
-        }
+                DataProvider.Ins.DB.DD_DULICH.Add(dd);
+                DataProvider.Ins.DB.SaveChanges();
+                var ha = new HINHANH_DDDL()
+                {
+                    MA_ANH_DD = "HACD" + DataProvider.Ins.DB.HINHANH_DDDL.Count() + 1,
+                    TENANH_DD = "dd\\" + name,
+                    DD_DULICH = dd.MA_DIEMDEN,
 
-        private void confirm(object sender, RoutedEventArgs e)
+                };
+                DataProvider.Ins.DB.HINHANH_DDDL.Add(ha);
+                DataProvider.Ins.DB.SaveChanges();
+                MessageBox.Show($"Thêm thành công địa điểm{dd.TEN_DIEMDEN}");
+            }
+            namePlace.Text = default;
+            nameAddress.Text = default;
+            loadList.ItemsSource = DataProvider.Ins.DB.DD_DULICH.ToList();
+        }
+        string path = "";
+        private void imageDD_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            DD_DULICH diadiem = new DD_DULICH()
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Multiselect = false;
+            ofd.Filter = "Image files (*.jpg, *.jpeg, *.jpe, *.jfif, *.png) | *.jpg; *.jpeg; *.jpe; *.jfif; *.png";
+            if (ofd.ShowDialog() == true)
             {
-                MA_DIEMDEN = idPlace.Text.Trim(),
-                TEN_DIEMDEN = namePlace.Text.Trim(),
-                DCHI_DIEMDEN = nameAddress.Text.Trim(),
-                THONGTIN_DD = infomation.Text.Trim()
-            };
-            DataProvider.Ins.DB.DD_DULICH.Add(diadiem);
-            DataProvider.Ins.DB.SaveChanges();
-            loadList.Items.Clear();
+                path = ofd.FileName;
+            }
+            if (path != "")
+            {
+                BitmapImage logo = new BitmapImage();
+                logo.BeginInit();
+                logo.UriSource = new Uri(path);
+                logo.EndInit();
+                imageDD.Source = logo;
+            }
+
         }
     }
 }

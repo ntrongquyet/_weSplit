@@ -18,15 +18,15 @@
             </Border.Effect>
             <Grid>
                 <Grid.RowDefinitions>
+                    <RowDefinition Height="50"/>
                     <RowDefinition Height="1*"/>
-                    <RowDefinition Height="5*"/>
                 </Grid.RowDefinitions>
                 <Label Grid.Row="0" 
                        Background="#C3C3C3" 
-                       FontSize="40"
+                       FontSize="30"
                        FontWeight="Bold" 
                        HorizontalContentAlignment="Center"
-                       VerticalContentAlignment="Center">ĐỊA DANH</Label>
+                       VerticalAlignment="Center">ĐỊA DANH</Label>
                 <Grid Grid.Row="1">
                     <Grid.RowDefinitions>
                         <RowDefinition/>
@@ -42,14 +42,7 @@
                             <ColumnDefinition/>
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
-                        <TextBox Grid.Row="0" 
-                                 Grid.Column="0"
-                                 Margin="10 0 10 0"
-                                 Name="idPlace"
-                                 VerticalContentAlignment="Center"
-                                 materialDesign:HintAssist.Hint="Mã địa danh"
-                                 Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
-                        <TextBox Grid.Row="1"
+                        <TextBox Grid.Row="0"
                                  Grid.Column="0"
                                  Margin="10 0 10 0"
                                  Name="namePlace"
@@ -64,49 +57,37 @@
                                  materialDesign:HintAssist.Hint="Địa chỉ"
                                  Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
                         <TextBox Grid.Row="1"
-                                 Grid.Column="1"
-                                 Margin="10 0 10 0"
+                                 Margin="10,0.4,1.4,0.2"
                                  Name="infomation"
+                                 TextWrapping="Wrap"
+                                 AcceptsReturn="True"
                                  VerticalContentAlignment="Center"
                                  materialDesign:HintAssist.Hint="Thông tin"
                                  Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
-                        <DockPanel Grid.Row="2"
-                                   Grid.ColumnSpan="2"
-                                   VerticalAlignment="Center"
-                                   HorizontalAlignment="Center">
-                            <Button Content="Thêm" 
+                        <Image Margin="10 10 0 0" MouseDown="imageDD_MouseDown" HorizontalAlignment="Left" Grid.Column="1" Grid.Row="1" Name="imageDD" Source="/Image/dd/addimage.png"/>
+                        <Button Grid.Row="3"
+                                    Grid.Column="0"
+                                    Grid.ColumnSpan=    "2"
+                                    Content="Thêm" 
                                     Click="addPlace"
                                     Width="120" Margin="0 0 20 0"/>
-                            <Button Content="Hoàn Thành"
-                                    Click="confirm"
-                                    Width="120"/>
-                        </DockPanel>
+
                     </Grid>
                     <Grid Grid.Row="1">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition/>
-                            <ColumnDefinition/>
-                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="50"/>
+                            <RowDefinition Height="1*"/>
+
+                        </Grid.RowDefinitions>
+                        <Label Grid.Row="0" Background="#C3C3C3" FontSize="30" FontWeight="Bold" HorizontalContentAlignment="Center">DANH SÁCH ĐỊA ĐIỂM</Label>
                         <ListView Name="loadList"
-                                  Grid.Column="0"
+                                  Grid.Row="1"
                                   HorizontalAlignment="Center">
                             <ListView.View>
                                 <GridView>
                                     <GridViewColumn Header="Mã địa danh" DisplayMemberBinding="{Binding MA_DIEMDEN}"/>
                                     <GridViewColumn Header="Tên địa danh" DisplayMemberBinding="{Binding TEN_DIEMDEN}"/>
                                     <GridViewColumn Header="Địa chỉ" DisplayMemberBinding="{Binding DCHI_DIEMDEN}"/>
-                                </GridView>
-                            </ListView.View>
-                        </ListView>
-                        <ListView Name="loadAdd"
-                                  Grid.Column="1"
-                                  HorizontalAlignment="Center">
-                            <ListView.View>
-                                <GridView>
-                                    <GridViewColumn Header="Mã địa danh" DisplayMemberBinding="{Binding MaDiaDanh}"/>
-                                    <GridViewColumn Header="Tên địa danh" DisplayMemberBinding="{Binding Tendiadanh}"/>
-                                    <GridViewColumn Header="Địa chỉ" DisplayMemberBinding="{Binding DiaChi}"/>
-                                    <GridViewColumn Header="Thông tin" DisplayMemberBinding="{Binding ThongTin}"/>
                                 </GridView>
                             </ListView.View>
                         </ListView>
