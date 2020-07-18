@@ -34,7 +34,8 @@ namespace WeSplit.User_Control
 
         private void buttonAdd(object sender, RoutedEventArgs e)
         {
-
+            DataContext = new AddPlaceUserControl();
+            this.Content = new AddPlaceUserControl();
         }
     }
 }

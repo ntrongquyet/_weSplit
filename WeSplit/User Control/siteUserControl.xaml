@@ -31,6 +31,8 @@
             <DataGrid Margin="20"
                       Background="Transparent"
                       Name="listPlace"
+                      CanUserAddRows="False"
+                      IsReadOnly="True"
                       AutoGenerateColumns="False">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="MÃ ĐỊA DANH"
@@ -54,7 +56,7 @@
                 Width="150"
                 Click="buttonAdd"
                 Background="#0133CD">
-            <TextBlock Text="THÊM ĐỊA ĐIỂM"
+            <TextBlock Text="THÊM ĐỊA DANH"
                        VerticalAlignment="Center"/>
         </Button>
     </Grid>
