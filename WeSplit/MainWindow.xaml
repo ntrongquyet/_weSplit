@@ -20,10 +20,8 @@
             <dialog:Schudule DataContext="{Binding}"/>
         </DataTemplate>
     </Window.Resources>
-    <Grid>
-        <Grid.Background>
-            <ImageBrush ImageSource="/Image/Main/New_Background.png" Stretch="Fill" x:Name="Background_MainWindow"/>
-        </Grid.Background>
+    <Grid Name="mainwindow">
+
         <Grid.RowDefinitions>
             <RowDefinition Height="60"/>
             <RowDefinition/>
