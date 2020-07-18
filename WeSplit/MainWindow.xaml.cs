@@ -28,9 +28,18 @@ namespace WeSplit
             InitializeComponent();
 
         }
+        private void reloadBackground()
+        {
+            ImageBrush newBackGround = new ImageBrush();
+            var baseFolder = AppDomain.CurrentDomain.BaseDirectory;
+            baseFolder += "Image\\Main\\New_Background.png";
+            newBackGround.ImageSource = new BitmapImage(new Uri(baseFolder, UriKind.Absolute));
+            mainwindow.Background = newBackGround;
 
+        }
         private void Button_Home(object sender, MouseButtonEventArgs e)
         {
+            reloadBackground();
             DataContext = new Main();
         }
         private void Button_TripHasGone(object sender, MouseButtonEventArgs e)
@@ -40,8 +49,8 @@ namespace WeSplit
 
         private void Button_Member(object sender, MouseButtonEventArgs e)
         {
-            DataContext = new MemberUserControl();   
-            
+            DataContext = new MemberUserControl();
+
         }
 
         private void Button_Sites(object sender, MouseButtonEventArgs e)
@@ -56,11 +65,19 @@ namespace WeSplit
 
         private void Button_Infomation(object sender, MouseButtonEventArgs e)
         {
+            ImageBrush newBackGround = new ImageBrush();
+            var baseFolder = AppDomain.CurrentDomain.BaseDirectory;
+            baseFolder += "Image\\Main\\Backround_Trip_Console.png";
+            newBackGround.ImageSource = new BitmapImage(new Uri(baseFolder, UriKind.Absolute));
+            //newBackGround.ImageSource= new BitmapImage(new Uri(@"Image\Main\Backround_Trip_Console.png", UriKind.Relative));
+            mainwindow.Background = newBackGround;
             DataContext = new Infomation_UserControl();
+
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            reloadBackground();
             DataContext = new Main();
         }
 

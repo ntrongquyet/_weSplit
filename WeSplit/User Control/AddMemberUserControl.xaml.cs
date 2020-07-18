@@ -36,7 +36,7 @@ namespace WeSplit.User_Control
                     trip.Items.Add(item);
                 }
             }
-            
+
         }
         private void addMember_Click(object sender, RoutedEventArgs e)
         {
@@ -50,12 +50,14 @@ namespace WeSplit.User_Control
             {
                 MessageBox.Show("Không để trống số điện thoại");
 
-            }else if(DataProvider.Ins.DB.THANHVIEN.Any(mem => mem.SDT == phone))
+            }
+            else if (DataProvider.Ins.DB.THANHVIEN.Any(mem => mem.SDT == phone))
             {
                 MessageBox.Show("Số điện thoại đã trùng");
-            }else
+            }
+            else
             {
-                string MTV =$"TV{DataProvider.Ins.DB.THANHVIEN.Count() + 1}";
+                string MTV = $"TV{DataProvider.Ins.DB.THANHVIEN.Count() + 1}";
 
                 var mem = new THANHVIEN()
                 {
@@ -70,21 +72,40 @@ namespace WeSplit.User_Control
                 member.ItemsSource = DataProvider.Ins.DB.THANHVIEN.ToList();
             }
         }
-
-
-        private void trip_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void reload()
         {
             var idCD = trip.SelectedItem as CHUYENDI;
             tableMemberofTrip.ItemsSource = (from tg in DataProvider.Ins.DB.THAMGIA join tv in DataProvider.Ins.DB.THANHVIEN on tg.MATV equals tv.MATV select new { tg.TIENTHU, tv.TENTV, tg.MACD })
                             .Where(tg => tg.MACD == idCD.MA_CHUYENDI).ToList();
-            var listinCD = (from tv in DataProvider.Ins.DB.THANHVIEN join tg in DataProvider.Ins.DB.THAMGIA on tv.MATV equals tg.MATV select new { tv.MATV, tv.TENTV, tg.MACD})
+            var listinCD = (from tv in DataProvider.Ins.DB.THANHVIEN join tg in DataProvider.Ins.DB.THAMGIA on tv.MATV equals tg.MATV select new { tv.MATV, tv.TENTV, tg.MACD, tv.SDT })
                             .Where(tg => tg.MACD == idCD.MA_CHUYENDI);
-            var listFilter = (from data in listinCD select new { data.MATV, data.TENTV });
-            member.ItemsSource = (from tv in DataProvider.Ins.DB.THANHVIEN select new { tv.MATV, tv.TENTV }).Except(listFilter).ToList();
+            var listFilter = (from data in listinCD select new { data.MATV, data.TENTV, data.SDT });
+            member.ItemsSource = (from tv in DataProvider.Ins.DB.THANHVIEN select new { tv.MATV, tv.TENTV, tv.SDT }).Except(listFilter).ToList();
+        }
+        private void trip_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            reload();
+
         }
         private void addMemberToTrip_Click(object sender, RoutedEventArgs e)
         {
-           
+            var item_CD = trip.SelectedItem as CHUYENDI;
+            var CD = item_CD.MA_CHUYENDI;
+            var item_TV = member.SelectedItem.ToString();
+
+            string[] arr = item_TV.Split(',');
+            var TV = arr[0].Substring(9);
+
+            var tg = new THAMGIA()
+            {
+                MACD = CD,
+                MATV = TV,
+                TIENTHU = Convert.ToDouble(money.Text.Trim())
+            };
+            DataProvider.Ins.DB.THAMGIA.Add(tg);
+            DataProvider.Ins.DB.SaveChanges();
+            money.Text = default;
+            reload();
         }
 
     }
