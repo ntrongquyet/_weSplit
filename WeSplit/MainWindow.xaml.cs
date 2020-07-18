@@ -69,7 +69,6 @@ namespace WeSplit
             var baseFolder = AppDomain.CurrentDomain.BaseDirectory;
             baseFolder += "Image\\Main\\Backround_Trip_Console.png";
             newBackGround.ImageSource = new BitmapImage(new Uri(baseFolder, UriKind.Absolute));
-            //newBackGround.ImageSource= new BitmapImage(new Uri(@"Image\Main\Backround_Trip_Console.png", UriKind.Relative));
             mainwindow.Background = newBackGround;
             DataContext = new Infomation_UserControl();
 
@@ -83,15 +82,7 @@ namespace WeSplit
 
         private void Window_Closed(object sender, EventArgs e)
         {
-            //DataProvider.Ins.DB.Dispose();
-            //var fileName = "dbWS.mdf";
-            //string sourcePath = AppDomain.CurrentDomain.BaseDirectory;
-            //string targetPath = sourcePath.Remove(sourcePath.IndexOf("bin"));
-            //string sourceFile = System.IO.Path.Combine(sourcePath, fileName);
-            //string destFile = System.IO.Path.Combine(targetPath, fileName);
-            //System.GC.Collect();
-            //System.GC.WaitForPendingFinalizers();
-            //File.Copy(sourceFile, destFile);
+            
         }
     }
 }

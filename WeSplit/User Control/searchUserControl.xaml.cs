@@ -40,12 +40,20 @@ namespace WeSplit.User_Control
 
         //Search
         private void Search_button(object sender, RoutedEventArgs e)
-        {   
+        {
+            if (Search.Text.Trim().Length == 0)
+            {
+                MessageBox.Show("Chưa nhập gì sao tui tìm :( ");
+            }
+            else if(futureSelect.IsChecked == false && oldSelect.IsChecked == false && nameSelect.IsChecked == false)
+            {
+                MessageBox.Show("Thiếu điều kiện lọc bạn ưiiiiii !!!!!");
+            }
             //Search theo đã đi và tên thành viên
-            if (oldSelect.IsChecked == true)
+            else if (oldSelect.IsChecked == true)
             {
                 //Search theo đã đi và tên thành viên
-                if (nameSelect.IsChecked==true)
+                if (nameSelect.IsChecked == true)
                 {
                     var name = (from tg in DataProvider.Ins.DB.THAMGIA
                                 join tv in DataProvider.Ins.DB.THANHVIEN on tg.MATV equals tv.MATV
@@ -62,7 +70,7 @@ namespace WeSplit.User_Control
                         MessageBox.Show("Không có");
                     }
                 }
-                else if(futureSelect.IsChecked == true)
+                else if (futureSelect.IsChecked == true)
                 {
                     var strings = placeList.Where(diadiem => convertToUnSign3(diadiem.TEN_CHUYENDI.ToLower()).Contains(convertToUnSign3(Search.Text.ToLower())));
                     if (strings.Count() != 0)
@@ -73,7 +81,7 @@ namespace WeSplit.User_Control
                     {
                         MessageBox.Show("Không có");
                     }
-                }    
+                }
                 //Chỉ search theo đã đi
                 else
                 {
@@ -110,7 +118,7 @@ namespace WeSplit.User_Control
                         MessageBox.Show("Không có");
                     }
                 }
-                else if(oldSelect.IsChecked == true)
+                else if (oldSelect.IsChecked == true)
                 {
                     var strings = placeList.Where(diadiem => convertToUnSign3(diadiem.TEN_CHUYENDI.ToLower()).Contains(convertToUnSign3(Search.Text.ToLower())));
                     if (strings.Count() != 0)
@@ -121,7 +129,7 @@ namespace WeSplit.User_Control
                     {
                         MessageBox.Show("Không có");
                     }
-                }    
+                }
                 //Chỉ search theo chưa đi
                 else
                 {
@@ -135,7 +143,7 @@ namespace WeSplit.User_Control
                     {
                         MessageBox.Show("Không có");
                     }
-                }  
+                }
             }
             //Search theo tên thành viên
             else if (nameSelect.IsChecked == true)
@@ -143,9 +151,9 @@ namespace WeSplit.User_Control
                 var name = (from tg in DataProvider.Ins.DB.THAMGIA
                             join tv in DataProvider.Ins.DB.THANHVIEN on tg.MATV equals tv.MATV
                             join cd in DataProvider.Ins.DB.CHUYENDI on tg.MACD equals cd.MA_CHUYENDI
-                            select new { tv.TENTV, cd.TEN_CHUYENDI,cd.MA_CHUYENDI,cd.TRANGTHAI }).ToList();
+                            select new { tv.TENTV, cd.TEN_CHUYENDI, cd.MA_CHUYENDI, cd.TRANGTHAI }).ToList();
                 var strings = name.Where(thanhvien => (convertToUnSign3(thanhvien.TENTV.ToLower())).Contains(convertToUnSign3(Search.Text.ToLower())));
-                if(strings.Count() != 0)
+                if (strings.Count() != 0)
                 {
                     listPlace.ItemsSource = strings.ToList();
                 }
@@ -153,7 +161,7 @@ namespace WeSplit.User_Control
                 {
                     MessageBox.Show("Không có");
                 }
-            }    
+            }
             //Search theo tất cả trường hợp khi không click chọn
             else
             {
@@ -170,7 +178,7 @@ namespace WeSplit.User_Control
                 else if (str.Count() != 0)
                 {
                     listPlace.ItemsSource = str.ToList();
-                }    
+                }
                 else
                 {
                     MessageBox.Show("Không có");
@@ -179,22 +187,32 @@ namespace WeSplit.User_Control
             int num = listPlace.Items.Count;
             numbers.Text = Convert.ToString(num);
         }
-
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
             foreach (CHUYENDI itemTT in DataProvider.Ins.DB.CHUYENDI.ToList())
             {
                 placeList.Add(itemTT);
             }
-            listPlace.ItemsSource = placeList.ToList();
             numbers.Text = Convert.ToString(num);
         }
 
         private void listPlace_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            //var data = listPlace.SelectedItem.ToString();
-            ////DataContext = new DetailsTripUserControl(d);
-            ////this.Content = new DetailsTripUserControl(data.MA_CHUYENDI);
+
+            var data = listPlace.SelectedItem as CHUYENDI;
+            if (data != null)
+            {
+                DataContext = new DetailsTripUserControl(data.MA_CHUYENDI);
+                this.Content = new DetailsTripUserControl(data.MA_CHUYENDI);
+            }
+            else
+            {
+                var MACD = listPlace.SelectedItem.ToString();
+                MACD = MACD.Split(',')[2];
+                MACD = MACD.Substring(MACD.IndexOf("CD"));
+                DataContext = new DetailsTripUserControl(MACD);
+                this.Content = new DetailsTripUserControl(MACD);
+            }
         }
     }
 }
