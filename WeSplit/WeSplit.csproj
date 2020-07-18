@@ -179,9 +179,6 @@
     <Compile Include="User Control\MemberUserControl.xaml.cs">
       <DependentUpon>MemberUserControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="User Control\Schudule.xaml.cs">
-      <DependentUpon>Schudule.xaml</DependentUpon>
-    </Compile>
     <Compile Include="User Control\searchUserControl.xaml.cs">
       <DependentUpon>searchUserControl.xaml</DependentUpon>
     </Compile>
@@ -229,10 +226,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="User Control\MemberUserControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="User Control\Schudule.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
