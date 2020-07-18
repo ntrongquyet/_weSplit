@@ -22,10 +22,19 @@ namespace WeSplit.User_Control
     /// </summary>
     public partial class AddMemberUserControl : UserControl
     {
+        private string maCD;
+
         public AddMemberUserControl()
         {
             InitializeComponent();
         }
+
+        public AddMemberUserControl(string maCD)
+        {
+            InitializeComponent();
+            this.maCD = maCD;
+        }
+
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
             var cd = DataProvider.Ins.DB.CHUYENDI.ToList();
@@ -36,7 +45,13 @@ namespace WeSplit.User_Control
                     trip.Items.Add(item);
                 }
             }
+            if (maCD != null)
+            {
 
+                trip.SelectedItem = (from item in DataProvider.Ins.DB.CHUYENDI
+                                  where item.MA_CHUYENDI == maCD
+                                     select item).ToList()[0];
+            }
         }
         //Add thành viên
         private void addMember_Click(object sender, RoutedEventArgs e)

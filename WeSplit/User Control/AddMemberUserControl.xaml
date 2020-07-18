@@ -24,25 +24,35 @@
                     <ColumnDefinition Width="1*"/>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="70"/>
-                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="120"/>
                     <RowDefinition Height="50"/>
                     <RowDefinition Height="1*"/>
                 </Grid.RowDefinitions>
-                <TextBox Grid.Row="0" Grid.Column="0" Name="nameMember"
+                <Grid Grid.Column="0" Grid.ColumnSpan="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="70"/>
+                        <RowDefinition Height="50"/>
+                    </Grid.RowDefinitions>
+                    <TextBox Grid.Row="0" Grid.Column="0" Name="nameMember"
                          materialDesign:TextFieldAssist.UnderlineBrush="#0133CD"
                          materialDesign:HintAssist.Hint="Tên thành viên" Foreground="#0133CD"
                          Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                          VerticalAlignment="Center" />
-                <TextBox Margin="10,0,0,0" Grid.Row="0" Grid.Column="1" Name="phoneNumber"
+                    <TextBox Margin="10,0,0,0" Grid.Row="0" Grid.Column="1" Name="phoneNumber"
                          materialDesign:HintAssist.Hint="Số điện thoại" Foreground="#0133CD"
                          Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                          VerticalAlignment="Center" 
                           materialDesign:TextFieldAssist.UnderlineBrush="#0133CD"/>
-                <Button Click="addMember_Click" Grid.Row="1" Width="150" 
+                    <Button Click="addMember_Click" Grid.Row="1" Width="150" 
                         Grid.Column="0" Grid.ColumnSpan="2" Name="addMember"
                         Background="#0133CD" BorderThickness="0">Thêm Thành Viên</Button>
-                <Label Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Background="#0133CD" FontSize="30" 
+                </Grid>
+              
+                <Label Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Background="#0133CD" FontSize="30" 
                        FontWeight="Bold" HorizontalContentAlignment="Center" Foreground="#FFFFFF">THÀNH VIÊN THAM GIA CHUYẾN ĐI</Label>
                 <Grid Grid.Row="3" Grid.Column="0">
                     <Grid.RowDefinitions>

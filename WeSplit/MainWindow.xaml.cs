@@ -81,5 +81,9 @@ namespace WeSplit
             DataContext = new Main();
         }
 
+        private void Window_Closed(object sender, EventArgs e)
+        {
+
+        }
     }
 }
