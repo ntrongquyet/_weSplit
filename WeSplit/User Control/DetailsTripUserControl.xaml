@@ -139,6 +139,7 @@
                     </StackPanel>
                 </StackPanel>
             </StackPanel>
+            <!--LiveChart binding-->
             <StackPanel Grid.Column="2">
                 <lvc:PieChart Series="{Binding SeriesCollection, RelativeSource={RelativeSource AncestorType=UserControl}}"
                               Height="150">

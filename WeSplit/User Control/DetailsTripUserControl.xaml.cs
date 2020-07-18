@@ -32,6 +32,7 @@ namespace WeSplit.User_Control
         {
             InitializeComponent();
             this.MaCD = mA_CHUYENDI;
+            //Vẽ biểu đồ khoản thu các thành viên
             SeriesCollection = new SeriesCollection();
             foreach (THAMGIA itemTG in DataProvider.Ins.DB.THAMGIA.ToList())
             {
@@ -47,6 +48,7 @@ namespace WeSplit.User_Control
                     SeriesCollection.Add(series);
                 }
             }
+            //Vẽ biểu đồ khoản chi trong chuyến đi
             SeriesCollectionKC = new SeriesCollection();
             foreach (KHOANCHI itemTG in DataProvider.Ins.DB.KHOANCHI.ToList())
             {
