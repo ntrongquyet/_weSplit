@@ -31,6 +31,8 @@
             <DataGrid Margin="20"
                       Background="Transparent"
                       Name="listPlace"
+                      CanUserAddRows="False"
+                      IsReadOnly="True"
                       AutoGenerateColumns="False">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="MÃ ĐỊA DANH"
