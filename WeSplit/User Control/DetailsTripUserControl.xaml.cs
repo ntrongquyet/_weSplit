@@ -53,20 +53,62 @@ namespace WeSplit.User_Control
             SeriesCollectionKC = new SeriesCollection();
             foreach (KHOANCHI itemTG in DataProvider.Ins.DB.KHOANCHI.ToList())
             {
-                if (itemTG.MA_CHUYENDI == MaCD)
+                if(itemTG.MA_CHUYENDI == MaCD)
                 {
-                    ChartValues<double> cost = new ChartValues<double>();
-                    cost.Add(Convert.ToDouble(itemTG.SOTIENCHI));
-                    PieSeries series = new PieSeries
+                    foreach (CHUYENDI itemCD in DataProvider.Ins.DB.CHUYENDI.ToList())
                     {
-                        Values = cost,
-                        Title = itemTG.HANGMUC,
-                    };
-                    SeriesCollectionKC.Add(series);
+                        if (itemCD.MA_CHUYENDI == MaCD)
+                        {
+                            ChartValues<double> cost = new ChartValues<double>();
+                            ChartValues<double> costMB = new ChartValues<double>();
+                            ChartValues<double> costKS = new ChartValues<double>();
+                            ChartValues<double> costTS = new ChartValues<double>();
+                            cost.Add(Convert.ToDouble(itemTG.SOTIENCHI));
+                            costMB.Add(Convert.ToDouble(itemCD.MAYBAY));
+                            costKS.Add(Convert.ToDouble(itemCD.THUE_KS));
+                            costTS.Add(Convert.ToDouble(itemCD.THUE_XE));
+                            var temp = itemTG.SOTIENCHI;
+                            if (temp != 0)
+                            {
+                                PieSeries series = new PieSeries
+                                {
+                                    Values = cost,
+                                    Title = itemTG.HANGMUC,
+                                };
+                                SeriesCollectionKC.Add(series);
+                            }
+                            if (itemCD.THUE_KS != 0)
+                            {
+                                PieSeries seriesKS = new PieSeries
+                                {
+                                    Values = costKS,
+                                    Title = "Khách sạn"
+                                };
+                                SeriesCollectionKC.Add(seriesKS);
+                            }
+                            if (itemCD.MAYBAY != 0)
+                            {
+                                PieSeries seriesMB = new PieSeries
+                                {
+                                    Values = costMB,
+                                    Title = "Máy bay"
+                                };
+                                SeriesCollectionKC.Add(seriesMB);
+                            }
+                            if (itemCD.THUE_XE != 0)
+                            {
+                                PieSeries seriesTS = new PieSeries
+                                {
+                                    Values = costTS,
+                                    Title = "Thuê xe"
+                                };
+                                SeriesCollectionKC.Add(seriesTS);
+                            }
+                        }
+                    }
                 }
             }
         }
-
         private void DetailsUserControl_Loaded(object sender, RoutedEventArgs e)
         {
             var queryTrip = from trip in DataProvider.Ins.DB.CHUYENDI
@@ -87,6 +129,12 @@ namespace WeSplit.User_Control
             var sumKT = sumtt.Select(s => s.TIENTHU).Sum();
             sumTT.Text = Convert.ToString(sumKT);
             // Khoản chi CĐ
+            var KCPlace = (from cd in DataProvider.Ins.DB.CHUYENDI
+                           select new { cd.MA_CHUYENDI,cd.MAYBAY, cd.THUE_KS, cd.THUE_XE });
+            var sumkc = KCPlace.Where(sumkchi => sumkchi.MA_CHUYENDI == MaCD).ToList();
+            var sumAir = sumkc.Select(sumair => sumair.MAYBAY).Sum();
+            var sumKS = sumkc.Select(sumks => sumks.THUE_KS).Sum();
+            var sumTS = sumkc.Select(sumts => sumts.THUE_XE).Sum();
             var placeKC = (from tv in DataProvider.Ins.DB.THANHVIEN
                            join tg in DataProvider.Ins.DB.THAMGIA on tv.MATV equals tg.MATV
                            join cd in DataProvider.Ins.DB.CHUYENDI on tg.MACD equals cd.MA_CHUYENDI
@@ -94,8 +142,9 @@ namespace WeSplit.User_Control
                            select new { kc.SOTIENCHI, kc.MA_CHUYENDI }).Distinct();
             var sumtc = placeKC.Where(su => su.MA_CHUYENDI == MaCD).ToList();
             var sumKC = sumtc.Select(sum => sum.SOTIENCHI).Sum();
-            sumTC.Text = Convert.ToString(sumKC);
-            double mul = (double)sumKT - (double)sumKC;
+            var SUM = sumAir + sumKS + sumTS + sumKC;
+            sumTC.Text = Convert.ToString(SUM);
+            double mul = (double)sumKT - (double)SUM;
             if (mul < 0)
             {
                 confirmMoney.Text = "Thiếu " + Convert.ToString(Math.Abs(mul));
