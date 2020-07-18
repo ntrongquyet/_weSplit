@@ -9,9 +9,15 @@
              Loaded="UserControl_Loaded"
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
+        <Border Grid.RowSpan="3" Grid.ColumnSpan="2" Margin="50">
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="20" Opacity=".1"/>
+            </Border.Effect>
+            <Rectangle Fill="#fff" Margin="0" RadiusX="20" RadiusY="20"/>
+        </Border>
         <Border Background="White"
                 Margin="50"
-                CornerRadius="50">
+                CornerRadius="20">
             <Grid Margin="15,0,15,0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="1*"/>
@@ -24,15 +30,20 @@
                     <RowDefinition Height="1*"/>
                 </Grid.RowDefinitions>
                 <TextBox Grid.Row="0" Grid.Column="0" Name="nameMember"
-                    materialDesign:HintAssist.Hint="Tên thành viên"
-                    Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                    VerticalAlignment="Center" />
+                         materialDesign:TextFieldAssist.UnderlineBrush="#0133CD"
+                         materialDesign:HintAssist.Hint="Tên thành viên" Foreground="#0133CD"
+                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                         VerticalAlignment="Center" />
                 <TextBox Margin="10,0,0,0" Grid.Row="0" Grid.Column="1" Name="phoneNumber"
-                    materialDesign:HintAssist.Hint="Số điện thoại"
-                    Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                    VerticalAlignment="Center" />
-                <Button Click="addMember_Click" Grid.Row="1" Width="150" Grid.Column="0" Grid.ColumnSpan="2" Name="addMember">Thêm Thành Viên</Button>
-                <Label Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Background="#C3C3C3" FontSize="30" FontWeight="Bold" HorizontalContentAlignment="Center">THÀNH VIÊN THAM GIA CHUYẾN ĐI</Label>
+                         materialDesign:HintAssist.Hint="Số điện thoại" Foreground="#0133CD"
+                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                         VerticalAlignment="Center" 
+                          materialDesign:TextFieldAssist.UnderlineBrush="#0133CD"/>
+                <Button Click="addMember_Click" Grid.Row="1" Width="150" 
+                        Grid.Column="0" Grid.ColumnSpan="2" Name="addMember"
+                        Background="#0133CD" BorderThickness="0">Thêm Thành Viên</Button>
+                <Label Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Background="#0133CD" FontSize="30" 
+                       FontWeight="Bold" HorizontalContentAlignment="Center" Foreground="#FFFFFF">THÀNH VIÊN THAM GIA CHUYẾN ĐI</Label>
                 <Grid Grid.Row="3" Grid.Column="0">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="1*"/>
@@ -41,8 +52,9 @@
                         <RowDefinition Height="50"/>
                     </Grid.RowDefinitions>
                     <ComboBox Grid.Row="0"
-                            Name="trip"
+                            Name="trip" Foreground="#0133CD"
                             SelectionChanged="trip_SelectionChanged"
+                            materialDesign:TextFieldAssist.UnderlineBrush="#0133CD"
                             materialDesign:HintAssist.Hint="Chuyến đi">
                         <ComboBox.ItemTemplate>
                             <DataTemplate>
@@ -53,7 +65,8 @@
                         </ComboBox.ItemTemplate>
                     </ComboBox>
                     <ComboBox Grid.Row="1"
-                            Name="member"
+                            Name="member" Foreground="#0133CD"
+                               materialDesign:TextFieldAssist.UnderlineBrush="#0133CD"
                             materialDesign:HintAssist.Hint="Thành viên">
                         <ComboBox.ItemTemplate>
                             <DataTemplate>
@@ -65,13 +78,14 @@
                             </DataTemplate>
                         </ComboBox.ItemTemplate>
                     </ComboBox>
-                    <TextBox Name="money"
-                        Grid.Row="2"
-                        materialDesign:HintAssist.Hint="Floating Hint"
-                        Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                        VerticalAlignment="Center" />
+                    <TextBox Name="money" Grid.Row="2" Foreground="#0133CD"
+                             materialDesign:HintAssist.Hint="Floating Hint"
+                             materialDesign:TextFieldAssist.UnderlineBrush="#0133CD"
+                             Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                             VerticalAlignment="Center" />
 
-                    <Button Click="addMemberToTrip_Click" Width="100" Grid.Row="4">
+                    <Button Click="addMemberToTrip_Click" Width="100" Grid.Row="4"
+                            Background="#0133CD" BorderThickness="0">
                         Thêm
                     </Button>
                 </Grid>
@@ -83,9 +97,9 @@
                         </GridView>
                     </ListView.View>
                 </ListView>
-                
+
             </Grid>
         </Border>
-        
+
     </Grid>
 </UserControl>
