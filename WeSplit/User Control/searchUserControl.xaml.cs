@@ -40,7 +40,7 @@ namespace WeSplit.User_Control
 
         //Search
         private void Search_button(object sender, RoutedEventArgs e)
-        {
+        {   
             //Search theo đã đi và tên thành viên
             if (oldSelect.IsChecked == true)
             {
@@ -50,8 +50,8 @@ namespace WeSplit.User_Control
                     var name = (from tg in DataProvider.Ins.DB.THAMGIA
                                 join tv in DataProvider.Ins.DB.THANHVIEN on tg.MATV equals tv.MATV
                                 join cd in DataProvider.Ins.DB.CHUYENDI on tg.MACD equals cd.MA_CHUYENDI
-                                select new { tv.TENTV, cd.TEN_CHUYENDI, cd.MA_CHUYENDI, cd.TRANGTHAI });
-                    var strings = name.Where(thanhvien => (thanhvien.TENTV.ToLower()).Contains((Search.Text.ToLower())));
+                                select new { tv.TENTV, cd.TEN_CHUYENDI, cd.MA_CHUYENDI, cd.TRANGTHAI }).ToList();
+                    var strings = name.Where(thanhvien => convertToUnSign3(thanhvien.TENTV.ToLower()).Contains(convertToUnSign3(Search.Text.ToLower())));
                     var stsr = strings.Where(p => p.TRANGTHAI == true).ToList();
                     if (stsr.Count() != 0)
                     {
@@ -98,8 +98,8 @@ namespace WeSplit.User_Control
                     var name = (from tg in DataProvider.Ins.DB.THAMGIA
                                 join tv in DataProvider.Ins.DB.THANHVIEN on tg.MATV equals tv.MATV
                                 join cd in DataProvider.Ins.DB.CHUYENDI on tg.MACD equals cd.MA_CHUYENDI
-                                select new { tv.TENTV, cd.TEN_CHUYENDI, cd.MA_CHUYENDI, cd.TRANGTHAI });
-                    var strings = name.Where(thanhvien => (thanhvien.TENTV.ToLower()).Contains((Search.Text.ToLower())));
+                                select new { tv.TENTV, cd.TEN_CHUYENDI, cd.MA_CHUYENDI, cd.TRANGTHAI }).ToList();
+                    var strings = name.Where(thanhvien => convertToUnSign3(thanhvien.TENTV.ToLower()).Contains(convertToUnSign3(Search.Text.ToLower())));
                     var stsr = strings.Where(p => p.TRANGTHAI == false).ToList();
                     if (stsr.Count() != 0)
                     {

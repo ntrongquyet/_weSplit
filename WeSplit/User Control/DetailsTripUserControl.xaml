@@ -141,7 +141,6 @@
             </StackPanel>
             <StackPanel Grid.Column="2">
                 <lvc:PieChart Series="{Binding SeriesCollection, RelativeSource={RelativeSource AncestorType=UserControl}}"
-                              Width="150"
                               Height="150">
                 </lvc:PieChart>
                 <TextBlock Text="Bảng tiền thu"
@@ -151,7 +150,6 @@
                            FontWeight="Light"
                            Foreground="#0133CD"/>
                 <lvc:PieChart Series="{Binding SeriesCollectionKC, RelativeSource={RelativeSource AncestorType=UserControl}}"
-                              Width="150"
                               Height="150">
                 </lvc:PieChart>
                 <TextBlock Text="Bảng chi tiêu"
