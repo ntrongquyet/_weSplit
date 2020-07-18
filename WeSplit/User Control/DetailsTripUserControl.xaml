@@ -104,8 +104,8 @@
                             </ListView.ItemTemplate>
                         </ListView>
                     </StackPanel>
-                    <Button Name="show" Click="show_Click" Margin="50 0" BorderThickness="0"
-                            Content="Click để xem các chuyến đi" Background="#0133CD"
+                    <Button Name="show" Click="show_Click" Width="200" BorderThickness="0"
+                            Content="Click để xem các lộ trình" Background="#0133CD"
                             materialDesign:ShadowAssist.ShadowDepth="Depth0"/>
                 </StackPanel>
                 <StackPanel Margin="0 20">
