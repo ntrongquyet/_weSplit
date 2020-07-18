@@ -24,7 +24,6 @@ namespace WeSplit.User_Control
     /// </summary>
     public partial class AddPlaceUserControl : UserControl
     {
-
         public AddPlaceUserControl()
         {
             InitializeComponent();
@@ -33,19 +32,23 @@ namespace WeSplit.User_Control
         {
             loadList.ItemsSource = DataProvider.Ins.DB.DD_DULICH.ToList();
         }
+        //Thêm địa điểm
         private void addPlace(object sender, RoutedEventArgs e)
         {
+            //Thông báo khi để trống tên địa danh
             if (namePlace.Text.Trim().Length == 0)
             {
-                MessageBox.Show("Chưa nhâp tên địa danh");
+                MessageBox.Show("Chưa nhâp tên địa danh","Cảnh báo",MessageBoxButton.OK,MessageBoxImage.Warning);
             }
+            //Thông báo khi để trống địa chỉ
             else if (nameAddress.Text.Trim().Length == 0)
             {
-                MessageBox.Show("Chưa nhâp địa chỉ");
+                MessageBox.Show("Chưa nhâp địa chỉ", "Cảnh báo", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
+            //Thông báo khi để trống ảnh địa điểm
             else if (path.Length == 0)
             {
-                MessageBox.Show("Ảnh đại diện địa điểm chưa có kìa!!!!");
+                MessageBox.Show("Ảnh đại diện địa điểm chưa có", "Cảnh báo", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
             else
             {
@@ -72,13 +75,14 @@ namespace WeSplit.User_Control
                 };
                 DataProvider.Ins.DB.HINHANH_DDDL.Add(ha);
                 DataProvider.Ins.DB.SaveChanges();
-                MessageBox.Show($"Thêm thành công địa điểm{dd.TEN_DIEMDEN}");
+                MessageBox.Show($"Thêm thành công địa điểm{dd.TEN_DIEMDEN}","Hoàn thành",MessageBoxButton.OK,MessageBoxImage.Information);
             }
             namePlace.Text = default;
             nameAddress.Text = default;
             loadList.ItemsSource = DataProvider.Ins.DB.DD_DULICH.ToList();
         }
         string path = "";
+        //Thêm ảnh từ các nguồn
         private void imageDD_MouseDown(object sender, MouseButtonEventArgs e)
         {
             OpenFileDialog ofd = new OpenFileDialog();

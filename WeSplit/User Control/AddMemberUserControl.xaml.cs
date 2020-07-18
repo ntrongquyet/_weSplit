@@ -38,23 +38,28 @@ namespace WeSplit.User_Control
             }
 
         }
+        //Add thành viên
         private void addMember_Click(object sender, RoutedEventArgs e)
         {
             var name = nameMember.Text.Trim();
             var phone = phoneNumber.Text.Trim();
+            //Thông báo khi để trống tên thành viên
             if (name.Length == 0)
             {
-                MessageBox.Show("Không đễ trống tên thành viên");
+                MessageBox.Show("Không đễ trống tên thành viên", "Cảnh báo", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
+            //Thông báo khi để trống số điện thoại
             else if (phone.Length == 0)
             {
-                MessageBox.Show("Không để trống số điện thoại");
+                MessageBox.Show("Không để trống số điện thoại", "Cảnh báo", MessageBoxButton.OK, MessageBoxImage.Warning);
 
             }
+            //Thông báo khi trùng số điện thoại
             else if (DataProvider.Ins.DB.THANHVIEN.Any(mem => mem.SDT == phone))
             {
-                MessageBox.Show("Số điện thoại đã trùng");
+                MessageBox.Show("Số điện thoại đã trùng", "Cảnh báo", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
+            //Add khi nhập đầy đủ
             else
             {
                 string MTV = $"TV{DataProvider.Ins.DB.THANHVIEN.Count() + 1}";
@@ -69,6 +74,7 @@ namespace WeSplit.User_Control
                 phoneNumber.Text = default;
                 DataProvider.Ins.DB.THANHVIEN.Add(mem);
                 DataProvider.Ins.DB.SaveChanges();
+                MessageBox.Show($"Thêm thành công {name}", "Hoàn thành", MessageBoxButton.OK, MessageBoxImage.Information);
                 member.ItemsSource = DataProvider.Ins.DB.THANHVIEN.ToList();
             }
         }
@@ -107,6 +113,5 @@ namespace WeSplit.User_Control
             money.Text = default;
             reload();
         }
-
     }
 }
