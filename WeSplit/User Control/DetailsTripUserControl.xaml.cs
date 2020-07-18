@@ -1,4 +1,6 @@
-﻿using System;
+﻿using LiveCharts;
+using LiveCharts.Wpf;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,12 +25,43 @@ namespace WeSplit.User_Control
     {
         private string MaCD;
 
-
+        public SeriesCollection SeriesCollection { get; }
+        public SeriesCollection SeriesCollectionKC { get; }
 
         public DetailsTripUserControl(string mA_CHUYENDI)
         {
             InitializeComponent();
             this.MaCD = mA_CHUYENDI;
+            SeriesCollection = new SeriesCollection();
+            foreach (THAMGIA itemTG in DataProvider.Ins.DB.THAMGIA.ToList())
+            {
+                if (itemTG.MACD == MaCD)
+                {
+                    ChartValues<double> cost = new ChartValues<double>();
+                    cost.Add(Convert.ToDouble(itemTG.TIENTHU));
+                    PieSeries series = new PieSeries
+                    {
+                        Values = cost,
+                        Title = itemTG.THANHVIEN.TENTV,
+                    };
+                    SeriesCollection.Add(series);
+                }
+            }
+            SeriesCollectionKC = new SeriesCollection();
+            foreach (KHOANCHI itemTG in DataProvider.Ins.DB.KHOANCHI.ToList())
+            {
+                if (itemTG.MA_CHUYENDI == MaCD)
+                {
+                    ChartValues<double> cost = new ChartValues<double>();
+                    cost.Add(Convert.ToDouble(itemTG.SOTIENCHI));
+                    PieSeries series = new PieSeries
+                    {
+                        Values = cost,
+                        Title = itemTG.HANGMUC,
+                    };
+                    SeriesCollectionKC.Add(series);
+                }
+            }
         }
 
         private void DetailsUserControl_Loaded(object sender, RoutedEventArgs e)
