@@ -328,6 +328,7 @@
     <None Include="Image\Main\Backround_Trip_Console.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <Resource Include="Image\Main\bn2_v4.jpg" />
     <Content Include="QLCD.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>QLCD.edmx</DependentUpon>

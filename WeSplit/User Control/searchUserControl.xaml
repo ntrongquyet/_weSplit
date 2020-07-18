@@ -19,7 +19,7 @@
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="1*"/>
-                    <RowDefinition Height="3.5*"/>
+                    <RowDefinition Height="3*"/>
                 </Grid.RowDefinitions>
                 <Grid Grid.Row="0">
                     <Grid.RowDefinitions>
@@ -27,35 +27,36 @@
                         <RowDefinition Height="1*"/>
                         <RowDefinition Height="1*"/>
                     </Grid.RowDefinitions>
-                    <materialDesign:ColorZone Mode="Standard" 
+                    <DockPanel Grid.Row="0" 
+                               HorizontalAlignment="Center">
+                        <materialDesign:ColorZone Mode="Standard" 
                                               Padding="8 4 8 4" 
-                                              Grid.Row="0"
                                               CornerRadius="20"
                                               Margin="0 2 0 0 "
                                               materialDesign:ShadowAssist.ShadowDepth="Depth1" 
                                               Width="302">
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="19*"/>
-                                <RowDefinition Height="13*"/>
-                            </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto" />
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="Auto" />
-                            </Grid.ColumnDefinitions>
-                            <Button Style="{DynamicResource MaterialDesignToolButton}"
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="19*"/>
+                                    <RowDefinition Height="13*"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <Button Style="{DynamicResource MaterialDesignToolButton}"
                                             Grid.RowSpan="2"
                                             Click="Search_button"
                                             IsDefault="True">
-                                <materialDesign:PackIcon 
+                                    <materialDesign:PackIcon 
                                             Kind="Magnify" 
                                             Opacity="1" 
                                             Height="22" 
                                             Width="22" 
                                             />
-                            </Button>
-                            <TextBox  
+                                </Button>
+                                <TextBox  
                                     Grid.Column="1" 
                                     Margin="8,4,0,4"
                                     Name="Search"
@@ -65,58 +66,60 @@
                                     MinWidth="200"
                                     VerticalAlignment="Center" 
                                     Grid.RowSpan="2"/>
-                        </Grid>
-                    </materialDesign:ColorZone>
+                            </Grid>
+                        </materialDesign:ColorZone>
+                    </DockPanel>
                     <DockPanel Grid.Row="1"
                            HorizontalAlignment="Center">
                         <CheckBox Content="Đã đi"
                                   Name="oldSelect"
-                                  FontSize="15"
+                                  FontSize="13"
+                                  VerticalAlignment="Center"
+                                  HorizontalAlignment="Center"
                                   FontWeight="Light"
                                   Margin="0 0 10 0"/>
                         <CheckBox Content="Chưa đi"
-                                  FontSize="15"
+                                  FontSize="13"
                                   Name="futureSelect"
                                   FontWeight="Light"
                                   Margin="0 0 10 0"/>
                         <CheckBox Content="Tên"
-                                  FontSize="15" 
+                                  FontSize="13" 
                                   Name="nameSelect"
                                   FontWeight="Light"
                                   Margin="0 0 10 0"/>
                     </DockPanel>
-                    <DockPanel Grid.Row="2" HorizontalAlignment="Center">
+                    <DockPanel Grid.Row="2"
+                               HorizontalAlignment="Center">
                         <TextBlock Text="Có "/>
                         <TextBlock Name="numbers" Text="{Binding num}"/>
                         <TextBlock Text=" kết quả đã được tìm thấy"/>
                     </DockPanel>
                 </Grid>
-                <ListBox Name ="listPlace" 
+                <ListBox Name ="listPlace"
                          Grid.Row="1"
                          BorderThickness="0" 
-                         Margin="0 10 0 10"
+                         Margin="10"
                          ScrollViewer.VerticalScrollBarVisibility="Disabled">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
-                            <StackPanel HorizontalAlignment="Center">
-                                <StackPanel VerticalAlignment="Center" Orientation="Vertical" Margin="20 0 0 0">
-                                    <TextBlock  Margin="0 10 0 0"
-                                                    Text= "{Binding MA_CHUYENDI}" 
-                                                    FontWeight="Light"
-                                                    Foreground="#AA381F" 
-                                                    FontSize="15"
-                                                    HorizontalAlignment="Center"/>
+                            <StackPanel>
+                                <DockPanel>
+                                    <Image Source="/Image/Main/Image 5@2x.png" 
+                                           Width="50"
+                                           Height="auto"/>
                                     <DockPanel>
                                         <TextBlock Text="{Binding TEN_CHUYENDI}" 
-                                                       FontSize="15"
-                                                       FontWeight="Light"/>
+                                                   FontSize="15"
+                                                   TextWrapping="Wrap"
+                                                   FontWeight="Light"/>
                                     </DockPanel>
                                     <DockPanel>
                                         <TextBlock Text="{Binding TRANGTHAI}"
-                                                       FontSize="15"
-                                                       FontWeight="Light"/>
+                                                   FontSize="15"
+                                                   FontWeight="Light"/>
                                     </DockPanel>
-                                </StackPanel>
+                                </DockPanel>
                             </StackPanel>
                         </DataTemplate>
                     </ListBox.ItemTemplate>
