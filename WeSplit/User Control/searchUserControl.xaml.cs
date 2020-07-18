@@ -29,7 +29,6 @@ namespace WeSplit.User_Control
         }
         ObservableCollection<CHUYENDI> placeList = new ObservableCollection<CHUYENDI>();
         int num = 0;
-
         //Lọc Tiếng Việt
         public static string convertToUnSign3(string s)
         {
@@ -37,17 +36,18 @@ namespace WeSplit.User_Control
             string temp = s.Normalize(NormalizationForm.FormD);
             return regex.Replace(temp, String.Empty).Replace('\u0111', 'd').Replace('\u0110', 'D');
         }
-
         //Search
         private void Search_button(object sender, RoutedEventArgs e)
         {
+            //Cảnh báo không nhập dữ liệu
             if (Search.Text.Trim().Length == 0)
             {
-                MessageBox.Show("Chưa nhập gì sao tui tìm :( ");
+                MessageBox.Show("Bạn chưa nhập","Lỗi",MessageBoxButton.OK,MessageBoxImage.Error);
             }
+            //Cảnh báo không chọn lọc
             else if(futureSelect.IsChecked == false && oldSelect.IsChecked == false && nameSelect.IsChecked == false)
             {
-                MessageBox.Show("Thiếu điều kiện lọc bạn ưiiiiii !!!!!");
+                MessageBox.Show("Thiếu điều kiện lọc bạn ơi !!!!!","Cảnh báo",MessageBoxButton.OK,MessageBoxImage.Warning);
             }
             //Search theo đã đi và tên thành viên
             else if (oldSelect.IsChecked == true)
@@ -67,7 +67,7 @@ namespace WeSplit.User_Control
                     }
                     else
                     {
-                        MessageBox.Show("Không có");
+                        MessageBox.Show("Không tìm thấy","Thông báo",MessageBoxButton.OK,MessageBoxImage.Information);
                     }
                 }
                 else if (futureSelect.IsChecked == true)
@@ -79,7 +79,7 @@ namespace WeSplit.User_Control
                     }
                     else
                     {
-                        MessageBox.Show("Không có");
+                        MessageBox.Show("Không tìm thấy", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
                     }
                 }
                 //Chỉ search theo đã đi
@@ -93,7 +93,7 @@ namespace WeSplit.User_Control
                     }
                     else
                     {
-                        MessageBox.Show("Không có");
+                        MessageBox.Show("Không tìm thấy", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
                     }
                 }
             }
@@ -115,7 +115,7 @@ namespace WeSplit.User_Control
                     }
                     else
                     {
-                        MessageBox.Show("Không có");
+                        MessageBox.Show("Không tìm thấy", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
                     }
                 }
                 else if (oldSelect.IsChecked == true)
@@ -127,7 +127,7 @@ namespace WeSplit.User_Control
                     }
                     else
                     {
-                        MessageBox.Show("Không có");
+                        MessageBox.Show("Không tìm thấy", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
                     }
                 }
                 //Chỉ search theo chưa đi
@@ -141,7 +141,7 @@ namespace WeSplit.User_Control
                     }
                     else
                     {
-                        MessageBox.Show("Không có");
+                        MessageBox.Show("Không tìm thấy", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
                     }
                 }
             }
@@ -159,7 +159,7 @@ namespace WeSplit.User_Control
                 }
                 else
                 {
-                    MessageBox.Show("Không có");
+                    MessageBox.Show("Không tìm thấy", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
             }
             //Search theo tất cả trường hợp khi không click chọn
@@ -181,24 +181,25 @@ namespace WeSplit.User_Control
                 }
                 else
                 {
-                    MessageBox.Show("Không có");
+                    MessageBox.Show("Không tìm thấy", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
             }
             int num = listPlace.Items.Count;
             numbers.Text = Convert.ToString(num);
         }
+        //Load số tìm kiếm
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
             foreach (CHUYENDI itemTT in DataProvider.Ins.DB.CHUYENDI.ToList())
             {
                 placeList.Add(itemTT);
             }
+            //Hiển số kết quả tìm kiếm
             numbers.Text = Convert.ToString(num);
         }
-
+        //Click để xem chi tiết
         private void listPlace_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-
             var data = listPlace.SelectedItem as CHUYENDI;
             if (data != null)
             {
