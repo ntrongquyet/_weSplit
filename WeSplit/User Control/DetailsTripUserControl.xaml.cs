@@ -27,7 +27,15 @@ namespace WeSplit.User_Control
 
         public SeriesCollection SeriesCollection { get; }
         public SeriesCollection SeriesCollectionKC { get; }
-
+        public class  CDNEW
+        {
+           public string machuyendi;
+            public double? sotienchi;
+            public string hangmuc;
+            public double? maybay;
+            public double? thuexe;
+            public double? thueks;
+        }
 
         public DetailsTripUserControl(string mA_CHUYENDI)
         {
@@ -51,61 +59,52 @@ namespace WeSplit.User_Control
             }
             //Vẽ biểu đồ khoản chi trong chuyến đi
             SeriesCollectionKC = new SeriesCollection();
-            foreach (KHOANCHI itemTG in DataProvider.Ins.DB.KHOANCHI.ToList())
+            var selectItem = (from kc in DataProvider.Ins.DB.KHOANCHI join cd in DataProvider.Ins.DB.CHUYENDI on kc.MA_CHUYENDI equals cd.MA_CHUYENDI select new { cd.MA_CHUYENDI, kc.SOTIENCHI, kc.HANGMUC, cd.MAYBAY, cd.THUE_KS, cd.THUE_XE })
+                              .Where(cd => cd.MA_CHUYENDI == MaCD).Distinct();
+            var test = selectItem.Select(x => new CDNEW {
+                machuyendi = x.MA_CHUYENDI,
+                hangmuc = x.HANGMUC,
+                sotienchi = x.SOTIENCHI,
+                maybay = x.MAYBAY,
+                thuexe = x.THUE_XE,
+                thueks = x.THUE_KS
+            }).Distinct().ToList<CDNEW>();
+            foreach(CDNEW item in test)
             {
-                if(itemTG.MA_CHUYENDI == MaCD)
+                if (item.machuyendi == MaCD)
                 {
-                    foreach (CHUYENDI itemCD in DataProvider.Ins.DB.CHUYENDI.ToList())
+                    ChartValues<double> cost = new ChartValues<double>();
+                    ChartValues<double> costMB = new ChartValues<double>();
+                    ChartValues<double> costKS = new ChartValues<double>();
+                    ChartValues<double> costTS = new ChartValues<double>();
+                    cost.Add(Convert.ToDouble(item.sotienchi));
+                    costMB.Add(Convert.ToDouble(item.maybay));
+                    costKS.Add(Convert.ToDouble(item.thueks));
+                    costTS.Add(Convert.ToDouble(item.thuexe));
+                    PieSeries series = new PieSeries
                     {
-                        if (itemCD.MA_CHUYENDI == MaCD)
-                        {
-                            ChartValues<double> cost = new ChartValues<double>();
-                            ChartValues<double> costMB = new ChartValues<double>();
-                            ChartValues<double> costKS = new ChartValues<double>();
-                            ChartValues<double> costTS = new ChartValues<double>();
-                            cost.Add(Convert.ToDouble(itemTG.SOTIENCHI));
-                            costMB.Add(Convert.ToDouble(itemCD.MAYBAY));
-                            costKS.Add(Convert.ToDouble(itemCD.THUE_KS));
-                            costTS.Add(Convert.ToDouble(itemCD.THUE_XE));
-                            var temp = itemTG.SOTIENCHI;
-                            if (temp != 0)
-                            {
-                                PieSeries series = new PieSeries
-                                {
-                                    Values = cost,
-                                    Title = itemTG.HANGMUC,
-                                };
-                                SeriesCollectionKC.Add(series);
-                            }
-                            if (itemCD.THUE_KS != 0)
-                            {
-                                PieSeries seriesKS = new PieSeries
-                                {
-                                    Values = costKS,
-                                    Title = "Khách sạn"
-                                };
-                                SeriesCollectionKC.Add(seriesKS);
-                            }
-                            if (itemCD.MAYBAY != 0)
-                            {
-                                PieSeries seriesMB = new PieSeries
-                                {
-                                    Values = costMB,
-                                    Title = "Máy bay"
-                                };
-                                SeriesCollectionKC.Add(seriesMB);
-                            }
-                            if (itemCD.THUE_XE != 0)
-                            {
-                                PieSeries seriesTS = new PieSeries
-                                {
-                                    Values = costTS,
-                                    Title = "Thuê xe"
-                                };
-                                SeriesCollectionKC.Add(seriesTS);
-                            }
-                        }
-                    }
+                        Values = cost,
+                        Title = item.hangmuc,
+                    };
+                    PieSeries seriesMB = new PieSeries
+                    {
+                        Values = costMB,
+                        Title = "Máy bay"
+                    };
+                    PieSeries seriesKS = new PieSeries
+                    {
+                        Values = costKS,
+                        Title = "Khách sạn"
+                    };
+                    PieSeries seriesTS = new PieSeries
+                    {
+                        Values = costTS,
+                        Title = "Thuê xe"
+                    };
+                    SeriesCollectionKC.Add(series);
+                    SeriesCollectionKC.Add(seriesMB);
+                    SeriesCollectionKC.Add(seriesKS);
+                    SeriesCollectionKC.Add(seriesTS);
                 }
             }
         }
