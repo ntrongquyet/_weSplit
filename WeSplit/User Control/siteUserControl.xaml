@@ -8,56 +8,59 @@
              Loaded="UserControl_Loaded"
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="7*"/>
-            <RowDefinition Height="1*"/>
-        </Grid.RowDefinitions>
-        <TextBlock Grid.Row="0"
-                   Text="DANH SÁCH CÁC ĐỊA DANH DU LỊCH"
-                   HorizontalAlignment="Center"
-                   FontSize="30"
-                   Foreground="#0133CD"
-                   FontWeight="Bold"
-                   VerticalAlignment="Center"/>
-        <Border Background="Transparent"
-                Grid.Row="1"
-                Margin="180 0 40 0"
-                CornerRadius="20">
-            <Border.Effect>
-                <DropShadowEffect BlurRadius="20"
+        <Border Margin="50">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="7*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+                <Label Grid.Row="0"
+                       Content="DANH SÁCH CÁC ĐỊA DANH DU LỊCH"
+                       HorizontalContentAlignment="Center"
+                       Background="#0133CD"
+                       FontSize="30"
+                       Foreground="White"
+                       FontWeight="Bold"/>
+                <Border Background="White"
+                Grid.Row="1">
+                    <Border.Effect>
+                        <DropShadowEffect BlurRadius="20"
                                   Opacity=".2"/>
-            </Border.Effect>
-            <DataGrid Margin="20"
-                      Background="Transparent"
-                      Name="listPlace"
-                      CanUserAddRows="False"
-                      IsReadOnly="True"
-                      AutoGenerateColumns="False">
-                <DataGrid.Columns>
-                    <DataGridTextColumn Header="MÃ ĐỊA DANH"
+                    </Border.Effect>
+                    <DataGrid Margin="10"
+                              Name="listPlace"
+                              CanUserAddRows="False"
+                              Background="White"
+                              IsReadOnly="True"
+                              ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                              AutoGenerateColumns="False">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="MÃ ĐỊA DANH"
                                         Foreground="#0133CD"
                                         Binding="{Binding MA_DIEMDEN}"/>
-                    <DataGridTextColumn Header="TÊN ĐỊA DANH"
+                            <DataGridTextColumn Header="TÊN ĐỊA DANH"
                                         Foreground="#0133CD"
                                         Binding="{Binding TEN_DIEMDEN}"/>
-                    <DataGridTextColumn Header="ĐỊA CHỈ"
+                            <DataGridTextColumn Header="ĐỊA CHỈ"
                                         Foreground="#0133CD"
                                         Binding="{Binding DCHI_DIEMDEN}"/>
-                    <DataGridTextColumn Header="THÔNG TIN"
+                            <DataGridTextColumn Header="THÔNG TIN"
                                         Foreground="#0133CD"
                                         Binding="{Binding THONGTIN_DD}"/>
-                </DataGrid.Columns>
-            </DataGrid>
-        </Border>
-        <Button Grid.Row="2"
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Border>
+                <Button Grid.Row="2"
                 HorizontalAlignment="Right"
                 Margin="0 0 20 0"
                 Width="150"
                 Click="buttonAdd"
                 Background="#0133CD">
-            <TextBlock Text="THÊM ĐỊA DANH"
+                    <TextBlock Text="THÊM ĐỊA DANH"
                        VerticalAlignment="Center"/>
-        </Button>
+                </Button>
+            </Grid>
+        </Border>
     </Grid>
 </UserControl>

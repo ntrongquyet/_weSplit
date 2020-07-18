@@ -8,20 +8,30 @@
              d:DesignHeight="450" d:DesignWidth="800"
              Initialized="UserControl_Initialized">
     <Grid>
-        <Border Background="Transparent"
-                Margin="50"
-                CornerRadius="50">
+        <Border Background="White"
+                Margin="50">
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="25"
+                                  Opacity=".2"/>
+            </Border.Effect>
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="50"/>
                     <RowDefinition Height="1*"/>
                     <RowDefinition Height="50"/>
                 </Grid.RowDefinitions>
-                <Label Grid.Row="0" Background="#C3C3C3" FontSize="30" FontWeight="Bold" HorizontalContentAlignment="Center">DANH SÁCH THÀNH VIÊN</Label>
+                <Label Grid.Row="0" 
+                       Background="#0133CD"
+                       FontSize="30"
+                       FontWeight="Bold"
+                       Foreground="White"
+                       HorizontalContentAlignment="Center">DANH SÁCH THÀNH VIÊN</Label>
                 <ListView Name="listMember"
+                          Margin="10"
                           ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                           SizeChanged="listMember_SizeChanged"
                           Grid.Row="1"
+                          Foreground="#0133CD"
                           HorizontalAlignment="Center" SelectionChanged="listMember_SelectionChanged">
                     <ListView.View>
                         <GridView>
@@ -31,7 +41,13 @@
                         </GridView>
                     </ListView.View>
                 </ListView>
-                <Button HorizontalAlignment="Right" Click="addMemberButton_Click" Grid.Row="2" Width="200">THÊM THÀNH VIÊN</Button>
+                <Button HorizontalAlignment="Right"
+                        VerticalAlignment="Bottom"
+                        Background="#0133CD"
+                        Margin="0 0 10 10"
+                        Click="addMemberButton_Click" 
+                        Grid.Row="2"
+                        Width="200">THÊM THÀNH VIÊN</Button>
             </Grid>
         </Border>
         
