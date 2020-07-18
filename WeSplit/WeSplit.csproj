@@ -170,6 +170,9 @@
     <Compile Include="User Control\DetailsTripUserControl.xaml.cs">
       <DependentUpon>DetailsTripUserControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="User Control\HistoryTripUserControl.xaml.cs">
+      <DependentUpon>HistoryTripUserControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="User Control\Infomation_UserControl.xaml.cs">
       <DependentUpon>Infomation_UserControl.xaml</DependentUpon>
     </Compile>
@@ -214,6 +217,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="User Control\DetailsTripUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="User Control\HistoryTripUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

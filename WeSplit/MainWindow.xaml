@@ -42,7 +42,7 @@
                        FontWeight="Bold"
                        MouseLeftButtonDown="Button_Home"
                        Foreground="#0133CD"/>
-            <TextBlock Text="CHUYẾN ĐI"
+            <TextBlock Text="LỊCH SỬ"
                        Grid.Column="2"
                        HorizontalAlignment="Center"
                        VerticalAlignment="Center"

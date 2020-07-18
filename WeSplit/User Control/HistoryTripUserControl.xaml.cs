@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,34 +17,19 @@ using WeSplit.SQLData;
 namespace WeSplit.User_Control
 {
     /// <summary>
-    /// Interaction logic for Main.xaml
+    /// Interaction logic for HistoryTripUserControl.xaml
     /// </summary>
-    public partial class Main : UserControl
+    public partial class HistoryTripUserControl : UserControl
     {
-        public Main()
+        public HistoryTripUserControl()
         {
             InitializeComponent();
         }
 
-        private void UserControl_Loaded(object sender, RoutedEventArgs e)
-        {
-            table_CHUYENDI.ItemsSource = (from cd in DataProvider.Ins.DB.CHUYENDI 
-                                          where cd.TRANGTHAI == false
-                                          select cd).ToList();
-        }
-
-        private void button_add_trip(object sender, MouseButtonEventArgs e)
-        {
-            DataContext = new AddTripUserControl();
-            this.Content = new AddTripUserControl();
-        }
-
-
-
         private void table_CHUYENDI_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             var data = table_CHUYENDI.SelectedItem as CHUYENDI;
-            if (data != null)
+            if(data != null)
             {
                 DataContext = new DetailsTripUserControl(data.MA_CHUYENDI);
                 this.Content = new DetailsTripUserControl(data.MA_CHUYENDI);
@@ -53,5 +37,11 @@ namespace WeSplit.User_Control
             
         }
 
+        private void UserControl_Initialized(object sender, EventArgs e)
+        {
+            table_CHUYENDI.ItemsSource = (from cd in DataProvider.Ins.DB.CHUYENDI
+                                          where cd.TRANGTHAI == true
+                                          select cd).ToList();
+        }
     }
 }
