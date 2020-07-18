@@ -9,7 +9,7 @@
     <Grid>
         <Border Background="White" Margin="30" >
             <Border.Effect>
-                <DropShadowEffect BlurRadius="15"/>
+                <DropShadowEffect BlurRadius="20" Opacity=".1"/>
             </Border.Effect>
             <Grid>
                 <Grid.RowDefinitions>
@@ -56,7 +56,7 @@
                                 <Label Content="NGUYỄN TRỌNG QUYẾT" BorderThickness="1" BorderBrush="White"
                                FontWeight="Bold" FontSize="15" Foreground="White"/>
                             </DockPanel>
-                            <TextBlock Text="trongquyet37@gmail.com" FontSize="15" FontWeight="Light" 
+                            <TextBlock Text="ntrongquyet37@gmail.com" FontSize="15" FontWeight="Light" 
                                Foreground="White" Margin="0 0 0 30"/>
                         </StackPanel>
                         <StackPanel>
