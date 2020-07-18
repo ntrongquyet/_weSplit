@@ -51,7 +51,7 @@
                           Foreground="#0133CD" Height="200">
                     <ListView.View>
                         <GridView >
-                            <GridViewColumn Header="HoTen" DisplayMemberBinding="{Binding TENTV}"/>
+                            <GridViewColumn Header="Họ Tên" DisplayMemberBinding="{Binding TENTV}"/>
                             <GridViewColumn Header="SĐT" DisplayMemberBinding="{Binding SDT}"/>
                             <GridViewColumn Header="Tiền thu" DisplayMemberBinding="{Binding TIENTHU}"/>
                         </GridView>
