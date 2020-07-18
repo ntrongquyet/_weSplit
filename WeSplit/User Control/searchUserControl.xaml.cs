@@ -62,6 +62,18 @@ namespace WeSplit.User_Control
                         MessageBox.Show("Không có");
                     }
                 }
+                else if(futureSelect.IsChecked == true)
+                {
+                    var strings = placeList.Where(diadiem => convertToUnSign3(diadiem.TEN_CHUYENDI.ToLower()).Contains(convertToUnSign3(Search.Text.ToLower())));
+                    if (strings.Count() != 0)
+                    {
+                        listPlace.ItemsSource = strings.ToList();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Không có");
+                    }
+                }    
                 //Chỉ search theo đã đi
                 else
                 {
@@ -98,6 +110,18 @@ namespace WeSplit.User_Control
                         MessageBox.Show("Không có");
                     }
                 }
+                else if(oldSelect.IsChecked == true)
+                {
+                    var strings = placeList.Where(diadiem => convertToUnSign3(diadiem.TEN_CHUYENDI.ToLower()).Contains(convertToUnSign3(Search.Text.ToLower())));
+                    if (strings.Count() != 0)
+                    {
+                        listPlace.ItemsSource = strings.ToList();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Không có");
+                    }
+                }    
                 //Chỉ search theo chưa đi
                 else
                 {

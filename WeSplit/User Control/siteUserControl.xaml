@@ -54,7 +54,7 @@
                 Width="150"
                 Click="buttonAdd"
                 Background="#0133CD">
-            <TextBlock Text="THÊM ĐỊA ĐIỂM"
+            <TextBlock Text="THÊM ĐỊA DANH"
                        VerticalAlignment="Center"/>
         </Button>
     </Grid>
