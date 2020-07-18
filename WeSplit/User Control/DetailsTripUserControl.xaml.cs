@@ -201,5 +201,10 @@ namespace WeSplit.User_Control
             this.Content = new AddTripUserControl(MaCD);
 
         }
+
+        private void click_AddTripPicture(object sender, MouseButtonEventArgs e)
+        {
+
+        }
     }
 }

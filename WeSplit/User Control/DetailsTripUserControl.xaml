@@ -158,10 +158,10 @@
 
                 <StackPanel>
                     <StackPanel Orientation="Horizontal" >
-                        <Rectangle Fill="#D6E3ED" Height="60" Width="60" RadiusX="10" RadiusY=" 10"/>
-                        <Rectangle Fill="#D6E3ED" Height="60" Width="60" RadiusX="10" RadiusY=" 10"/>
-                        <Rectangle Fill="#D6E3ED" Height="60" Width="60" RadiusX="10" RadiusY=" 10"/>
-                        <Rectangle Fill="#D6E3ED" Height="60" Width="60" RadiusX="10" RadiusY=" 10"/>
+                        <Image Margin="10 10 0 0" MouseDown="imageDD_MouseDown" 
+                               HorizontalAlignment="Left" Grid.Column="1" Grid.Row="1" 
+                               Name="imageDD" Source="/Image/Main/add_image.png"
+                               Height="70" MouseLeftButtonDown="click_AddTripPicture"/>
 
                     </StackPanel>
 
