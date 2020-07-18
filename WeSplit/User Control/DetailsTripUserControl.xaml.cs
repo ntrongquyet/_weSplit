@@ -194,11 +194,15 @@ namespace WeSplit.User_Control
             this.Content = new AddMemberUserControl(MaCD);
         }
 
-        private void editClick(object sender, RoutedEventArgs e)
+        private void click_AddTripPicture(object sender, MouseButtonEventArgs e)
+        {
+            //add image trip
+        }
+
+        private void editClick(object sender, MouseButtonEventArgs e)
         {
             DataContext = new AddTripUserControl(MaCD);
             this.Content = new AddTripUserControl(MaCD);
-
         }
     }
 }

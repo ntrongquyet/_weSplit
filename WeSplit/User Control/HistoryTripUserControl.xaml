@@ -40,8 +40,8 @@
                       MouseDoubleClick="table_CHUYENDI_MouseDoubleClick">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Header="Khởi hành" DisplayMemberBinding="{Binding NGAYDI}"/>
-                        <GridViewColumn Header="Ngày về" DisplayMemberBinding="{Binding NGAYVE}"/>
+                        <GridViewColumn Header="Khởi hành" DisplayMemberBinding="{Binding NGAYDI, StringFormat={}{0:dd/MM/yyyy}}"/>
+                        <GridViewColumn Header="Ngày về" DisplayMemberBinding="{Binding NGAYVE, StringFormat={}{0:dd/MM/yyyy}}"/>
                         <GridViewColumn Header="Tên chuyến đi" DisplayMemberBinding="{Binding TEN_CHUYENDI}"/>
                     </GridView>
                 </ListView.View>

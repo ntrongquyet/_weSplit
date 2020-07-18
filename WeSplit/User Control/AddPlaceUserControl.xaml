@@ -32,7 +32,7 @@
                         <Border.Effect>
                             <DropShadowEffect BlurRadius="20" Opacity=".1"/>
                         </Border.Effect>
-                        <Rectangle Fill="#fff" Margin="0" RadiusX="20" RadiusY="20"/>
+                        <Rectangle Fill="#fff" Margin="0" RadiusX="10" RadiusY="10"/>
                     </Border>
                     <Border Grid.Row="0"   Grid.ColumnSpan="2" CornerRadius="10 10 0 0" Background="#0133CD">
                         <Label FontSize="25" FontWeight="Bold"  Foreground="White"
@@ -77,7 +77,7 @@
                         <Border.Effect>
                             <DropShadowEffect BlurRadius="20" Opacity=".1"/>
                         </Border.Effect>
-                        <Rectangle Fill="#fff" Margin="0" RadiusX="20" RadiusY="20"/>
+                        <Rectangle Fill="#fff" Margin="0" RadiusX="10" RadiusY="10"/>
                     </Border>
                     <Border Grid.Row="0"   Grid.ColumnSpan="2" CornerRadius="10 10 0 0" Background="#0133CD">
                         <Label FontSize="25" FontWeight="Bold"  Foreground="White"
