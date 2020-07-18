@@ -54,7 +54,7 @@
 
         <DockPanel Grid.Column="1"  Width="290" Height="50" Margin="0 0 0 30"
                     VerticalAlignment="Bottom" HorizontalAlignment="Center" MouseLeftButtonDown="button_add_trip"                >
-            <Image Width="30" Height="30" Source="/Image/Main/btnOpen.png" Panel.ZIndex="10" VerticalAlignment="Top"
+            <Image Width="30" Height="30" Source="/Image/Main/add_trip.png" Panel.ZIndex="10" VerticalAlignment="Top"
                    Margin="0 7 0 0" Stretch="Uniform"/>
             <TextBlock Text="THÊM CHUYẾN ĐI" Foreground="#0133CD" FontSize="30"
                        Margin="10 0 0 0"/>

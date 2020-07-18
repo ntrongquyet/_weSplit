@@ -122,10 +122,6 @@
                                                    Margin="0 0 20 0"
                                                    TextWrapping="Wrap"
                                                    FontWeight="Light"/>
-                                    <TextBlock Text="{Binding TRANGTHAI}"
-                                                   FontSize="15"
-                                               VerticalAlignment="Center"
-                                                   FontWeight="Light"/>
                                 </DockPanel>
                             </StackPanel>
                         </DataTemplate>

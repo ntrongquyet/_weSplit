@@ -44,6 +44,7 @@ namespace WeSplit.User_Control
 
         private void table_CHUYENDI_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
+
             var data = table_CHUYENDI.SelectedItem as CHUYENDI;
             if (data != null)
             {

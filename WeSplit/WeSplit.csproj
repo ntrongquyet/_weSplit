@@ -338,6 +338,7 @@
     <Resource Include="Image\dd\addimage.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Image\Main\add_trip.png" />
     <Content Include="QLCD.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>QLCD.edmx</DependentUpon>

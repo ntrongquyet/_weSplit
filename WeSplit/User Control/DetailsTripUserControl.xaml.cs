@@ -28,10 +28,12 @@ namespace WeSplit.User_Control
         public SeriesCollection SeriesCollection { get; }
         public SeriesCollection SeriesCollectionKC { get; }
 
+
         public DetailsTripUserControl(string mA_CHUYENDI)
         {
             InitializeComponent();
             this.MaCD = mA_CHUYENDI;
+            //Vẽ biểu đồ khoản thu các thành viên
             SeriesCollection = new SeriesCollection();
             foreach (THAMGIA itemTG in DataProvider.Ins.DB.THAMGIA.ToList())
             {
@@ -47,6 +49,7 @@ namespace WeSplit.User_Control
                     SeriesCollection.Add(series);
                 }
             }
+            //Vẽ biểu đồ khoản chi trong chuyến đi
             SeriesCollectionKC = new SeriesCollection();
             foreach (KHOANCHI itemTG in DataProvider.Ins.DB.KHOANCHI.ToList())
             {
@@ -118,6 +121,12 @@ namespace WeSplit.User_Control
             {
                 route_trip.Visibility = Visibility.Visible;
             }
+        }
+
+        private void click_AddMembers(object sender, MouseButtonEventArgs e)
+        {
+            DataContext = new AddMemberUserControl();
+            this.Content = new AddMemberUserControl();
         }
     }
 }
