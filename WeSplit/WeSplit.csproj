@@ -167,9 +167,6 @@
     <Compile Include="User Control\AddTripUserControl.xaml.cs">
       <DependentUpon>AddTripUserControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="User Control\Add_UserControl.xaml.cs">
-      <DependentUpon>Add_UserControl.xaml</DependentUpon>
-    </Compile>
     <Compile Include="User Control\DetailsTripUserControl.xaml.cs">
       <DependentUpon>DetailsTripUserControl.xaml</DependentUpon>
     </Compile>
@@ -181,9 +178,6 @@
     </Compile>
     <Compile Include="User Control\MemberUserControl.xaml.cs">
       <DependentUpon>MemberUserControl.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="User Control\Schudule.xaml.cs">
-      <DependentUpon>Schudule.xaml</DependentUpon>
     </Compile>
     <Compile Include="User Control\searchUserControl.xaml.cs">
       <DependentUpon>searchUserControl.xaml</DependentUpon>
@@ -219,10 +213,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="User Control\Add_UserControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="User Control\DetailsTripUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -236,10 +226,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="User Control\MemberUserControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="User Control\Schudule.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

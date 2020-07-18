@@ -143,8 +143,8 @@ namespace WeSplit.User_Control
                 var name = (from tg in DataProvider.Ins.DB.THAMGIA
                             join tv in DataProvider.Ins.DB.THANHVIEN on tg.MATV equals tv.MATV
                             join cd in DataProvider.Ins.DB.CHUYENDI on tg.MACD equals cd.MA_CHUYENDI
-                            select new { tv.TENTV, cd.TEN_CHUYENDI,cd.MA_CHUYENDI,cd.TRANGTHAI });
-                var strings = name.Where(thanhvien => (thanhvien.TENTV.ToLower()).Contains((Search.Text.ToLower())));
+                            select new { tv.TENTV, cd.TEN_CHUYENDI,cd.MA_CHUYENDI,cd.TRANGTHAI }).ToList();
+                var strings = name.Where(thanhvien => (convertToUnSign3(thanhvien.TENTV.ToLower())).Contains(convertToUnSign3(Search.Text.ToLower())));
                 if(strings.Count() != 0)
                 {
                     listPlace.ItemsSource = strings.ToList();
@@ -179,6 +179,7 @@ namespace WeSplit.User_Control
             int num = listPlace.Items.Count;
             numbers.Text = Convert.ToString(num);
         }
+
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
             foreach (CHUYENDI itemTT in DataProvider.Ins.DB.CHUYENDI.ToList())
@@ -187,6 +188,13 @@ namespace WeSplit.User_Control
             }
             listPlace.ItemsSource = placeList.ToList();
             numbers.Text = Convert.ToString(num);
+        }
+
+        private void listPlace_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            //var data = listPlace.SelectedItem.ToString();
+            ////DataContext = new DetailsTripUserControl(d);
+            ////this.Content = new DetailsTripUserControl(data.MA_CHUYENDI);
         }
     }
 }

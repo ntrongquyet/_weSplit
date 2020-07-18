@@ -25,6 +25,7 @@
                        Background="#C3C3C3" 
                        FontSize="30"
                        FontWeight="Bold" 
+                       Foreground="White"
                        HorizontalContentAlignment="Center"
                        VerticalAlignment="Center">ĐỊA DANH</Label>
                 <Grid Grid.Row="1">
@@ -51,6 +52,7 @@
                                  Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
                         <TextBox Grid.Row="0"
                                  Grid.Column="1"
+                                 BorderBrush="#0133CD"
                                  Margin="10 0 10 0"
                                  Name="nameAddress"
                                  VerticalContentAlignment="Center"

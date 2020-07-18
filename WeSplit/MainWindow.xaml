@@ -16,9 +16,6 @@
         <DataTemplate x:Name="home" DataType="{x:Type dialog:Main}">
             <dialog:Main DataContext="{Binding}"/>
         </DataTemplate>
-        <DataTemplate x:Name="schudule" DataType="{x:Type dialog:Schudule}">
-            <dialog:Schudule DataContext="{Binding}"/>
-        </DataTemplate>
     </Window.Resources>
     <Grid Name="mainwindow">
 
@@ -36,7 +33,6 @@
                 <ColumnDefinition/>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
-                <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             <TextBlock Text="WeSplit"
                        Grid.ColumnSpan="2"
@@ -44,17 +40,10 @@
                        VerticalAlignment="Center"
                        FontSize="25"
                        FontWeight="Bold"
-                       Foreground="#0133CD"/>
-            <TextBlock Text="HOME"
-                       Grid.Column="2"
-                       HorizontalAlignment="Center"
-                       VerticalAlignment="Center"
                        MouseLeftButtonDown="Button_Home"
-                       FontSize="15"
-                       FontWeight="Light"
                        Foreground="#0133CD"/>
-            <TextBlock Text="ĐÃ ĐI"
-                       Grid.Column="3"
+            <TextBlock Text="CHUYẾN ĐI"
+                       Grid.Column="2"
                        HorizontalAlignment="Center"
                        VerticalAlignment="Center"
                        FontSize="15"
@@ -62,7 +51,7 @@
                        MouseLeftButtonDown="Button_TripHasGone"
                        Foreground="#0133CD"/>
             <TextBlock Text="THÀNH VIÊN"
-                       Grid.Column="4"
+                       Grid.Column="3"
                        HorizontalAlignment="Center"
                        VerticalAlignment="Center"
                        FontSize="15"
@@ -70,7 +59,7 @@
                        MouseLeftButtonDown="Button_Member"
                        Foreground="#0133CD"/>
             <TextBlock Text="ĐỊA DANH"
-                       Grid.Column="5"
+                       Grid.Column="4"
                        HorizontalAlignment="Center"
                        VerticalAlignment="Center"
                        FontSize="15"
@@ -78,7 +67,7 @@
                        MouseLeftButtonDown="Button_Sites"
                        Foreground="#0133CD"/>
             <TextBlock Text="TÌM KIẾM"
-                       Grid.Column="6"
+                       Grid.Column="5"
                        HorizontalAlignment="Center"
                        VerticalAlignment="Center"
                        FontSize="15"
@@ -86,7 +75,7 @@
                        MouseLeftButtonDown="Button_Search"
                        Foreground="#0133CD"/>
             <TextBlock Text="THÔNG TIN"
-                       Grid.Column="7"
+                       Grid.Column="6"
                        HorizontalAlignment="Center"
                        VerticalAlignment="Center"
                        FontSize="15"
