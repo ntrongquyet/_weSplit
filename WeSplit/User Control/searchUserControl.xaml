@@ -100,25 +100,32 @@
                          Grid.Row="1"
                          BorderThickness="0" 
                          Margin="10"
+                         MouseDoubleClick="listPlace_MouseDoubleClick"
                          ScrollViewer.VerticalScrollBarVisibility="Disabled">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
-                            <StackPanel>
-                                <DockPanel>
-                                    <Image Source="/Image/Main/Image 5@2x.png" 
-                                           Width="50"
-                                           Height="auto"/>
-                                    <DockPanel>
-                                        <TextBlock Text="{Binding TEN_CHUYENDI}" 
+                            <StackPanel VerticalAlignment="Center">
+                                <DockPanel VerticalAlignment="Center"
+                                           HorizontalAlignment="Center">
+                                    <Rectangle Width="50"
+                                               Height="50"
+                                               RadiusX="25"
+                                               RadiusY="25"
+                                               Margin="0 0 20 0">
+                                        <Rectangle.Fill>
+                                            <ImageBrush ImageSource="/Image/Main/Image 5@2x.png" />
+                                        </Rectangle.Fill>
+                                    </Rectangle>
+                                    <TextBlock Text="{Binding TEN_CHUYENDI}" 
                                                    FontSize="15"
+                                               VerticalAlignment="Center"
+                                                   Margin="0 0 20 0"
                                                    TextWrapping="Wrap"
                                                    FontWeight="Light"/>
-                                    </DockPanel>
-                                    <DockPanel>
-                                        <TextBlock Text="{Binding TRANGTHAI}"
+                                    <TextBlock Text="{Binding TRANGTHAI}"
                                                    FontSize="15"
+                                               VerticalAlignment="Center"
                                                    FontWeight="Light"/>
-                                    </DockPanel>
                                 </DockPanel>
                             </StackPanel>
                         </DataTemplate>
