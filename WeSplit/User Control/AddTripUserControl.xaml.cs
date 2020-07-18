@@ -18,9 +18,6 @@ using WeSplit.SQLData;
 
 namespace WeSplit.User_Control
 {
-    /// <summary>
-    /// Interaction logic for AddTripUserControl.xaml
-    /// </summary>
     public partial class AddTripUserControl : UserControl
     {
         string MaCD = "";
@@ -35,6 +32,7 @@ namespace WeSplit.User_Control
         }
         List<DD_DUNGCHAN> DUNGCHAN = DataProvider.Ins.DB.DD_DUNGCHAN.ToList();
         List<LOTRINH> listRoadMap = new List<LOTRINH>();
+        //Tạo biến tạm chứa các thành phần Add
         private class Temp
         {
             private string noiDungChan;
@@ -58,6 +56,7 @@ namespace WeSplit.User_Control
             checkout.BlackoutDates.AddDatesInPast();
             checkin.BlackoutDates.AddDatesInPast();
         }
+        //Click Add
         private void addRoadMap_Click(object sender, RoutedEventArgs e)
         {
             var wp = wayPoint.Text.Trim();
@@ -66,27 +65,32 @@ namespace WeSplit.User_Control
             {
                 var prc = "0";
             }
+            //Cảnh báo khi chưa nhập chi phí
             if (price.IsEnabled == true)
             {
 
                 if (price.Text.Trim().Length == 0)
                 {
-                    MessageBox.Show($"Chưa nhập chi phí cho {des}");
+                    MessageBox.Show($"Chưa nhập chi phí cho {des}","Cảnh báo",MessageBoxButton.OK,MessageBoxImage.Warning);
                 }
 
             }
+            //Cảnh báo khi chưa nhập địa điểm  dừng chân
             if (wp.Length == 0)
             {
-                MessageBox.Show("Chưa nhập nơi dừng chân");
+                MessageBox.Show("Chưa nhập nơi dừng chân", "Cảnh báo", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
+            //Cảnh báo khi chưa nhập mô tả chuyến đi
             else if (des.Length == 0)
             {
-                MessageBox.Show("Chưa nhập mô tả");
+                MessageBox.Show("Chưa nhập mô tả", "Cảnh báo", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
+            //Cảnh báo khi chưa chọn tỉnh thành
             else if (province.SelectedIndex == -1)
             {
-                MessageBox.Show("Chưa chọn tỉnh thành");
+                MessageBox.Show("Chưa chọn tỉnh thành", "Cảnh báo", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
+            //Add dữ liệu
             else
             {
                 _STT += 1;
@@ -126,8 +130,6 @@ namespace WeSplit.User_Control
                 };
                 roadMapsList.Items.Add(item);
             }
-            
-
             wayPoint.Text = "";
             description.Text = "";
             province.SelectedItem = default;
@@ -150,22 +152,27 @@ namespace WeSplit.User_Control
             {
                 rentOfCar.Text = "0";
             }
+            //Cảnh báo khi chưa chọn điểm đến
             if (destination.SelectedIndex == -1)
             {
-                MessageBox.Show("Chưa chọn điểm đến");
+                MessageBox.Show("Chưa chọn điểm đến", "Cảnh báo", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
+            //Cảnh báo khi để trống tên chuyến đi
             else if (nameTrip.Text.Trim().Length == 0)
             {
-                MessageBox.Show("Tên chuyến đi không được bỏ trống");
+                MessageBox.Show("Tên chuyến đi không được bỏ trống", "Cảnh báo", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
+            //Cảnh báo khi chưa chọn ngày
             else if (checkin.SelectedDate.ToString().Length == 0 || checkout.SelectedDate.ToString().Length == 0)
             {
-                MessageBox.Show("Ngày đi ngày về không dược bỏ trống");
+                MessageBox.Show("Ngày đi ngày về không dược bỏ trống", "Cảnh báo", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
+            //Cảnh báo chưa chọn lộ trình
             else if (roadMapsList.Items.Count < 1)
             {
-                MessageBox.Show("Chuyến đi này chưa có lộ trình");
+                MessageBox.Show("Chuyến đi này chưa có lộ trình", "Cảnh báo", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
+            //Kết thúc add
             else
             {
                 CHUYENDI chuyendi = new CHUYENDI()
@@ -179,9 +186,10 @@ namespace WeSplit.User_Control
                     THUE_XE = Int32.Parse(rentOfCar.Text.Trim()),
                     MAYBAY = Int32.Parse(rentOfPlane.Text.Trim()),
                     TRANGTHAI = false,
-                };
+                };       
                 DataProvider.Ins.DB.CHUYENDI.Add(chuyendi);
                 DataProvider.Ins.DB.SaveChanges();
+                MessageBox.Show($"Đã thêm thành công chuyến đi {nameTrip}","Hoàn thành",MessageBoxButton.OK,MessageBoxImage.Information);
                 nameTrip.Text = "";
                 destination.SelectedItem = default;
                 checkin.SelectedDate = default;
@@ -190,6 +198,7 @@ namespace WeSplit.User_Control
                 room.IsChecked = false;
                 plane.IsChecked = false;
                 roadMapsList.Items.Clear();
+                
             }
 
         }
