@@ -22,9 +22,10 @@
                     <RowDefinition Height="5*"/>
                 </Grid.RowDefinitions>
                 <Label Grid.Row="0" 
-                       Background="#C3C3C3" 
+                       Background="#0133CD" 
                        FontSize="40"
                        FontWeight="Bold" 
+                       Foreground="White"
                        HorizontalContentAlignment="Center"
                        VerticalContentAlignment="Center">ĐỊA DANH</Label>
                 <Grid Grid.Row="1">
@@ -43,6 +44,7 @@
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
                         <TextBox Grid.Row="0" 
+                                 BorderBrush="#0133CD"
                                  Grid.Column="0"
                                  Margin="10 0 10 0"
                                  Name="idPlace"
@@ -51,6 +53,7 @@
                                  Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
                         <TextBox Grid.Row="1"
                                  Grid.Column="0"
+                                 BorderBrush="#0133CD"
                                  Margin="10 0 10 0"
                                  Name="namePlace"
                                  VerticalContentAlignment="Center"
@@ -58,6 +61,7 @@
                                  Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
                         <TextBox Grid.Row="0"
                                  Grid.Column="1"
+                                 BorderBrush="#0133CD"
                                  Margin="10 0 10 0"
                                  Name="nameAddress"
                                  VerticalContentAlignment="Center"
@@ -67,6 +71,7 @@
                                  Grid.Column="1"
                                  Margin="10 0 10 0"
                                  Name="infomation"
+                                 BorderBrush="#0133CD"
                                  VerticalContentAlignment="Center"
                                  materialDesign:HintAssist.Hint="Thông tin"
                                  Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
@@ -75,10 +80,12 @@
                                    VerticalAlignment="Center"
                                    HorizontalAlignment="Center">
                             <Button Content="Thêm" 
+                                    Background="#0133CD"
                                     Click="addPlace"
                                     Width="120" Margin="0 0 20 0"/>
                             <Button Content="Hoàn Thành"
                                     Click="confirm"
+                                    Background="#0133CD"
                                     Width="120"/>
                         </DockPanel>
                     </Grid>

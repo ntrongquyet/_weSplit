@@ -179,6 +179,7 @@ namespace WeSplit.User_Control
             int num = listPlace.Items.Count;
             numbers.Text = Convert.ToString(num);
         }
+
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
             foreach (CHUYENDI itemTT in DataProvider.Ins.DB.CHUYENDI.ToList())
