@@ -49,6 +49,10 @@ namespace WeSplit.User_Control
             {
                 MessageBox.Show("Thiếu điều kiện lọc bạn ơi !!!!!","Cảnh báo",MessageBoxButton.OK,MessageBoxImage.Warning);
             }
+            else if (oldSelect.IsChecked == true && futureSelect.IsChecked == true && nameSelect.IsChecked == true)
+            {
+                MessageBox.Show("Không thể chọn tất cả", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
             //Search theo đã đi và tên thành viên
             else if (oldSelect.IsChecked == true)
             {
@@ -58,7 +62,7 @@ namespace WeSplit.User_Control
                     var name = (from tg in DataProvider.Ins.DB.THAMGIA
                                 join tv in DataProvider.Ins.DB.THANHVIEN on tg.MATV equals tv.MATV
                                 join cd in DataProvider.Ins.DB.CHUYENDI on tg.MACD equals cd.MA_CHUYENDI
-                                select new { tv.TENTV, cd.TEN_CHUYENDI, cd.MA_CHUYENDI, cd.TRANGTHAI }).ToList();
+                                select new { tv.TENTV, cd.TEN_CHUYENDI, cd.MA_CHUYENDI, cd.TRANGTHAI }).Distinct().ToList();
                     var strings = name.Where(thanhvien => convertToUnSign3(thanhvien.TENTV.ToLower()).Contains(convertToUnSign3(Search.Text.ToLower())));
                     var stsr = strings.Where(p => p.TRANGTHAI == true).ToList();
                     if (stsr.Count() != 0)
@@ -106,7 +110,7 @@ namespace WeSplit.User_Control
                     var name = (from tg in DataProvider.Ins.DB.THAMGIA
                                 join tv in DataProvider.Ins.DB.THANHVIEN on tg.MATV equals tv.MATV
                                 join cd in DataProvider.Ins.DB.CHUYENDI on tg.MACD equals cd.MA_CHUYENDI
-                                select new { tv.TENTV, cd.TEN_CHUYENDI, cd.MA_CHUYENDI, cd.TRANGTHAI }).ToList();
+                                select new { tv.TENTV, cd.TEN_CHUYENDI, cd.MA_CHUYENDI, cd.TRANGTHAI }).Distinct().ToList();
                     var strings = name.Where(thanhvien => convertToUnSign3(thanhvien.TENTV.ToLower()).Contains(convertToUnSign3(Search.Text.ToLower())));
                     var stsr = strings.Where(p => p.TRANGTHAI == false).ToList();
                     if (stsr.Count() != 0)
@@ -151,33 +155,11 @@ namespace WeSplit.User_Control
                 var name = (from tg in DataProvider.Ins.DB.THAMGIA
                             join tv in DataProvider.Ins.DB.THANHVIEN on tg.MATV equals tv.MATV
                             join cd in DataProvider.Ins.DB.CHUYENDI on tg.MACD equals cd.MA_CHUYENDI
-                            select new { tv.TENTV, cd.TEN_CHUYENDI, cd.MA_CHUYENDI, cd.TRANGTHAI }).ToList();
+                            select new { tv.TENTV, cd.TEN_CHUYENDI, cd.MA_CHUYENDI, cd.TRANGTHAI }).Distinct().ToList();
                 var strings = name.Where(thanhvien => (convertToUnSign3(thanhvien.TENTV.ToLower())).Contains(convertToUnSign3(Search.Text.ToLower())));
                 if (strings.Count() != 0)
                 {
                     listPlace.ItemsSource = strings.ToList();
-                }
-                else
-                {
-                    MessageBox.Show("Không tìm thấy", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
-                }
-            }
-            //Search theo tất cả trường hợp khi không click chọn
-            else
-            {
-                var strings = placeList.Where(diadiem => convertToUnSign3(diadiem.TEN_CHUYENDI.ToLower()).Contains(convertToUnSign3(Search.Text.ToLower())));
-                var name = (from tg in DataProvider.Ins.DB.THAMGIA
-                            join tv in DataProvider.Ins.DB.THANHVIEN on tg.MATV equals tv.MATV
-                            join cd in DataProvider.Ins.DB.CHUYENDI on tg.MACD equals cd.MA_CHUYENDI
-                            select new { tv.TENTV, cd.TEN_CHUYENDI, cd.MA_CHUYENDI, cd.TRANGTHAI });
-                var str = name.Where(thanhvien => thanhvien.TENTV.ToLower().Contains(Search.Text.ToLower()));
-                if (strings.Count() != 0)
-                {
-                    listPlace.ItemsSource = strings.ToList();
-                }
-                else if (str.Count() != 0)
-                {
-                    listPlace.ItemsSource = str.ToList();
                 }
                 else
                 {
