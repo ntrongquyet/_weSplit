@@ -12,7 +12,21 @@
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.DeepPurple.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Lime.xaml" />
             </ResourceDictionary.MergedDictionaries>
+            <!-- primary -->
+            <SolidColorBrush x:Key="PrimaryHueLightBrush" Color="Red"/>
+            <SolidColorBrush x:Key="PrimaryHueLightForegroundBrush" Color="Blue"/>
+            <SolidColorBrush x:Key="PrimaryHueMidBrush" Color="#0133CD"/>
+            <!--Background and Hover Border-->
+            <SolidColorBrush x:Key="PrimaryHueMidForegroundBrush" Color="#FFFFFF"/>
+            <!--Text-->
+            <SolidColorBrush x:Key="PrimaryHueDarkBrush" Color="#0133CD"/>
+            <!--Hover and Click-->
+            <SolidColorBrush x:Key="PrimaryHueDarkForegroundBrush" Color="Pink"/>
+            <!-- accent -->
+            <SolidColorBrush x:Key="SecondaryAccentBrush" Color="#5C5B5E"/>
+            <SolidColorBrush x:Key="SecondaryAccentForegroundBrush" Color="#0133CD"/>
         </ResourceDictionary>
+
     </Application.Resources>
 
 </Application>

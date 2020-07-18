@@ -11,7 +11,7 @@
              Initialized="UserControl_Initialized">
     <Border Background="White"
             CornerRadius="15" Margin="40">
-       
+
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*"/>
@@ -23,8 +23,13 @@
                 <RowDefinition Height="1*"/>
                 <RowDefinition Height="50"/>
             </Grid.RowDefinitions>
-            <Label Grid.Row="0" Grid.Column="0" Background="#C3C3C3" FontSize="30" FontWeight="Bold" HorizontalContentAlignment="Center">CHUYẾN ĐI</Label>
-            <Label Grid.Row="0" Grid.Column="1" Background="#C3C3C3" FontSize="30" FontWeight="Bold" HorizontalContentAlignment="Center">LỘ TRÌNH</Label>
+
+            <Border Background="#0133CD" BorderThickness="0" CornerRadius="10 0 0 0">
+                <Label Foreground="#FFFFFF" FontSize="30" FontWeight="Bold" HorizontalContentAlignment="Center">CHUYẾN ĐI</Label>
+            </Border>
+            <Border  Grid.Row="0" Grid.Column="1" Background="#0133CD" BorderThickness="0" CornerRadius="0 10 0 0" >
+                <Label Foreground="#FFFFFF" FontSize="30" FontWeight="Bold" HorizontalContentAlignment="Center">LỘ TRÌNH</Label>
+            </Border>
             <Grid Margin="10 0 0 0" Grid.Column="0" Grid.Row="1" Grid.RowSpan="2">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="1*"/>
@@ -53,13 +58,10 @@
                         </DataTemplate>
                     </ComboBox.ItemTemplate>
                 </ComboBox>
-                <DatePicker Name="checkin"
-                            SelectedDateChanged="checkin_Changed"
-                            Grid.Row="2"
-                            Width="100"
-                            HorizontalAlignment="Left"
-                            materialDesign:HintAssist.Hint="Ngày đi"
-                            Style="{StaticResource MaterialDesignFloatingHintDatePicker}" VerticalAlignment="Top">
+                <DatePicker Name="checkin" SelectedDateChanged="checkin_Changed" Grid.Row="2" materialDesign:ColorZoneAssist.Mode="Dark"
+                            Width="100" HorizontalAlignment="Left" materialDesign:HintAssist.Hint="Ngày đi"
+                            Style="{StaticResource MaterialDesignFloatingHintDatePicker}" VerticalAlignment="Top"
+                            materialDesign:ColorZoneAssist.Background="Black">
 
                     <DatePicker.BlackoutDates>
                     </DatePicker.BlackoutDates>
@@ -168,7 +170,7 @@
                         IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignFilledTextFieldTextBoxEnabledComboBox}"/>
                     </StackPanel>
                 </Grid>
-                
+
                 <Button
                             Grid.Row="4"
                             Width="150"
