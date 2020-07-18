@@ -44,6 +44,7 @@ namespace WeSplit
         }
         private void Button_TripHasGone(object sender, MouseButtonEventArgs e)
         {
+            DataContext = new HistoryTripUserControl();
 
         }
 
@@ -82,7 +83,7 @@ namespace WeSplit
 
         private void Window_Closed(object sender, EventArgs e)
         {
-            
+
         }
     }
 }

@@ -15,8 +15,8 @@
 
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="3*"/>
-                <ColumnDefinition Width="3.5*"/>
-                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="2.5*"/>
+                <ColumnDefinition Width="3*"/>
             </Grid.ColumnDefinitions>
             <!--The frist Grid Column-->
             <Grid Margin="50 0 0 50">
@@ -59,7 +59,7 @@
                 </ListView>
 
                 <Border Grid.Row="3" Background="White" CornerRadius="0 0 25 25" >
-                    <DockPanel MouseLeftButtonDown="click_AddMembers" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0 0 0 3">
+                    <DockPanel Name="addMember" MouseLeftButtonDown="click_AddMembers" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0 0 0 3">
                         <Image Source="/Image/Main/add_trip.png"/>
                         <Label Content="Thêm thành viên" VerticalContentAlignment="Center"/>
                     </DockPanel>
@@ -95,12 +95,27 @@
                         <TextBlock Text="{Binding NGAYVE, StringFormat={}{0:dd/MM/yyyy}}" FontSize="15" FontWeight="Light"
                            Foreground="#808080"/>
                     </StackPanel>
+                    <StackPanel Name="pricePlane" Orientation="Horizontal" Visibility="Collapsed">
+                        <TextBlock FontSize="15" FontWeight="Bold" Text="Máy bay: "></TextBlock>
+                        <TextBlock FontSize="15" FontWeight="Bold" Text="{Binding MAYBAY}"></TextBlock>
+                    </StackPanel>
+                    <StackPanel Name="priceRoom" Orientation="Horizontal" Visibility="Collapsed">
+                        <TextBlock FontSize="15" FontWeight="Bold" Text="Thuê phòng: "></TextBlock>
+                        <TextBlock FontSize="15" FontWeight="Bold" Text="{Binding THUE_KS}"></TextBlock>
+                    </StackPanel>
+                    <StackPanel Name="priceCar" Orientation="Horizontal" Visibility="Collapsed">
+                        <TextBlock FontSize="15" FontWeight="Bold" Text="Thuê xe: "></TextBlock>
+                        <TextBlock FontSize="15" FontWeight="Bold" Text="{Binding THUE_XE}"></TextBlock>
+                    </StackPanel>
                 </StackPanel>
 
 
                 <StackPanel Margin="0 20 0 0">
-                    <TextBlock Text="Xem lộ trình đi" FontSize="15" FontWeight="Bold"
+                    <DockPanel>
+                        <Button Click="editClick" DockPanel.Dock="Right" Margin="10 0 0 0" Width="60">Edit</Button>
+                        <TextBlock Text="Xem lộ trình đi" FontSize="15" FontWeight="Bold"
                                Foreground="#FF6665"/>
+                    </DockPanel>
                     <StackPanel Visibility="Collapsed" Name="route_trip">
                         <ListView Name="route">
                             <ListView.ItemTemplate>

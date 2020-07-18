@@ -20,7 +20,8 @@ namespace WeSplit.User_Control
 {
     public partial class AddTripUserControl : UserControl
     {
-        string MaCD = "";
+        string MaCD;
+        int check = 0; 
         int _STT = 0;
         int idKC = DataProvider.Ins.DB.KHOANCHI.Count();
         public AddTripUserControl()
@@ -30,6 +31,13 @@ namespace WeSplit.User_Control
             int num = CHUYENDI.Count + 1;
             MaCD = "CD" + num;
         }
+
+        public AddTripUserControl(string maCD)
+        {
+            MaCD = maCD;
+            InitializeComponent();
+        }
+
         List<DD_DUNGCHAN> DUNGCHAN = DataProvider.Ins.DB.DD_DUNGCHAN.ToList();
         List<LOTRINH> listRoadMap = new List<LOTRINH>();
         //Tạo biến tạm chứa các thành phần Add
@@ -51,10 +59,51 @@ namespace WeSplit.User_Control
         }
         private void UserControl_Initialized(object sender, EventArgs e)
         {
-            destination.ItemsSource = DataProvider.Ins.DB.DD_DULICH.ToList();
-            province.ItemsSource = DataProvider.Ins.DB.DD_DUNGCHAN.ToList();
-            checkout.BlackoutDates.AddDatesInPast();
-            checkin.BlackoutDates.AddDatesInPast();
+            if (MaCD != null)
+            {
+                check = 1;
+                var item = (from cd in DataProvider.Ins.DB.CHUYENDI
+                            where cd.MA_CHUYENDI == MaCD
+                            select cd).ToList()[0];
+                nameTrip.Text = item.TEN_CHUYENDI;
+                nameTrip.IsEnabled = false;
+                destination.SelectedItem = (from dd in DataProvider.Ins.DB.DD_DULICH
+                                            where dd.MA_DIEMDEN == item.DIEMDEN
+                                            select dd).ToList()[0];
+                checkin.SelectedDate = item.NGAYDI;
+                checkin.IsEnabled = false;
+                checkout.SelectedDate = item.NGAYVE;
+                checkout.IsEnabled = false;
+
+                if (item.THUE_KS > 0)
+                {
+                    room.IsChecked = true;
+                    room.IsEnabled = false;
+                    rentOfRoom.Text = Convert.ToString(item.THUE_KS);
+                }
+                if (item.THUE_XE > 0)
+                {
+                    car.IsChecked = true;
+                    car.IsEnabled = false;
+                    rentOfCar.Text = Convert.ToString(item.THUE_XE);
+                }
+                if (item.MAYBAY > 0)
+                {
+                    plane.IsChecked = true;
+                    plane.IsEnabled = false;
+                    rentOfPlane.Text = Convert.ToString(item.MAYBAY);
+                }
+                province.ItemsSource = DataProvider.Ins.DB.DD_DUNGCHAN.ToList();
+
+            }
+            else
+            {
+                destination.ItemsSource = DataProvider.Ins.DB.DD_DULICH.ToList();
+                province.ItemsSource = DataProvider.Ins.DB.DD_DUNGCHAN.ToList();
+                checkout.BlackoutDates.AddDatesInPast();
+                checkin.BlackoutDates.AddDatesInPast();
+            }
+            
         }
         //Click Add
         private void addRoadMap_Click(object sender, RoutedEventArgs e)
@@ -120,6 +169,10 @@ namespace WeSplit.User_Control
 
                     };
                     DataProvider.Ins.DB.KHOANCHI.Add(kc);
+                    if(check == 1)
+                    {
+                        DataProvider.Ins.DB.SaveChanges();
+                    }
                 }
                 var item = new Temp()
                 {

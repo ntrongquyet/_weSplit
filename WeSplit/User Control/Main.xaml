@@ -28,7 +28,7 @@
                 <Rectangle Fill="#fff" Margin="0" RadiusX="25" RadiusY="25"/>
             </Border>
             <Border CornerRadius="25 25 0 0" Background="#0133CD" Grid.ColumnSpan="2">
-                <TextBlock Text="Chuyến đi đã đi" 
+                <TextBlock Text="Chuyến đi đang / sắp tới" 
                            FontWeight="Bold" FontSize="18"
                            Foreground="#fff"
                            HorizontalAlignment="Center" VerticalAlignment="Center"/>
@@ -39,12 +39,11 @@
                       Name="table_CHUYENDI" 
                       Foreground="#0133CD" Grid.ColumnSpan="2"
                       MouseDoubleClick="table_CHUYENDI_MouseDoubleClick">
-
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Header="Khởi hành" DisplayMemberBinding="{Binding NGAYDI, StringFormat={}{0:dd/MM/yyyy}}"/>
-                        <GridViewColumn Header="Ngày về" DisplayMemberBinding="{Binding NGAYVE, StringFormat={}{0:dd/MM/yyyy}}"/>
-                        <GridViewColumn Header="Chuyến đi" DisplayMemberBinding="{Binding TEN_CHUYENDI}"/>
+                        <GridViewColumn Header="Khởi hành" DisplayMemberBinding="{Binding NGAYDI}"/>
+                        <GridViewColumn Header="Ngày về" DisplayMemberBinding="{Binding NGAYVE}"/>
+                        <GridViewColumn Header="Tên chuyến đi" DisplayMemberBinding="{Binding TEN_CHUYENDI}"/>
                     </GridView>
                 </ListView.View>
             </ListView>

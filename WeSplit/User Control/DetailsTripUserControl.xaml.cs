@@ -157,6 +157,23 @@ namespace WeSplit.User_Control
             {
                 confirmMoney.Text = Convert.ToString(mul);
             }
+            // Hiển thị thông tin chi tiêu trước khi đi
+            if (selectTrip.ToList()[0].THUE_XE > 0)
+            {
+                priceCar.Visibility = Visibility.Visible;
+            }
+            if (selectTrip.ToList()[0].THUE_KS > 0)
+            {
+                priceRoom.Visibility = Visibility.Visible;
+            }
+            if (selectTrip.ToList()[0].MAYBAY> 0)
+            {
+                pricePlane.Visibility = Visibility.Visible;
+            }
+            // Hiện thị nút add thành viên cho chuyến đi chưa kết thúc
+            if (selectTrip.ToList()[0].TRANGTHAI == true) {
+                addMember.Visibility = Visibility.Hidden;
+            }
         }
 
         private void show_Click(object sender, RoutedEventArgs e)
@@ -174,8 +191,15 @@ namespace WeSplit.User_Control
 
         private void click_AddMembers(object sender, MouseButtonEventArgs e)
         {
-            DataContext = new AddMemberUserControl();
-            this.Content = new AddMemberUserControl();
+            DataContext = new AddMemberUserControl(MaCD);
+            this.Content = new AddMemberUserControl(MaCD);
+        }
+
+        private void editClick(object sender, RoutedEventArgs e)
+        {
+            DataContext = new AddTripUserControl(MaCD);
+            this.Content = new AddTripUserControl(MaCD);
+
         }
     }
 }

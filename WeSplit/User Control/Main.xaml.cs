@@ -29,7 +29,9 @@ namespace WeSplit.User_Control
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
-            table_CHUYENDI.ItemsSource = DataProvider.Ins.DB.CHUYENDI.ToList();
+            table_CHUYENDI.ItemsSource = (from cd in DataProvider.Ins.DB.CHUYENDI 
+                                          where cd.TRANGTHAI == false
+                                          select cd).ToList();
         }
 
         private void button_add_trip(object sender, MouseButtonEventArgs e)
@@ -44,8 +46,13 @@ namespace WeSplit.User_Control
         {
 
             var data = table_CHUYENDI.SelectedItem as CHUYENDI;
-            DataContext = new DetailsTripUserControl(data.MA_CHUYENDI);
-            this.Content = new DetailsTripUserControl(data.MA_CHUYENDI);
+            if (data != null)
+            {
+                DataContext = new DetailsTripUserControl(data.MA_CHUYENDI);
+                this.Content = new DetailsTripUserControl(data.MA_CHUYENDI);
+            }
+            
         }
+
     }
 }
