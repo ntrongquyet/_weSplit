@@ -35,6 +35,7 @@ namespace WeSplit.User_Control
         {
             InitializeComponent();
             this.MaCD = mA_CHUYENDI;
+
             //Vẽ biểu đồ khoản thu các thành viên
             SeriesCollection = new SeriesCollection();
             foreach (THAMGIA itemTG in DataProvider.Ins.DB.THAMGIA.ToList())
@@ -143,7 +144,19 @@ namespace WeSplit.User_Control
                         select tm);
             route.ItemsSource = selectTrip.ToList()[0].LOTRINH;
             DataContext = selectTrip.ToList()[0];
+
             listCash.ItemsSource = temp.ToList();
+
+
+            //Thêm ảnh địa danh
+            var selectImage = (from dd in DataProvider.Ins.DB.DD_DULICH
+                               join cd in DataProvider.Ins.DB.CHUYENDI on dd.MA_DIEMDEN equals cd.DIEMDEN
+                               where cd.MA_CHUYENDI == MaCD
+                               select dd.HINHANH).ToList<string>()[0];
+            
+            var baseFolder = AppDomain.CurrentDomain.BaseDirectory;
+            var absolute = $"{baseFolder}Image\\dd\\{selectImage}";
+            imageSites.ImageSource = new BitmapImage(new Uri($"{absolute}"));
             //Khoản thu CĐ
             var placeKT = (from tg in DataProvider.Ins.DB.THAMGIA
                            join tv in DataProvider.Ins.DB.THANHVIEN on tg.MATV equals tv.MATV
@@ -205,6 +218,7 @@ namespace WeSplit.User_Control
             if (selectTrip.ToList()[0].TRANGTHAI == true)
             {
                 addMember.Visibility = Visibility.Hidden;
+                btnEdit.Visibility = Visibility.Hidden;
             }
             img = (from cd in DataProvider.Ins.DB.HINHANH_CHUYENDI
                                      where cd.CHUYENDI == MaCD
@@ -235,8 +249,16 @@ namespace WeSplit.User_Control
 
         private void click_AddTripPicture(object sender, MouseButtonEventArgs e)
         {
-            DialogAddImage dlg = new DialogAddImage();
-            dlg.Show();
+            DialogAddImage dlg = new DialogAddImage(MaCD);
+            dlg.ShowDialog();
+            if(dlg.DialogResult == true)
+            {
+                img = (from cd in DataProvider.Ins.DB.HINHANH_CHUYENDI
+                       where cd.CHUYENDI == MaCD
+                       select cd.TENANH_CD).ToList<string>();
+                imageTrip.ItemsSource = img.Take(1);
+                div = img.Count() / 1;
+            }
         }
 
         private void editClick(object sender, MouseButtonEventArgs e)

@@ -94,7 +94,7 @@ namespace WeSplit.User_Control
                     rentOfPlane.Text = Convert.ToString(item.MAYBAY);
                 }
                 province.ItemsSource = DataProvider.Ins.DB.DD_DUNGCHAN.ToList();
-
+                btnConfirm.Visibility = Visibility.Hidden;
             }
             else
             {
@@ -102,6 +102,7 @@ namespace WeSplit.User_Control
                 province.ItemsSource = DataProvider.Ins.DB.DD_DUNGCHAN.ToList();
                 checkout.BlackoutDates.AddDatesInPast();
                 checkin.BlackoutDates.AddDatesInPast();
+                backBtn.Visibility = Visibility.Hidden;
             }
             
         }
@@ -297,8 +298,9 @@ namespace WeSplit.User_Control
             if (checkin.SelectedDate != default)
             {
                 var date = checkin.SelectedDate.Value;
+                date.AddDays(-1);
                 checkout.BlackoutDates.AddDatesInPast();
-                checkout.BlackoutDates.Add(new CalendarDateRange(new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day), new DateTime(date.Year, date.Month, date.Day - 1)));
+                checkout.BlackoutDates.Add(new CalendarDateRange(new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day), new DateTime(date.Year, date.Month, date.Day)));
             }
             
         }

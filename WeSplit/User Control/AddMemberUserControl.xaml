@@ -97,6 +97,7 @@
                         <Image Source="/Image/icon/back.png"
                                MouseLeftButtonDown="back_button"
                                Height="30"
+                               Name="btnBack"
                                HorizontalAlignment="Left"/>
                         <Button Click="addMemberToTrip_Click" 
                                 Width="100"

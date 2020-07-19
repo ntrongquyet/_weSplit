@@ -197,8 +197,9 @@
                            MouseLeftButtonDown="back_button"
                            Margin="10 0 0 0"
                            Height="30"
+                           Name="backBtn"
                            HorizontalAlignment="Left"/>
-                    <Button Margin="0 0 0 5" Width="150" Click="confirm_Click">
+                    <Button Margin="0 0 0 5" Name="btnConfirm" Width="150" Click="confirm_Click">
                         Hoàn Thành
                     </Button>
                 </DockPanel>

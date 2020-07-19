@@ -12,6 +12,7 @@
              Loaded="DetailsUserControl_Loaded">
     <UserControl.Resources>
         <local1:RelativeToAbsolutePathForTrip x:Key="pathConverter"/>
+        <local1:RelativeToAbsolutePathForPlace x:Key="pathConverterPlace"/>
     </UserControl.Resources>
     <ScrollViewer ScrollViewer.VerticalScrollBarVisibility="Auto">
         <Grid Name="mainDetail">
@@ -30,9 +31,9 @@
                     <RowDefinition/>
                     <RowDefinition Height="25"/>
                 </Grid.RowDefinitions>
-                <Rectangle Margin="10 10 10 10" RadiusX="12" RadiusY="12">
+                <Rectangle RadiusX="12" RadiusY="12" Margin="0 10">
                     <Rectangle.Fill>
-                        <ImageBrush ImageSource="/Image/Main/Image 5@2x.png"  Stretch="UniformToFill"/>
+                        <ImageBrush x:Name="imageSites" Stretch="UniformToFill"/>
                     </Rectangle.Fill>
                 </Rectangle>
                 <!--Shadow Background-->
@@ -117,7 +118,7 @@
 
                 <StackPanel Margin="0 10 0 0">
                     <DockPanel>
-                        <Image MouseLeftButtonDown="editClick" Height="20" Source="/Image/Main/edit_route.png"  DockPanel.Dock="Right"/>
+                        <Image Name="btnEdit" MouseLeftButtonDown="editClick" Height="20" Source="/Image/Main/edit_route.png"  DockPanel.Dock="Right"/>
                         <TextBlock Text="Xem lộ trình đi" FontSize="15" FontWeight="Bold"
                                Foreground="#FF6665"/>
                     </DockPanel>
@@ -165,7 +166,7 @@
                     <ListBox Name="imageTrip" HorizontalContentAlignment="Center">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
-                                <Border Height="180" Width="300" CornerRadius="15" 
+                                <Border Height="180" Width="280" CornerRadius="15" 
                                         HorizontalAlignment="Center">
                                     <Border.Background>
                                         <ImageBrush ImageSource="{Binding Converter={StaticResource pathConverter}}" Stretch="UniformToFill"/>
