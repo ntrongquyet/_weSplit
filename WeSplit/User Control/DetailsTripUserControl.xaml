@@ -209,10 +209,10 @@
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Thành viên"
                                         Foreground="#0133CD"
-                                        Binding="{Binding   TENTV}"/>
-                                <DataGridTextColumn Header="Tiền thừa"
+                                        Binding="{Binding TENTV}"/>
+                                <DataGridTextColumn Header="Còn lại"
                                         Foreground="#0133CD"
-                                        Binding="{Binding TIENTHU}"/>
+                                        Binding="{Binding AVG}"/>
                             </DataGrid.Columns>
                         </DataGrid>
                         <Border Height="10" CornerRadius="0 0 10 10" Margin="10 0" Background="#FFFFFF"

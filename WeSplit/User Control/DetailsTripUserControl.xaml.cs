@@ -116,8 +116,9 @@ namespace WeSplit.User_Control
             var queryTrip = from trip in DataProvider.Ins.DB.CHUYENDI
                             where trip.MA_CHUYENDI == MaCD
                             select trip;
-            table_THANHVIEN.ItemsSource = (from tg in DataProvider.Ins.DB.THAMGIA join tv in DataProvider.Ins.DB.THANHVIEN on tg.MATV equals tv.MATV select new { tv.TENTV, tv.SDT, tg.TIENTHU, tg.MACD })
-                                            .Where(tg => tg.MACD == MaCD).ToList();
+            table_THANHVIEN.ItemsSource = (from tg in DataProvider.Ins.DB.THAMGIA 
+                                           join tv in DataProvider.Ins.DB.THANHVIEN on tg.MATV equals tv.MATV
+                                           select new { tv.TENTV, tv.SDT, tg.TIENTHU, tg.MACD }).Where(tg => tg.MACD == MaCD).ToList();
             var selectTrip = (from cd in DataProvider.Ins.DB.CHUYENDI
                               where cd.MA_CHUYENDI == MaCD
                               select cd);
@@ -145,6 +146,13 @@ namespace WeSplit.User_Control
             var sumtc = placeKC.Where(su => su.MA_CHUYENDI == MaCD).ToList();
             var sumKC = sumtc.Select(sum => sum.SOTIENCHI).Sum();
             var SUM = sumAir + sumKS + sumTS + sumKC;
+            //Tính trung bình khoản chi
+            var count = sumtt.Count();
+            var avg = (SUM / count);
+            listCash.ItemsSource = (from tg in DataProvider.Ins.DB.THAMGIA
+                                    join tv in DataProvider.Ins.DB.THANHVIEN on tg.MATV equals tv.MATV 
+                                    where tg.MACD == MaCD
+                                    select new { tv.TENTV, AVG = (int)tg.TIENTHU - (int)avg} ).ToList();  
             sumTC.Text = Convert.ToString(SUM);
             double mul = (double)sumKT - (double)SUM;
             if (mul < 0)
