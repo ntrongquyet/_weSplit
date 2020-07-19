@@ -14,7 +14,7 @@ namespace WeSplit
         {
             var relative = (string)value;
             var baseFolder = AppDomain.CurrentDomain.BaseDirectory;
-            var absolute = $"{baseFolder}Image\\{relative}";
+            var absolute = $"{baseFolder}Image\\trip\\{relative}";
             return absolute;
         }
 

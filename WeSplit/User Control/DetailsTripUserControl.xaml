@@ -164,14 +164,12 @@
                 </StackPanel>
 
                 <StackPanel>
-                    <ListBox>
+                    <ListBox Name="imageTrip">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
-                                <Image Name="Isimage"
+                                <Image
                                    Width="200"
                                    Height="200"
-                                   Stretch="Uniform"
-                                   RenderTransformOrigin="1,1"
                                    Source="{Binding Converter={StaticResource pathConverter}}"/>
                             </DataTemplate>
                         </ListBox.ItemTemplate>
