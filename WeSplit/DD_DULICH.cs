@@ -18,17 +18,15 @@ namespace WeSplit
         public DD_DULICH()
         {
             this.CHUYENDI = new HashSet<CHUYENDI>();
-            this.HINHANH_DDDL = new HashSet<HINHANH_DDDL>();
         }
     
         public string MA_DIEMDEN { get; set; }
         public string TEN_DIEMDEN { get; set; }
         public string DCHI_DIEMDEN { get; set; }
         public string THONGTIN_DD { get; set; }
+        public string HINHANH { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CHUYENDI> CHUYENDI { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<HINHANH_DDDL> HINHANH_DDDL { get; set; }
     }
 }

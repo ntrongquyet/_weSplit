@@ -63,17 +63,9 @@ namespace WeSplit.User_Control
                     TEN_DIEMDEN = namePlace.Text.Trim(),
                     DCHI_DIEMDEN = nameAddress.Text.Trim(),
                     THONGTIN_DD = infomation.Text.Trim(),
+                    HINHANH = "dd\\" + name,
                 };
                 DataProvider.Ins.DB.DD_DULICH.Add(dd);
-                DataProvider.Ins.DB.SaveChanges();
-                var ha = new HINHANH_DDDL()
-                {
-                    MA_ANH_DD = "HACD" + DataProvider.Ins.DB.HINHANH_DDDL.Count() + 1,
-                    TENANH_DD = "dd\\" + name,
-                    DD_DULICH = dd.MA_DIEMDEN,
-
-                };
-                DataProvider.Ins.DB.HINHANH_DDDL.Add(ha);
                 DataProvider.Ins.DB.SaveChanges();
                 MessageBox.Show($"Thêm thành công địa điểm{dd.TEN_DIEMDEN}","Hoàn thành",MessageBoxButton.OK,MessageBoxImage.Information);
             }
