@@ -76,8 +76,6 @@
             <!--The Second Grid Column-->
 
             <StackPanel Grid.Column="1" Margin="20 0 0 0">
-
-
                 <StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Text="Chuyến đi: " FontSize="15" FontWeight="Bold"
@@ -164,13 +162,15 @@
                 </StackPanel>
 
                 <StackPanel>
-                    <ListBox Name="imageTrip">
+                    <ListBox Name="imageTrip" HorizontalContentAlignment="Center">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
-                                <Image Height="300"
-                                       HorizontalAlignment="Center"
-                                   Source="{Binding Converter={StaticResource pathConverter}}">
-                                </Image>
+                                <Border Height="180" Width="300" CornerRadius="15" 
+                                        HorizontalAlignment="Center">
+                                    <Border.Background>
+                                        <ImageBrush ImageSource="{Binding Converter={StaticResource pathConverter}}" Stretch="UniformToFill"/>
+                                    </Border.Background>
+                                </Border>
                             </DataTemplate>
                         </ListBox.ItemTemplate>
                     </ListBox>

@@ -25,7 +25,6 @@ namespace WeSplit
 
         public SplashScreen()
         {
-
             InitializeComponent();
             string folder = AppDomain.CurrentDomain.BaseDirectory; // "C:\Users\dev\"
             folder = folder.Remove(folder.IndexOf("bin"));
