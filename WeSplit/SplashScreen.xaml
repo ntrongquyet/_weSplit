@@ -25,7 +25,7 @@
                       Margin="0 20 20 0"
                       Click="Check"
                       Style="{StaticResource MaterialDesignSwitchDarkToggleButton}"
-                      ToolTip="MaterialDesignSwitchDarkToggleButton"
+                      ToolTip="Tắt cửa này sổ vĩnh viễn!"
                       IsChecked="False"/>
         <Rectangle Width="230"
                    Height="120"
