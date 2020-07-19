@@ -205,6 +205,7 @@ namespace WeSplit.User_Control
             if (selectTrip.ToList()[0].TRANGTHAI == true)
             {
                 addMember.Visibility = Visibility.Hidden;
+                btnEdit.Visibility = Visibility.Hidden;
             }
             img = (from cd in DataProvider.Ins.DB.HINHANH_CHUYENDI
                                      where cd.CHUYENDI == MaCD
