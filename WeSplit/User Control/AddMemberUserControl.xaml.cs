@@ -74,6 +74,10 @@ namespace WeSplit.User_Control
             {
                 MessageBox.Show("Số điện thoại đã trùng", "Cảnh báo", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
+            else if(phone.Length > 12)
+            {
+                MessageBox.Show("Số điện thoại không dài hơn 12");
+            }    
             //Add khi nhập đầy đủ
             else
             {

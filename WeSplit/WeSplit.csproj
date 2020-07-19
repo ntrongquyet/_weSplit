@@ -590,16 +590,16 @@
       <DependentUpon>dbWeSplit.edmx</DependentUpon>
       <LastGenOutput>dbWeSplit.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="dbWeSplit.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    <None Include="dbWeSplit.mdf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <Content Include="dbWeSplit.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>dbWeSplit.edmx</DependentUpon>
       <LastGenOutput>dbWeSplit.cs</LastGenOutput>
     </Content>
     <Content Include="dbWeSplit_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <DependentUpon>dbWeSplit.mdf</DependentUpon>
     </Content>
     <Resource Include="Image\SplashScreen\background_SplashScreen.png" />
