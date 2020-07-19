@@ -96,6 +96,7 @@ namespace WeSplit.User_Control
                 DataProvider.Ins.DB.SaveChanges();
                 MessageBox.Show($"Thêm thành công {name}", "Hoàn thành", MessageBoxButton.OK, MessageBoxImage.Information);
                 member.ItemsSource = DataProvider.Ins.DB.THANHVIEN.ToList();
+                reload();
             }
         }
         private void reload()
