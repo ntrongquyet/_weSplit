@@ -113,16 +113,19 @@ namespace WeSplit.User_Control
         }
         private void DetailsUserControl_Loaded(object sender, RoutedEventArgs e)
         {
-            var queryTrip = from trip in DataProvider.Ins.DB.CHUYENDI
-                            where trip.MA_CHUYENDI == MaCD
-                            select trip;
+  
             table_THANHVIEN.ItemsSource = (from tg in DataProvider.Ins.DB.THAMGIA join tv in DataProvider.Ins.DB.THANHVIEN on tg.MATV equals tv.MATV select new { tv.TENTV, tv.SDT, tg.TIENTHU, tg.MACD })
                                             .Where(tg => tg.MACD == MaCD).ToList();
             var selectTrip = (from cd in DataProvider.Ins.DB.CHUYENDI
                               where cd.MA_CHUYENDI == MaCD
                               select cd);
+
+            var temp = (from tm in DataProvider.Ins.DB.HINHANH_CHUYENDI
+                        where tm.CHUYENDI == MaCD
+                        select tm);
             route.ItemsSource = selectTrip.ToList()[0].LOTRINH;
             DataContext = selectTrip.ToList()[0];
+            listCash.ItemsSource = temp.ToList();
             //Khoản thu CĐ
             var placeKT = (from tg in DataProvider.Ins.DB.THAMGIA
                            join tv in DataProvider.Ins.DB.THANHVIEN on tg.MATV equals tv.MATV

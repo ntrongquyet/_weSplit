@@ -347,6 +347,7 @@
     </Resource>
     <Resource Include="Image\Main\edit_route.png" />
     <Resource Include="Image\Main\add_image.png" />
+    <Resource Include="Image\SplashScreen\Image_Sites.png" />
     <Content Include="QLCD.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>QLCD.edmx</DependentUpon>
