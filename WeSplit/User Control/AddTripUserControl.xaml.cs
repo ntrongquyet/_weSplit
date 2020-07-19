@@ -228,6 +228,7 @@ namespace WeSplit.User_Control
             //Kết thúc add
             else
             {
+                
                 CHUYENDI chuyendi = new CHUYENDI()
                 {
                     MA_CHUYENDI = MaCD,
@@ -239,7 +240,7 @@ namespace WeSplit.User_Control
                     THUE_XE = Int32.Parse(rentOfCar.Text.Trim()),
                     MAYBAY = Int32.Parse(rentOfPlane.Text.Trim()),
                     TRANGTHAI = false,
-                };       
+                };
                 DataProvider.Ins.DB.CHUYENDI.Add(chuyendi);
                 DataProvider.Ins.DB.SaveChanges();
                 MessageBox.Show($"Đã thêm thành công chuyến đi {nameTrip}","Hoàn thành",MessageBoxButton.OK,MessageBoxImage.Information);
