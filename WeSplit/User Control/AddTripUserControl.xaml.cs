@@ -302,5 +302,11 @@ namespace WeSplit.User_Control
             }
             
         }
+
+        private void back_button(object sender, MouseButtonEventArgs e)
+        {
+            DataContext = new DetailsTripUserControl(MaCD);
+            this.Content = new DetailsTripUserControl(MaCD);
+        }
     }
 }
