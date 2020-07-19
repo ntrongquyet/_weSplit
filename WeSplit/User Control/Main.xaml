@@ -13,7 +13,8 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Grid Margin="50 50 0 50">
+        <Grid Margin="80 50 0 170">
+
 
             <Grid.RowDefinitions>
                 <RowDefinition Height="45"/>
@@ -21,6 +22,7 @@
                 <RowDefinition Height="25"/>
             </Grid.RowDefinitions>
             <!--Shadow Background-->
+
             <Border Grid.RowSpan="3" Grid.ColumnSpan="2" Margin="0,0,0,-0.667">
                 <Border.Effect>
                     <DropShadowEffect BlurRadius="20" Opacity=".1"/>
