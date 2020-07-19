@@ -39,17 +39,7 @@ namespace WeSplit.User_Control
         //Search
         private void Search_button(object sender, RoutedEventArgs e)
         {
-            //Cảnh báo không nhập dữ liệu
-            if (Search.Text.Trim().Length == 0)
-            {
-                MessageBox.Show("Bạn chưa nhập","Lỗi",MessageBoxButton.OK,MessageBoxImage.Error);
-            }
-            //Cảnh báo không chọn lọc
-            else if(futureSelect.IsChecked == false && oldSelect.IsChecked == false && nameSelect.IsChecked == false)
-            {
-                MessageBox.Show("Thiếu điều kiện lọc bạn ơi !!!!!","Cảnh báo",MessageBoxButton.OK,MessageBoxImage.Warning);
-            }
-            else if (oldSelect.IsChecked == true && futureSelect.IsChecked == true && nameSelect.IsChecked == true)
+            if (oldSelect.IsChecked == true && futureSelect.IsChecked == true && nameSelect.IsChecked == true)
             {
                 MessageBox.Show("Không thể chọn tất cả", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
             }
@@ -166,6 +156,30 @@ namespace WeSplit.User_Control
                     MessageBox.Show("Không tìm thấy", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
             }
+            else
+            {
+                var strings = placeList.Where(diadiem => convertToUnSign3(diadiem.TEN_CHUYENDI.ToLower()).Contains(convertToUnSign3(Search.Text.ToLower())));
+                var name = (from tg in DataProvider.Ins.DB.THAMGIA
+                            join tv in DataProvider.Ins.DB.THANHVIEN on tg.MATV equals tv.MATV
+                            join cd in DataProvider.Ins.DB.CHUYENDI on tg.MACD equals cd.MA_CHUYENDI
+                            select new { tv.TENTV, cd.TEN_CHUYENDI, cd.MA_CHUYENDI, cd.TRANGTHAI }).Distinct();
+                var str = name.Where(thanhvien => ((thanhvien.TENTV.ToLower())).Contains((Search.Text.ToLower())));
+                if (strings.Count() != 0 || str.Count() != 0)
+                {
+                   if(strings.Count() != 0)
+                    {
+                        listPlace.ItemsSource = strings.ToList();
+                    }    
+                   if (str.Count() != 0)
+                    {
+                        listPlace.ItemsSource = str.ToList();
+                    }    
+                }
+                else
+                {
+                    MessageBox.Show("Không tìm thấy", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+            }    
             int num = listPlace.Items.Count;
             numbers.Text = Convert.ToString(num);
         }
