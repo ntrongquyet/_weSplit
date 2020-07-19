@@ -50,7 +50,7 @@
                 </ListView.View>
             </ListView>
 
-            <Border Grid.Row="2" Background="White" CornerRadius="0 0 25 25" Grid.ColumnSpan="2" Margin="0,0,0,-0.667"/>
+            <Border Grid.Row="2" Background="White" CornerRadius="0 0 25 25" Grid.ColumnSpan="2"/>
         </Grid>
         <Image Grid.Column="1" Source="/Image/Main/Image 2@2x.png"  Margin="20 0 0 50"/>
 

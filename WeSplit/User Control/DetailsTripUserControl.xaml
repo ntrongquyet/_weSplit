@@ -9,7 +9,7 @@
              mc:Ignorable="d" 
              RenderOptions.BitmapScalingMode="HighQuality"
              d:DesignHeight="450" d:DesignWidth="800"
-             Loaded="DetailsUserControl_Loaded">
+             Loaded="DetailsUserControl_Loaded" BorderThickness="0">
     <UserControl.Resources>
         <local1:RelativeToAbsolutePathForTrip x:Key="pathConverter"/>
         <local1:RelativeToAbsolutePathForPlace x:Key="pathConverterPlace"/>
@@ -187,7 +187,8 @@
                     </DockPanel>
                     <StackPanel Orientation="Horizontal" >
                         <Image Margin="10 10 0 0" HorizontalAlignment="Left" Grid.Column="1" Grid.Row="1" 
-                               Name="imageDD" Source="/Image/Main/add_image.png"
+                               Name="imageDD" Source="/Image/Main/add_image_trip.png" 
+                               materialDesign:ShadowAssist.ShadowDepth="Depth3"
                                Height="70" MouseLeftButtonDown="click_AddTripPicture"/>
 
                     </StackPanel>

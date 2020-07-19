@@ -12,7 +12,7 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Grid Margin="50 50 0 50">
+        <Grid Margin="80 50 0 170">
 
             <Grid.RowDefinitions>
                 <RowDefinition Height="45"/>
@@ -20,12 +20,13 @@
                 <RowDefinition Height="25"/>
             </Grid.RowDefinitions>
             <!--Shadow Background-->
-            <Border Grid.RowSpan="3" Grid.ColumnSpan="2" Margin="0,0,0,-0.667">
+            <Border Grid.RowSpan="3" Grid.ColumnSpan="2">
                 <Border.Effect>
                     <DropShadowEffect BlurRadius="20" Opacity=".1"/>
                 </Border.Effect>
                 <Rectangle Fill="#fff" Margin="0" RadiusX="25" RadiusY="25"/>
             </Border>
+
             <Border CornerRadius="25 25 0 0" Background="#0133CD" Grid.ColumnSpan="2">
                 <TextBlock Text="Chuyến đi đã đi" 
                            FontWeight="Bold" FontSize="18"
