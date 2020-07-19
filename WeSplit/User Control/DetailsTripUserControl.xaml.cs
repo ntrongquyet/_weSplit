@@ -285,7 +285,7 @@ namespace WeSplit.User_Control
             }
             else
             {
-                var prev = img.Skip(TempNext - 1).Take(1).ToList();
+                var prev = img.Skip(TempNext - 2).Take(1).ToList();
                 imageTrip.ItemsSource = prev.ToList();
                 temp -= 1;
                 if (temp >= 0)
