@@ -16,7 +16,7 @@
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
         <Label Grid.Row="0" Background="#0133CD" VerticalAlignment="Top" FontWeight="Bold" HorizontalContentAlignment="Center" Foreground="#FFFFFF" FontSize="30" Height="50"  Content="{Binding TENCD,FallbackValue=TÊN CHUYẾN ĐI}"></Label>
-        <ListBox Grid.Row="1" Background="Black" Name="listImages">
+        <ListBox Grid.Row="1" Background="Transparent" Name="listImages">
             <ListBox.ItemsPanel>
                 <ItemsPanelTemplate>
                     <WrapPanel Orientation="Horizontal"></WrapPanel>
@@ -38,7 +38,6 @@
         <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Grid.Row="2">
             <Button Click="browserButton" Width="150" Margin="0 0 20 0">DUYỆT...</Button>
             <Button Click="confirmButton" Width="150">HOÀN THÀNH</Button>
-
         </StackPanel>
     </Grid>
 </Window>

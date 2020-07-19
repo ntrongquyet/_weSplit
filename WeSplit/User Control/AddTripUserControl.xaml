@@ -192,9 +192,17 @@
                 </ListView>
             </Grid>
             <Grid Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2">
-                <Button Margin="0 0 0 5" Width="150" Click="confirm_Click">
-                    Hoàn Thành
-                </Button>
+                <DockPanel>
+                    <Image Source="/Image/icon/back.png"
+                           MouseLeftButtonDown="back_button"
+                           Margin="10 0 0 0"
+                           Height="30"
+                           Name="backBtn"
+                           HorizontalAlignment="Left"/>
+                    <Button Margin="0 0 0 5" Name="btnConfirm" Width="150" Click="confirm_Click">
+                        Hoàn Thành
+                    </Button>
+                </DockPanel>
             </Grid>
         </Grid>
     </Border>

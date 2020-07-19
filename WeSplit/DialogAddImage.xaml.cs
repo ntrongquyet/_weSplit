@@ -1,6 +1,7 @@
 ﻿using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +13,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using WeSplit.SQLData;
 
 namespace WeSplit
 {
@@ -20,15 +22,38 @@ namespace WeSplit
     /// </summary>
     public partial class DialogAddImage : Window
     {
-        public DialogAddImage()
+
+
+        public DialogAddImage(string maCD)
         {
             InitializeComponent();
+            this.maCD = maCD;
         }
+
         private List<string> listPathImage = new List<string>();
+        private string maCD;
 
         private void confirmButton(object sender, RoutedEventArgs e)
         {
-
+            foreach(string path in listPathImage)
+            {
+                var maHA = $"HACD{DataProvider.Ins.DB.HINHANH_CHUYENDI.Count() + 1}";
+                var info = new FileInfo(path);
+                string folder = AppDomain.CurrentDomain.BaseDirectory; // "C:\Users\dev\"
+                folder += "Image\\trip\\";
+                string name = Guid.NewGuid().ToString();
+                File.Copy(path, folder + name + info.Extension);
+                HINHANH_CHUYENDI ha = new HINHANH_CHUYENDI()
+                {
+                    CHUYENDI = maCD,
+                    MA_ANH_CD = maHA,
+                    TENANH_CD = name+info.Extension,
+                };
+                DataProvider.Ins.DB.HINHANH_CHUYENDI.Add(ha);
+                DataProvider.Ins.DB.SaveChanges();
+                var test = DataProvider.Ins.DB.HINHANH_CHUYENDI.ToList();
+            }
+            DialogResult = true;
         }
         private void browserButton(object sender, RoutedEventArgs e)
         {
