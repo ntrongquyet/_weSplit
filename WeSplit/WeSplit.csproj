@@ -302,6 +302,7 @@
     <Resource Include="Image\icon\delete.png" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="SQLData\IsChecked.txt" />
     <Resource Include="Image\Main\Image 2%402x.png" />
     <None Include="Image\Main\New_Background.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

@@ -24,7 +24,10 @@ namespace WeSplit.User_Control
     public partial class DetailsTripUserControl : UserControl
     {
         private string MaCD;
-
+        public int TempNext = 1;
+        public double div = 0.0;
+        public int temp = 0;
+        List<String> img = new List<string>();
         public SeriesCollection SeriesCollection { get; }
         public SeriesCollection SeriesCollectionKC { get; }
 
@@ -198,10 +201,11 @@ namespace WeSplit.User_Control
             {
                 addMember.Visibility = Visibility.Hidden;
             }
-            var img = (from cd in DataProvider.Ins.DB.HINHANH_CHUYENDI
+            img = (from cd in DataProvider.Ins.DB.HINHANH_CHUYENDI
                                      where cd.CHUYENDI == MaCD
                                      select cd.TENANH_CD).ToList<string>();
-            imageTrip.ItemsSource = img;
+            imageTrip.ItemsSource = img.Take(1);
+            div = img.Count() / 1;
         }
 
 
@@ -235,6 +239,51 @@ namespace WeSplit.User_Control
             this.Content = new AddTripUserControl(MaCD);
         }
 
+        private void Button_Prev(object sender, RoutedEventArgs e)
+        {
+            if (TempNext <= 1)
+            {
+                if (TempNext == 1)
+                {
+                    var prev = img.Skip(TempNext - 1).Take(1).ToList() ;
+                    imageTrip.ItemsSource = prev.ToList();
+                    temp = 0;
+                }
+                else
+                {
+                    temp = 0;
+                }
 
+            }
+            else
+            {
+                var prev = img.Skip(TempNext - 1).Take(1).ToList();
+                imageTrip.ItemsSource = prev.ToList();
+                temp -= 1;
+                if (temp >= 0)
+                {
+                    TempNext -= 1;
+                }
+            }
+        }
+
+        private void Button_Next(object sender, RoutedEventArgs e)
+        {
+            if (TempNext >= img.Count())
+            {
+                temp = (int)div;
+            }
+            else
+            {
+                var next = img.Skip(TempNext).Take(1).ToList();
+                imageTrip.ItemsSource = next.ToList();
+                temp += 1;
+                int tempint = (int)Math.Ceiling(div);
+                if (temp <= tempint - 1)
+                {
+                    TempNext += 1;
+                }
+            }
+        }
     }
 }
