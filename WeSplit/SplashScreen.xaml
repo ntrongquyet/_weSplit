@@ -15,7 +15,11 @@
         <ImageBrush ImageSource="/Image/SplashScreen/background_SplashScreen.png"  Stretch="Fill" />
     </Window.Background>
     <Grid>
-        <ToggleButton VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0 20 20 0"
+        <ToggleButton VerticalAlignment="Top"
+                      Name="check"
+                      HorizontalAlignment="Right"
+                      Margin="0 20 20 0"
+                      Click="Check"
                       Style="{StaticResource MaterialDesignSwitchDarkToggleButton}"
                       ToolTip="MaterialDesignSwitchDarkToggleButton"
                       IsChecked="False"/>

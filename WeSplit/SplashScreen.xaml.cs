@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,14 +21,29 @@ namespace WeSplit
     public partial class SplashScreen : Window
     {
         DispatcherTimer timer = new DispatcherTimer();
+        private string dataFile;
 
         public SplashScreen()
         {
 
             InitializeComponent();
-            timer.Tick += new EventHandler(timer_Tick);
-            timer.Interval = new TimeSpan(15000);
-            timer.Start();
+            string folder = AppDomain.CurrentDomain.BaseDirectory; // "C:\Users\dev\"
+            folder = folder.Remove(folder.IndexOf("bin"));
+            dataFile = $"{folder}SQLData\\IsChecked.txt";
+            var isChecked = File.ReadAllText(dataFile);
+            InitializeComponent();
+            if (isChecked == "true")
+            {
+                MainWindow hr = new MainWindow();
+                hr.Show();
+                this.Close();
+            }
+            else
+            {
+                timer.Tick += new EventHandler(timer_Tick);
+                timer.Interval = new TimeSpan(15000);
+                timer.Start();
+            }
         }
         private void timer_Tick(object sender, EventArgs e)
         {
@@ -41,6 +57,20 @@ namespace WeSplit
 
             }
 
+        }
+
+        private void Check(object sender, RoutedEventArgs e)
+        {
+            if (check.IsChecked == true)
+            {
+                string newData = "true";
+                File.WriteAllText(dataFile, newData);
+            }
+            else
+            {
+                string newData = "fasle";
+                File.WriteAllText(dataFile, newData);
+            }
         }
     }
 }
