@@ -14,9 +14,17 @@
         <local1:RelativeToAbsolutePathForTrip x:Key="pathConverter"/>
         <local1:RelativeToAbsolutePathForPlace x:Key="pathConverterPlace"/>
     </UserControl.Resources>
+    <UserControl.Triggers>
+        <EventTrigger RoutedEvent="Loaded">
+            <BeginStoryboard>
+                <Storyboard>
+                    <DoubleAnimation From="0" To="1" Duration="0:0:1" Storyboard.TargetProperty="Opacity"/>
+                </Storyboard>
+            </BeginStoryboard>
+        </EventTrigger>
+    </UserControl.Triggers>
     <ScrollViewer ScrollViewer.VerticalScrollBarVisibility="Auto">
         <Grid Name="mainDetail">
-
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="3*"/>
                 <ColumnDefinition Width="2.5*"/>
@@ -31,7 +39,16 @@
                     <RowDefinition/>
                     <RowDefinition Height="25"/>
                 </Grid.RowDefinitions>
-                <Rectangle RadiusX="12" RadiusY="12" Margin="0 10">
+                <Rectangle Name="anhdd" RadiusX="12" RadiusY="12" Margin="0 10">
+                    <Rectangle.Triggers>
+                        <EventTrigger RoutedEvent="Loaded">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation From="0" To="1" Duration="0:0:1" Storyboard.TargetProperty="Opacity" />
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </Rectangle.Triggers>
                     <Rectangle.Fill>
                         <ImageBrush x:Name="imageSites" Stretch="UniformToFill"/>
                     </Rectangle.Fill>
@@ -167,12 +184,17 @@
                     <ListBox Name="imageTrip" HorizontalContentAlignment="Center">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
-                                <Border Height="180" Width="280" CornerRadius="15" 
-                                        HorizontalAlignment="Center">
-                                    <Border.Background>
-                                        <ImageBrush ImageSource="{Binding Converter={StaticResource pathConverter}}" Stretch="UniformToFill"/>
-                                    </Border.Background>
-                                </Border>
+                                <Image Height="150" Source="{Binding Converter={StaticResource pathConverter}}" Stretch="Uniform">
+                                    <Image.Triggers>
+                                        <EventTrigger RoutedEvent="Loaded">
+                                            <BeginStoryboard>
+                                                <Storyboard>
+                                                    <DoubleAnimation From="0" To="1" Duration="0:0:0.8" Storyboard.TargetProperty="Opacity" />
+                                                </Storyboard>
+                                            </BeginStoryboard>
+                                        </EventTrigger>
+                                    </Image.Triggers> 
+                                </Image>
                             </DataTemplate>
                         </ListBox.ItemTemplate>
                     </ListBox>
