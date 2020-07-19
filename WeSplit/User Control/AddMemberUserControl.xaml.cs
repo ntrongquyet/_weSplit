@@ -116,23 +116,39 @@ namespace WeSplit.User_Control
         }
         private void addMemberToTrip_Click(object sender, RoutedEventArgs e)
         {
-            var item_CD = trip.SelectedItem as CHUYENDI;
-            var CD = item_CD.MA_CHUYENDI;
-            var item_TV = member.SelectedItem.ToString();
-
-            string[] arr = item_TV.Split(',');
-            var TV = arr[0].Substring(9);
-
-            var tg = new THAMGIA()
+            
+            if(trip.SelectedItem == null)
             {
-                MACD = CD,
-                MATV = TV,
-                TIENTHU = Convert.ToDouble(money.Text.Trim())
-            };
-            DataProvider.Ins.DB.THAMGIA.Add(tg);
-            DataProvider.Ins.DB.SaveChanges();
-            money.Text = default;
-            reload();
+                MessageBox.Show("Chưa chọn chuyến đi", "Cảnh báo", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+            else if(member.SelectedItem == null){
+                MessageBox.Show("Chưa chọn thành viên", "Cảnh báo", MessageBoxButton.OK, MessageBoxImage.Warning);
+
+            }else if (money.Text.Trim() == "")
+            {
+                MessageBox.Show("Chưa nhập tiền thu", "Cảnh báo", MessageBoxButton.OK, MessageBoxImage.Warning);
+
+            }
+            else
+            {
+                var item_CD = trip.SelectedItem as CHUYENDI;
+                var CD = item_CD.MA_CHUYENDI;
+                var item_TV = member.SelectedItem.ToString();
+                string[] arr = item_TV.Split(',');
+                var TV = arr[0].Substring(9);
+
+                var tg = new THAMGIA()
+                {
+                    MACD = CD,
+                    MATV = TV,
+                    TIENTHU = Convert.ToDouble(money.Text.Trim())
+                };
+                DataProvider.Ins.DB.THAMGIA.Add(tg);
+                DataProvider.Ins.DB.SaveChanges();
+                money.Text = default;
+                reload();
+            }
+          
         }
         private void back_button(object sender, MouseButtonEventArgs e)
         {
