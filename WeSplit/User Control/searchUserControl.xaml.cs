@@ -211,5 +211,11 @@ namespace WeSplit.User_Control
                 this.Content = new DetailsTripUserControl(MACD);
             }
         }
+
+        private void Clear_Search(object sender, RoutedEventArgs e)
+        {
+            Search.Text = "";
+        }
+       
     }
 }

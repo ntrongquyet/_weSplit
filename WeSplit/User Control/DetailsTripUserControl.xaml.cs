@@ -234,10 +234,14 @@ namespace WeSplit.User_Control
             if (route_trip.Visibility == Visibility.Visible)
             {
                 route_trip.Visibility = Visibility.Collapsed;
+                show.Content = "Click để xem các lộ trình";
+                show.Background = new SolidColorBrush(Color.FromRgb(1, 51, 205));
             }
             else
             {
-                route_trip.Visibility = Visibility.Visible;
+                route_trip.Visibility = Visibility.Visible;             
+                show.Content = "Ẩn lộ trình";
+                show.Background = new SolidColorBrush(Color.FromRgb(255, 102, 101));
             }
         }
 
