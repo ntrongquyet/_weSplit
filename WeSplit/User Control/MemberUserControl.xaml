@@ -20,18 +20,41 @@
                     <RowDefinition Height="1*"/>
                     <RowDefinition Height="50"/>
                 </Grid.RowDefinitions>
+                
                 <Label Grid.Row="0" 
                        Background="#0133CD"
                        FontSize="30"
                        FontWeight="Bold"
                        Foreground="White"
                        HorizontalContentAlignment="Center">DANH SÁCH THÀNH VIÊN</Label>
-                <ListView Name="listMember"
-                          Margin="10"
+
+                <!--data grid view-->
+                <DataGrid Margin="10" Grid.Row="1"
+                              Name="listMember"
+                              CanUserAddRows="False"
+                              Background="White"
+                              IsReadOnly="True"
+                              ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                              AutoGenerateColumns="False">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="MÃ THÀNH VIÊN" Width="100"
+                                        Foreground="#0133CD"
+                                        Binding="{Binding MATV}"/>
+                        <DataGridTextColumn Header="TÊN THÀNH VIÊN" Width="300"
+                                        Foreground="#0133CD"
+                                        Binding="{Binding TENTV}"/>
+                        <DataGridTextColumn Header="SỐ ĐIỆN THOẠI"
+                                        Foreground="#0133CD"
+                                        Binding="{Binding SDT}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+                <!--data grid view-->
+
+                <!--<ListView Name="listMember"
                           ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                           Grid.Row="1"
                           Foreground="#0133CD"
-                          HorizontalAlignment="Center" SelectionChanged="listMember_SelectionChanged">
+                          HorizontalAlignment="Center" SelectionChanged="listMember_SelectionChanged" Width="416">
                     <ListView.View>
                         <GridView>
                             <GridViewColumn Header="MÃ TV" DisplayMemberBinding="{Binding MATV}"/>
@@ -39,7 +62,7 @@
                             <GridViewColumn Header="SỐ ĐIỆN THOẠI" DisplayMemberBinding="{Binding SDT}"/>
                         </GridView>
                     </ListView.View>
-                </ListView>
+                </ListView>-->
                 <Button HorizontalAlignment="Right"
                         VerticalAlignment="Bottom"
                         Background="#0133CD"
@@ -49,7 +72,7 @@
                         Width="200">THÊM THÀNH VIÊN</Button>
             </Grid>
         </Border>
-        
-        
+
+
     </Grid>
 </UserControl>
