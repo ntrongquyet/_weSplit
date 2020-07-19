@@ -27,7 +27,7 @@
                     <RowDefinition/>
                     <RowDefinition Height="25"/>
                 </Grid.RowDefinitions>
-                <Rectangle Margin="10 10 10 10" RadiusX="25" RadiusY="25">
+                <Rectangle Margin="10 10 10 10" RadiusX="12" RadiusY="12">
                     <Rectangle.Fill>
                         <ImageBrush ImageSource="/Image/Main/Image 5@2x.png"  Stretch="UniformToFill"/>
                     </Rectangle.Fill>
@@ -37,9 +37,9 @@
                     <Border.Effect>
                         <DropShadowEffect BlurRadius="20" Opacity=".1"/>
                     </Border.Effect>
-                    <Rectangle Fill="#fff" Margin="0" RadiusX="25" RadiusY="25"/>
+                    <Rectangle Fill="#fff" Margin="0" RadiusX="10" RadiusY="10"/>
                 </Border>
-                <Border Grid.Row="1" CornerRadius="25 25 0 0" Background="#0133CD">
+                <Border Grid.Row="1" CornerRadius="10 10 0 0" Background="#0133CD">
                     <TextBlock Text="Thành viên tham gia" 
                            FontWeight="Bold" FontSize="18"
                            Foreground="#fff"
@@ -51,14 +51,14 @@
                           Foreground="#0133CD" Height="200">
                     <ListView.View>
                         <GridView >
-                            <GridViewColumn Header="HoTen" DisplayMemberBinding="{Binding TENTV}"/>
+                            <GridViewColumn Header="Họ Tên" DisplayMemberBinding="{Binding TENTV}"/>
                             <GridViewColumn Header="SĐT" DisplayMemberBinding="{Binding SDT}"/>
                             <GridViewColumn Header="Tiền thu" DisplayMemberBinding="{Binding TIENTHU}"/>
                         </GridView>
                     </ListView.View>
                 </ListView>
 
-                <Border Grid.Row="3" Background="White" CornerRadius="0 0 25 25" >
+                <Border Grid.Row="3" Background="White" CornerRadius="0 0 10 10" >
                     <DockPanel Name="addMember" MouseLeftButtonDown="click_AddMembers" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0 0 0 3">
                         <Image Source="/Image/Main/add_trip.png"/>
                         <Label Content="Thêm thành viên" VerticalContentAlignment="Center"/>
@@ -169,26 +169,58 @@
 
             <!--LiveChart binding-->
             <StackPanel Grid.Column="2">
-                <lvc:PieChart Series="{Binding SeriesCollection, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                <StackPanel  Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Center">
+                    <StackPanel Margin="0 0 10 0">
+                        <lvc:PieChart Series="{Binding SeriesCollection, RelativeSource={RelativeSource AncestorType=UserControl}}"
                               Height="150">
-                </lvc:PieChart>
-                <TextBlock Text="Bảng tiền thu"
+                        </lvc:PieChart>
+                        <TextBlock Text="Bảng tiền thu"
                            VerticalAlignment="Center"
                            HorizontalAlignment="Center"
                            FontSize="15"
                            FontWeight="Light"
                            Foreground="#0133CD"/>
-                <lvc:PieChart Series="{Binding SeriesCollectionKC, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                    </StackPanel>
+                    <StackPanel Margin="10 0 0 0">
+                        <lvc:PieChart Series="{Binding SeriesCollectionKC, RelativeSource={RelativeSource AncestorType=UserControl}}"
                               Height="150">
-                </lvc:PieChart>
-                <TextBlock Text="Bảng chi tiêu"
+                        </lvc:PieChart>
+                        <TextBlock Text="Bảng chi tiêu"
                            VerticalAlignment="Center"
                            HorizontalAlignment="Center"
                            FontSize="15"
                            FontWeight="Light"
                            Foreground="#0133CD"/>
-            </StackPanel>
+                    </StackPanel>
 
+                </StackPanel>
+                <Border>
+                    <Border.Effect>
+                        <DropShadowEffect BlurRadius="20" Opacity=".1"/>
+                    </Border.Effect>
+                    <StackPanel>
+                        <Border CornerRadius="10 10 0 0" Margin="10 20 10 0" Background="#0133CD" BorderThickness="0">
+                            <Label Content="TỔNG KẾT" Foreground="#FFFFFF" HorizontalContentAlignment="Center"
+                           FontWeight="Bold"/>
+                        </Border>
+                        <DataGrid Margin="10 0" CanUserAddRows="False" IsReadOnly="True" Name="listCash"
+                              Background="White" ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
+                              AutoGenerateColumns="False" BorderThickness="0" Height="250">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Thành viên"
+                                        Foreground="#0133CD"
+                                        Binding="{Binding   TENTV}"/>
+                                <DataGridTextColumn Header="Tiền thừa"
+                                        Foreground="#0133CD"
+                                        Binding="{Binding TIENTHU}"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                        <Border Height="10" CornerRadius="0 0 10 10" Margin="10 0" Background="#FFFFFF"
+                        BorderThickness="0"/>
+
+                    </StackPanel>
+                </Border>
+            </StackPanel>
         </Grid>
     </ScrollViewer>
 </UserControl>
