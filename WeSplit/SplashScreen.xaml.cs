@@ -76,7 +76,8 @@ namespace WeSplit
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             var dd = DataProvider.Ins.DB.DD_DULICH.ToList();
-            DataContext = dd[0];
+            Random rng = new Random();
+            DataContext = dd[rng.Next(0,dd.Count())];
         }
     }
 }

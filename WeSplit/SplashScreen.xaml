@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:WeSplit"
+        xmlns:local="clr-namespace:WeSplit" xmlns:local1="clr-namespace:WeSplit.SQLData"
         mc:Ignorable="d"
         Loaded="Window_Loaded"
         Title="SplashScreen" Height="600" Width="400"
@@ -12,6 +12,9 @@
         RenderOptions.BitmapScalingMode="HighQuality"
         WindowStartupLocation="CenterScreen"
         Foreground="#000333">
+    <Window.Resources>
+        <local1:RelativeToAbsolutePathForPlace x:Key="pathConverter"/>
+    </Window.Resources>
     <Window.Background>
         <ImageBrush ImageSource="/Image/SplashScreen/background_SplashScreen.png"  Stretch="Fill" />
     </Window.Background>
@@ -32,14 +35,15 @@
                    RadiusX="15">
             <Rectangle.Fill>
                 <ImageBrush 
-                    ImageSource="{Binding HINHANH}"
+                    ImageSource="{Binding HINHANH , Converter={StaticResource pathConverter}}"
                     Stretch="UniformToFill"/>
             </Rectangle.Fill>
         </Rectangle>
         <Grid Width="230"
               Height="120" 
               VerticalAlignment="Top"  
-              Margin="0 80 0 0">
+              Margin="0 80 0 0"
+              Opacity="0.7">
             <Rectangle Fill="#CC0133CD" 
                        RadiusY="15" 
                        RadiusX="15"/>
@@ -47,7 +51,7 @@
                    VerticalContentAlignment="Center"
                    HorizontalContentAlignment="Center"
                    Foreground="#FFFFFF"
-                   FontSize="30" FontWeight="Bold"/>
+                   FontSize="30" FontWeight="Bold" Background="#02FFFFFF" Margin="3,-1,-3,1"/>
         </Grid>
         <TextBlock Width="350"
                    Margin="0 210 0 0"

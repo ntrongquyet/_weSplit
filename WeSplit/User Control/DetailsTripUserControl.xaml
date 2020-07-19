@@ -76,8 +76,6 @@
             <!--The Second Grid Column-->
 
             <StackPanel Grid.Column="1" Margin="20 0 0 0">
-
-
                 <StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Text="Chuyến đi: " FontSize="15" FontWeight="Bold"
@@ -164,13 +162,15 @@
                 </StackPanel>
 
                 <StackPanel>
-                    <ListBox Name="imageTrip">
+                    <ListBox Name="imageTrip" HorizontalContentAlignment="Center">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
-                                <Image Height="300"
-                                       HorizontalAlignment="Center"
-                                   Source="{Binding Converter={StaticResource pathConverter}}">
-                                </Image>
+                                <Border Height="180" Width="300" CornerRadius="15" 
+                                        HorizontalAlignment="Center">
+                                    <Border.Background>
+                                        <ImageBrush ImageSource="{Binding Converter={StaticResource pathConverter}}" Stretch="UniformToFill"/>
+                                    </Border.Background>
+                                </Border>
                             </DataTemplate>
                         </ListBox.ItemTemplate>
                     </ListBox>
@@ -196,10 +196,13 @@
 
             <!--LiveChart binding-->
             <StackPanel Grid.Column="2" Margin="0 0 0 50">
-                <StackPanel  Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Center">
+                <StackPanel  Orientation="Horizontal"
+                             VerticalAlignment="Top" 
+                             HorizontalAlignment="Center">
                     <StackPanel Margin="0 0 10 0">
                         <lvc:PieChart Series="{Binding SeriesCollection, RelativeSource={RelativeSource AncestorType=UserControl}}"
-                              Height="150">
+                                      Width="120"
+                                      Height="150">
                         </lvc:PieChart>
                         <TextBlock Text="Bảng tiền thu"
                            VerticalAlignment="Center"
@@ -210,7 +213,8 @@
                     </StackPanel>
                     <StackPanel Margin="10 0 0 0">
                         <lvc:PieChart Series="{Binding SeriesCollectionKC, RelativeSource={RelativeSource AncestorType=UserControl}}"
-                              Height="150">
+                                      Width="120"
+                                      Height="150">
                         </lvc:PieChart>
                         <TextBlock Text="Bảng chi tiêu"
                            VerticalAlignment="Center"
