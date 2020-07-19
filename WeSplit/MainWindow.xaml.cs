@@ -44,23 +44,27 @@ namespace WeSplit
         }
         private void Button_TripHasGone(object sender, MouseButtonEventArgs e)
         {
+            reloadBackground();
             DataContext = new HistoryTripUserControl();
 
         }
 
         private void Button_Member(object sender, MouseButtonEventArgs e)
         {
+            reloadBackground();
             DataContext = new MemberUserControl();
 
         }
 
         private void Button_Sites(object sender, MouseButtonEventArgs e)
         {
+            reloadBackground();
             DataContext = new siteUserControl();
         }
 
         private void Button_Search(object sender, MouseButtonEventArgs e)
         {
+            reloadBackground();
             DataContext = new searchUserControl();
         }
 
