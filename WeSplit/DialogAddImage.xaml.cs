@@ -75,5 +75,13 @@ namespace WeSplit
         {
 
         }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            var selectItem = (from cd in DataProvider.Ins.DB.CHUYENDI
+                              where cd.MA_CHUYENDI == maCD
+                              select cd).ToList<CHUYENDI>()[0];
+            DataContext = selectItem;
+        }
     }
 }

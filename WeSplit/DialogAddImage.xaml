@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WeSplit"
         mc:Ignorable="d"
-        Title="DialogAddImage" Height="450" Width="800">
+        Loaded="Window_Loaded"
+        Title="{Binding TEN_CHUYENDI}" Height="450" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition></ColumnDefinition>
@@ -15,7 +16,7 @@
             <RowDefinition Height="1*"/>
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
-        <Label Grid.Row="0" Background="#0133CD" VerticalAlignment="Top" FontWeight="Bold" HorizontalContentAlignment="Center" Foreground="#FFFFFF" FontSize="30" Height="50"  Content="{Binding TENCD,FallbackValue=TÊN CHUYẾN ĐI}"></Label>
+        <Label Grid.Row="0" Background="#0133CD" VerticalAlignment="Top" FontWeight="Bold" HorizontalContentAlignment="Center" Foreground="#FFFFFF" FontSize="30" Height="50"  Content="THÊM HÌNH ẢNH"></Label>
         <ListBox Grid.Row="1" Background="Transparent" Name="listImages">
             <ListBox.ItemsPanel>
                 <ItemsPanelTemplate>
