@@ -122,6 +122,9 @@
     <Compile Include="DD_DUNGCHAN.cs">
       <DependentUpon>dbWeSplit.tt</DependentUpon>
     </Compile>
+    <Compile Include="DialogAddImage.xaml.cs">
+      <DependentUpon>DialogAddImage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="HINHANH_CHUYENDI.cs">
       <DependentUpon>dbWeSplit.tt</DependentUpon>
     </Compile>
@@ -131,7 +134,7 @@
     <Compile Include="LOTRINH.cs">
       <DependentUpon>dbWeSplit.tt</DependentUpon>
     </Compile>
-    <Compile Include="RelativeToAbsolutePathConverter.cs" />
+    <Compile Include="Converter\RelativeToAbsolutePathConverterForTrip.cs" />
     <Compile Include="SplashScreen.xaml.cs">
       <DependentUpon>SplashScreen.xaml</DependentUpon>
     </Compile>
@@ -173,6 +176,10 @@
     <Compile Include="User Control\siteUserControl.xaml.cs">
       <DependentUpon>siteUserControl.xaml</DependentUpon>
     </Compile>
+    <Page Include="DialogAddImage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

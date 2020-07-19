@@ -12,7 +12,7 @@
         WindowStartupLocation="CenterScreen"
         RenderOptions.BitmapScalingMode="HighQuality"
         Closed="Window_Closed"
-        Title="MainWindow" MinHeight="600" MinWidth="600">
+        Title="WeSplit - Ứng dụng quản lí chuyến đi" MinHeight="600" MinWidth="600">
     <Window.Resources>
         <DataTemplate x:Name="home" DataType="{x:Type dialog:Main}">
             <dialog:Main DataContext="{Binding}"/>

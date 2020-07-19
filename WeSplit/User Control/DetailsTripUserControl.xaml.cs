@@ -226,7 +226,8 @@ namespace WeSplit.User_Control
 
         private void click_AddTripPicture(object sender, MouseButtonEventArgs e)
         {
-            //add image trip
+            DialogAddImage dlg = new DialogAddImage();
+            dlg.Show();
         }
 
         private void editClick(object sender, MouseButtonEventArgs e)
