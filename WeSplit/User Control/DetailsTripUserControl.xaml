@@ -51,7 +51,7 @@
 
                 <Rectangle Fill="#fff" Grid.Row="2" />
                 <ListView Grid.Row="2" Name="table_THANHVIEN" 
-                          Foreground="#0133CD" Height="200">
+                          Foreground="#0133CD" MaxHeight="300">
                     <ListView.View>
                         <GridView >
                             <GridViewColumn Header="Họ Tên" DisplayMemberBinding="{Binding TENTV}"/>
@@ -62,11 +62,15 @@
                 </ListView>
 
                 <Border Grid.Row="3" Background="White" CornerRadius="0 0 10 10" >
-                    <DockPanel Name="addMember" MouseLeftButtonDown="click_AddMembers" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0 0 0 3">
+                    <DockPanel Name="addMember" MouseLeftButtonDown="click_AddMembers" VerticalAlignment="Center" 
+                               HorizontalAlignment="Left" Margin="20 0 0 3">
                         <Image Source="/Image/Main/add_trip.png"/>
                         <Label Content="Thêm thành viên" VerticalContentAlignment="Center"/>
                     </DockPanel>
                 </Border>
+                <DockPanel Grid.Row="3" HorizontalAlignment="Right" Margin="0 0 10 0">
+                    <Label Name="show_qualiltyMem"/>
+                </DockPanel>
             </Grid>
 
             <!--The Second Grid Column-->
@@ -225,8 +229,8 @@
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Thành viên"
                                         Foreground="#0133CD"
-                                        Binding="{Binding TENTV}"/>
-                                <DataGridTextColumn Header="Còn lại"
+                                        Binding="{Binding  TENTV}"/>
+                                <DataGridTextColumn Header="Tiền thừa"
                                         Foreground="#0133CD"
                                         Binding="{Binding AVG}"/>
                             </DataGrid.Columns>

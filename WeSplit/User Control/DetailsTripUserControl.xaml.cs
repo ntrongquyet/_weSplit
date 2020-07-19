@@ -161,6 +161,7 @@ namespace WeSplit.User_Control
             //Tính trung bình khoản chi
             var count = sumtt.Count();
             var avg = (SUM / count);
+            show_qualiltyMem.Content = $"Tổng {count} thành viên";
             listCash.ItemsSource = (from tg in DataProvider.Ins.DB.THAMGIA
                                     join tv in DataProvider.Ins.DB.THANHVIEN on tg.MATV equals tv.MATV 
                                     where tg.MACD == MaCD
