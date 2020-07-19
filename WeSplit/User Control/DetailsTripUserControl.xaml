@@ -203,7 +203,7 @@
                             <Label Content="TỔNG KẾT" Foreground="#FFFFFF" HorizontalContentAlignment="Center"
                            FontWeight="Bold"/>
                         </Border>
-                        <DataGrid Margin="10 0" MaxHeight="350" CanUserAddRows="False" IsReadOnly="True" Name="listCash"
+                        <DataGrid Margin="10 0" MaxHeight="340" CanUserAddRows="False" IsReadOnly="True" Name="listCash"
                               Background="White" ScrollViewer.VerticalScrollBarVisibility="Auto" 
                                   ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
                               AutoGenerateColumns="False" BorderThickness="0">
