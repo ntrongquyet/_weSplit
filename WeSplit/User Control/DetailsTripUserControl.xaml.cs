@@ -230,8 +230,16 @@ namespace WeSplit.User_Control
 
         private void click_AddTripPicture(object sender, MouseButtonEventArgs e)
         {
-            DialogAddImage dlg = new DialogAddImage();
-            dlg.Show();
+            DialogAddImage dlg = new DialogAddImage(MaCD);
+            dlg.ShowDialog();
+            if(dlg.DialogResult == true)
+            {
+                img = (from cd in DataProvider.Ins.DB.HINHANH_CHUYENDI
+                       where cd.CHUYENDI == MaCD
+                       select cd.TENANH_CD).ToList<string>();
+                imageTrip.ItemsSource = img.Take(1);
+                div = img.Count() / 1;
+            }
         }
 
         private void editClick(object sender, MouseButtonEventArgs e)
