@@ -569,6 +569,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>dbWeSplit.mdf</DependentUpon>
     </Content>
+    <Resource Include="Image\SplashScreen\background_SplashScreen.png" />
     <Resource Include="Image\Main\detete_search.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
