@@ -584,6 +584,7 @@
     <None Include="Image\dd\DD9_Binh_Phuoc.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <Resource Include="Image\icon\back.png" />
     <Content Include="QLCD.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>dbWeSplit.edmx</DependentUpon>

@@ -128,5 +128,10 @@ namespace WeSplit.User_Control
             money.Text = default;
             reload();
         }
+        private void back_button(object sender, MouseButtonEventArgs e)
+        {
+            DataContext = new DetailsTripUserControl(maCD);
+            this.Content = new DetailsTripUserControl(maCD);
+        }
     }
 }

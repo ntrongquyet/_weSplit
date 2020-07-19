@@ -93,11 +93,18 @@
                              materialDesign:TextFieldAssist.UnderlineBrush="#0133CD"
                              Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                              VerticalAlignment="Center" />
-
-                    <Button Click="addMemberToTrip_Click" Width="100" Grid.Row="4"
-                            Background="#0133CD" BorderThickness="0">
-                        Thêm
-                    </Button>
+                    <DockPanel Grid.Row="4">
+                        <Image Source="/Image/icon/back.png"
+                               MouseLeftButtonDown="back_button"
+                               Height="30"
+                               HorizontalAlignment="Left"/>
+                        <Button Click="addMemberToTrip_Click" 
+                                Width="100"
+                                Background="#0133CD" 
+                                BorderThickness="0">
+                            Thêm
+                        </Button>
+                    </DockPanel>
                 </Grid>
                 <ListView Name="tableMemberofTrip" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Center">
                     <ListView.View>

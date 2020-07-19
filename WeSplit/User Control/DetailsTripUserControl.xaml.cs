@@ -121,6 +121,11 @@ namespace WeSplit.User_Control
                 }
             }
         }
+
+        public DetailsTripUserControl()
+        {
+        }
+
         private void DetailsUserControl_Loaded(object sender, RoutedEventArgs e)
         {
             var queryTrip = from trip in DataProvider.Ins.DB.CHUYENDI

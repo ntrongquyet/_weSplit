@@ -243,7 +243,7 @@ namespace WeSplit.User_Control
                 };
                 DataProvider.Ins.DB.CHUYENDI.Add(chuyendi);
                 DataProvider.Ins.DB.SaveChanges();
-                MessageBox.Show($"Đã thêm thành công chuyến đi {nameTrip}","Hoàn thành",MessageBoxButton.OK,MessageBoxImage.Information);
+                MessageBox.Show($"Đã thêm thành công chuyến đi {nameTrip.Text}","Hoàn thành",MessageBoxButton.OK,MessageBoxImage.Information);
                 nameTrip.Text = "";
                 destination.SelectedItem = default;
                 checkin.SelectedDate = default;
@@ -301,6 +301,12 @@ namespace WeSplit.User_Control
                 checkout.BlackoutDates.Add(new CalendarDateRange(new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day), new DateTime(date.Year, date.Month, date.Day - 1)));
             }
             
+        }
+
+        private void back_button(object sender, MouseButtonEventArgs e)
+        {
+            DataContext = new DetailsTripUserControl(MaCD);
+            this.Content = new DetailsTripUserControl(MaCD);
         }
     }
 }
