@@ -50,22 +50,25 @@ namespace WeSplit.User_Control
             }
             //Vẽ biểu đồ khoản chi trong chuyến đi
             SeriesCollectionKC = new SeriesCollection();
-            foreach(CHUYENDI itemCD in DataProvider.Ins.DB.CHUYENDI.ToList())
+            int mb = 0;
+            int tx = 0;
+            int tp = 0;
+            foreach (CHUYENDI itemCD in DataProvider.Ins.DB.CHUYENDI.ToList())
             {
                 if (itemCD.MA_CHUYENDI == MaCD)
                 {
-                    foreach(KHOANCHI itemTG in DataProvider.Ins.DB.KHOANCHI.ToList())
+                    foreach (KHOANCHI itemTG in DataProvider.Ins.DB.KHOANCHI.ToList())
                     {
-                        if(itemTG.MA_CHUYENDI== MaCD)
+                        if (itemTG.MA_CHUYENDI == MaCD)
                         {
                             ChartValues<double> cost = new ChartValues<double>();
                             ChartValues<double> costMB = new ChartValues<double>();
                             ChartValues<double> costKS = new ChartValues<double>();
-                            ChartValues<double> costTS = new ChartValues<double>();
+                            ChartValues<double> costTX = new ChartValues<double>();
                             cost.Add(Convert.ToDouble(itemTG.SOTIENCHI));
                             costMB.Add(Convert.ToDouble(itemCD.MAYBAY));
                             costKS.Add(Convert.ToDouble(itemCD.THUE_KS));
-                            costTS.Add(Convert.ToDouble(itemCD.THUE_XE));
+                            costTX.Add(Convert.ToDouble(itemCD.THUE_XE));
                             double temp0 = (double)itemTG.SOTIENCHI;
                             double temp1 = (double)itemCD.MAYBAY;
                             double temp2 = (double)itemCD.THUE_KS;
@@ -79,17 +82,20 @@ namespace WeSplit.User_Control
                                 };
                                 SeriesCollectionKC.Add(series);
                             }
-                            if (temp1 != 0)
+                            if (temp1 != 0 && mb==0)
                             {
+                                mb = 1;
                                 PieSeries seriesMB = new PieSeries
                                 {
                                     Values = costMB,
                                     Title = "Máy bay"
                                 };
                                 SeriesCollectionKC.Add(seriesMB);
+                                
                             }
-                            if (temp2 != 0)
+                            if (temp2 != 0 && tp == 0)
                             {
+                                tp = 1;
                                 PieSeries seriesKS = new PieSeries
                                 {
                                     Values = costKS,
@@ -97,17 +103,18 @@ namespace WeSplit.User_Control
                                 };
                                 SeriesCollectionKC.Add(seriesKS);
                             }
-                            if (temp3 != 0)
+                            if (temp3 != 0 && tx == 0)
                             {
-                                PieSeries seriesTS = new PieSeries
+                                tx = 1;
+                                PieSeries seriesTX = new PieSeries
                                 {
-                                    Values = costTS,
+                                    Values = costTX,
                                     Title = "Thuê xe"
                                 };
-                                SeriesCollectionKC.Add(seriesTS);
+                                SeriesCollectionKC.Add(seriesTX);
                             }
-                        }    
-                    }    
+                        }
+                    }
                 }
             }
         }
@@ -138,7 +145,7 @@ namespace WeSplit.User_Control
             sumTT.Text = Convert.ToString(sumKT);
             // Khoản chi CĐ
             var KCPlace = (from cd in DataProvider.Ins.DB.CHUYENDI
-                           select new { cd.MA_CHUYENDI,cd.MAYBAY, cd.THUE_KS, cd.THUE_XE });
+                           select new { cd.MA_CHUYENDI, cd.MAYBAY, cd.THUE_KS, cd.THUE_XE });
             var sumkc = KCPlace.Where(sumkchi => sumkchi.MA_CHUYENDI == MaCD).ToList();
             var sumAir = sumkc.Select(sumair => sumair.MAYBAY).Sum();
             var sumKS = sumkc.Select(sumks => sumks.THUE_KS).Sum();
@@ -182,12 +189,13 @@ namespace WeSplit.User_Control
             {
                 priceRoom.Visibility = Visibility.Visible;
             }
-            if (selectTrip.ToList()[0].MAYBAY> 0)
+            if (selectTrip.ToList()[0].MAYBAY > 0)
             {
                 pricePlane.Visibility = Visibility.Visible;
             }
             // Hiện thị nút add thành viên cho chuyến đi chưa kết thúc
-            if (selectTrip.ToList()[0].TRANGTHAI == true) {
+            if (selectTrip.ToList()[0].TRANGTHAI == true)
+            {
                 addMember.Visibility = Visibility.Hidden;
             }
         }

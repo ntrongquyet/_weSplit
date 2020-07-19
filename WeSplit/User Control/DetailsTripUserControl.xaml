@@ -5,11 +5,14 @@
              xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WeSplit.User_Control"
-               xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+               xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:local1="clr-namespace:WeSplit"
              mc:Ignorable="d" 
              RenderOptions.BitmapScalingMode="HighQuality"
              d:DesignHeight="450" d:DesignWidth="800"
              Loaded="DetailsUserControl_Loaded">
+    <UserControl.Resources>
+        <local1:RelativeToAbsolutePathConverter x:Key="pathConverter"/>
+    </UserControl.Resources>
     <ScrollViewer ScrollViewer.VerticalScrollBarVisibility="Auto">
         <Grid Name="mainDetail">
 
@@ -161,6 +164,18 @@
                 </StackPanel>
 
                 <StackPanel>
+                    <ListBox>
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Image Name="Isimage"
+                                   Width="200"
+                                   Height="200"
+                                   Stretch="Uniform"
+                                   RenderTransformOrigin="1,1"
+                                   Source="{Binding Converter={StaticResource pathConverter}}"/>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
                     <StackPanel Orientation="Horizontal" >
                         <Image Margin="10 10 0 0" HorizontalAlignment="Left" Grid.Column="1" Grid.Row="1" 
                                Name="imageDD" Source="/Image/Main/add_image.png"
