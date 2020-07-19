@@ -198,7 +198,12 @@ namespace WeSplit.User_Control
             {
                 addMember.Visibility = Visibility.Hidden;
             }
+            var img = (from cd in DataProvider.Ins.DB.HINHANH_CHUYENDI
+                                     where cd.CHUYENDI == MaCD
+                                     select cd.TENANH_CD).ToList<string>();
+            imageTrip.ItemsSource = img;
         }
+
 
         private void show_Click(object sender, RoutedEventArgs e)
         {
@@ -229,5 +234,7 @@ namespace WeSplit.User_Control
             DataContext = new AddTripUserControl(MaCD);
             this.Content = new AddTripUserControl(MaCD);
         }
+
+
     }
 }
