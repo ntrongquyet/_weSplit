@@ -228,7 +228,7 @@
                                 <DataGridTextColumn Header="Thành viên"
                                         Foreground="#0133CD"
                                         Binding="{Binding  TENTV}"/>
-                                <DataGridTextColumn Header="Tiền thừa"
+                                <DataGridTextColumn Header="Còn lại"
                                         Foreground="#0133CD"
                                         Binding="{Binding AVG}"/>
                             </DataGrid.Columns>

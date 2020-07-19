@@ -22,11 +22,11 @@
                     <ColumnDefinition Width="40*"/>
                 </Grid.ColumnDefinitions>
                 <Rectangle Fill="#0133CD"/>
-                <Rectangle Fill="White" Grid.Row="1"/>
+                <Rectangle Fill="#FF6665" Grid.Row="1"/>
                 <TextBlock Text="ĐỒ ÁN MÔN HỌC LẬP TRÌNH WINDOW" Grid.Row="1"
                    VerticalAlignment="Center" HorizontalAlignment="Center"
                    FontSize="20"
-                   FontWeight="Bold" Foreground="#0133CD"/>
+                   FontWeight="Bold" Foreground="#FFFFFF"/>
                 <Rectangle Fill="#0133CD" Grid.Row="2"/>
                 <Image Source="/Image/Main/bn2_v4.jpg"
                Grid.ColumnSpan="2"
@@ -51,7 +51,7 @@
                            Margin="0 20" FontWeight="Bold" FontSize="20" Foreground="White"/>
                         <StackPanel>
                             <DockPanel>
-                            <Label Content="18600011" Background="White" Foreground="#0133CD"
+                                <Label Content="18600011" Background="White" Foreground="#0133CD"
                                FontWeight="Bold" FontSize="15"/>
                                 <Label Content="NGUYỄN TRỌNG QUYẾT" BorderThickness="1" BorderBrush="White"
                                FontWeight="Bold" FontSize="15" Foreground="White"/>
@@ -61,7 +61,7 @@
                         </StackPanel>
                         <StackPanel>
                             <DockPanel>
-                            <Label Content="18600014" Background="White" Foreground="#0133CD"
+                                <Label Content="18600014" Background="White" Foreground="#0133CD"
                                FontWeight="Bold" FontSize="15"/>
                                 <Label Content="NGÔ TẤT TỐ" BorderThickness="1" BorderBrush="White"
                                FontWeight="Bold" FontSize="15" Foreground="White"/>
@@ -71,7 +71,7 @@
                         </StackPanel>
                         <StackPanel>
                             <DockPanel>
-                            <Label Content="18600038" Background="White" Foreground="#0133CD"
+                                <Label Content="18600038" Background="White" Foreground="#0133CD"
                                FontWeight="Bold" FontSize="15"/>
                                 <Label Content="PHẠM PHONG PHÚ CƯỜNG" BorderThickness="1" BorderBrush="White"
                                FontWeight="Bold" FontSize="15" Foreground="White"/>
@@ -83,5 +83,5 @@
                 </StackPanel>
             </Grid>
         </Border>
-        </Grid>
+    </Grid>
 </UserControl>

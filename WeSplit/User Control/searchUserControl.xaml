@@ -5,11 +5,15 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WeSplit.User_Control"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-             mc:Ignorable="d" 
+             mc:Ignorable="d" RenderOptions.BitmapScalingMode="HighQuality"
              Loaded="UserControl_Loaded"
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <Border CornerRadius="25" Margin="50 10 50 50">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="681*"/>
+            <ColumnDefinition Width="119*"/>
+        </Grid.ColumnDefinitions>
+        <Border CornerRadius="25" Margin="50 10 50 50" Grid.ColumnSpan="2">
             <!--<Border.Effect>
                 <DropShadowEffect BlurRadius="20"
                                   Opacity=".2"/>
@@ -26,13 +30,10 @@
                         <RowDefinition Height="1*"/>
                     </Grid.RowDefinitions>
                     <DockPanel Grid.Row="0" 
-                               HorizontalAlignment="Center">
-                        <materialDesign:ColorZone Mode="Standard" 
-                                              Padding="8 4 8 4" 
-                                              CornerRadius="20"
-                                              Margin="0 2 0 0 "
-                                              materialDesign:ShadowAssist.ShadowDepth="Depth1" 
-                                              Width="302">
+                               HorizontalAlignment="Right">
+                        <materialDesign:ColorZone Mode="Standard"  CornerRadius="20" Width="400"
+                                                  Padding="8 4 8 4" Margin="0 2 0 0 "
+                                                  materialDesign:ShadowAssist.ShadowDepth="Depth1" >
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="19*"/>
@@ -41,6 +42,7 @@
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto" />
                                     <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
                                     <ColumnDefinition Width="Auto" />
                                 </Grid.ColumnDefinitions>
                                 <Button Style="{DynamicResource MaterialDesignToolButton}"
@@ -62,13 +64,21 @@
                                     materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
                                     BorderThickness="0" 
                                     MinWidth="200"
-                                    VerticalAlignment="Center" 
+                                    VerticalAlignment="Center"
                                     Grid.RowSpan="2"/>
+                                <Button Grid.Column="2" Grid.RowSpan="2" Height="30" Width="30"
+                                        BorderThickness="0" materialDesign:ShadowAssist.ShadowDepth="Depth0">
+                                    <Button.Background>
+                                        <ImageBrush ImageSource="/Image/Main/detete_search.png"/>
+                                    </Button.Background>
+
+
+                                </Button>
                             </Grid>
                         </materialDesign:ColorZone>
                     </DockPanel>
                     <DockPanel Grid.Row="1"
-                           HorizontalAlignment="Center">
+                           HorizontalAlignment="Right">
                         <CheckBox Content="Đã đi"
                                   Name="oldSelect"
                                   FontSize="13" Foreground="#0133CD"
@@ -88,7 +98,7 @@
                                   Margin="0 0 10 0"/>
                     </DockPanel>
                     <DockPanel Grid.Row="2"
-                               HorizontalAlignment="Center">
+                               HorizontalAlignment="Right">
                         <TextBlock Text="Có " Foreground="#808080"/>
                         <TextBlock Name="numbers" Text="{Binding num}" Foreground="#808080"/>
                         <TextBlock Text=" kết quả đã được tìm thấy" Foreground="#808080"/>

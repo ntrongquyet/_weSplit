@@ -29,7 +29,6 @@
                 <ListView Name="listMember"
                           Margin="10"
                           ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                          SizeChanged="listMember_SizeChanged"
                           Grid.Row="1"
                           Foreground="#0133CD"
                           HorizontalAlignment="Center" SelectionChanged="listMember_SelectionChanged">
