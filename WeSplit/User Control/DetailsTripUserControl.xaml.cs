@@ -35,6 +35,7 @@ namespace WeSplit.User_Control
         {
             InitializeComponent();
             this.MaCD = mA_CHUYENDI;
+
             //Vẽ biểu đồ khoản thu các thành viên
             SeriesCollection = new SeriesCollection();
             foreach (THAMGIA itemTG in DataProvider.Ins.DB.THAMGIA.ToList())
@@ -143,7 +144,19 @@ namespace WeSplit.User_Control
                         select tm);
             route.ItemsSource = selectTrip.ToList()[0].LOTRINH;
             DataContext = selectTrip.ToList()[0];
+
             listCash.ItemsSource = temp.ToList();
+
+
+            //Thêm ảnh địa danh
+            var selectImage = (from dd in DataProvider.Ins.DB.DD_DULICH
+                               join cd in DataProvider.Ins.DB.CHUYENDI on dd.MA_DIEMDEN equals cd.DIEMDEN
+                               where cd.MA_CHUYENDI == MaCD
+                               select dd.HINHANH).ToList<string>()[0];
+            
+            var baseFolder = AppDomain.CurrentDomain.BaseDirectory;
+            var absolute = $"{baseFolder}Image\\dd\\{selectImage}";
+            imageSites.ImageSource = new BitmapImage(new Uri($"{absolute}"));
             //Khoản thu CĐ
             var placeKT = (from tg in DataProvider.Ins.DB.THAMGIA
                            join tv in DataProvider.Ins.DB.THANHVIEN on tg.MATV equals tv.MATV

@@ -31,7 +31,6 @@ namespace WeSplit
             folder = folder.Remove(folder.IndexOf("bin"));
             dataFile = $"{folder}SQLData\\IsChecked.txt";
             var isChecked = File.ReadAllText(dataFile);
-            InitializeComponent();
             if (isChecked == "true")
             {
                 MainWindow hr = new MainWindow();
