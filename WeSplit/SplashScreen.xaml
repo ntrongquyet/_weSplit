@@ -42,10 +42,9 @@
         <Grid Width="230"
               Height="120" 
               VerticalAlignment="Top"  
-              Margin="0 80 0 0"
-              Opacity="0.7">
+              Margin="0 80 0 0">
             <Rectangle Fill="#CC0133CD" 
-                       RadiusY="15" 
+                       RadiusY="15" Opacity=".7"
                        RadiusX="15"/>
             <Label Content="{Binding TEN_DIEMDEN}"
                    VerticalContentAlignment="Center"
