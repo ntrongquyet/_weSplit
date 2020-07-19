@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WeSplit"
         mc:Ignorable="d"
+        Loaded="Window_Loaded"
         Title="SplashScreen" Height="600" Width="400"
         WindowStyle="None"
         ResizeMode="NoResize"
@@ -23,18 +24,36 @@
                       Style="{StaticResource MaterialDesignSwitchDarkToggleButton}"
                       ToolTip="MaterialDesignSwitchDarkToggleButton"
                       IsChecked="False"/>
-        <Rectangle Width="230" Height="120" VerticalAlignment="Top" Margin="0 80 0 0" RadiusY="15" RadiusX="15">
+        <Rectangle Width="230"
+                   Height="120"
+                   VerticalAlignment="Top"
+                   Margin="0 80 0 0" 
+                   RadiusY="15" 
+                   RadiusX="15">
             <Rectangle.Fill>
-                <ImageBrush ImageSource="/Image/Main/Image 5@2x.png" Stretch="UniformToFill"/>
+                <ImageBrush 
+                    ImageSource="{Binding HINHANH}"
+                    Stretch="UniformToFill"/>
             </Rectangle.Fill>
         </Rectangle>
-        <Grid Width="230" Height="120" VerticalAlignment="Top"  Margin="0 80 0 0">
-            <Rectangle Fill="#CC0133CD"   RadiusY="15" RadiusX="15"/>
-            <Label Content="ĐÀ NẴNG" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
-                   Foreground="#FFFFFF" FontSize="30" FontWeight="Bold"/>
+        <Grid Width="230"
+              Height="120" 
+              VerticalAlignment="Top"  
+              Margin="0 80 0 0">
+            <Rectangle Fill="#CC0133CD" 
+                       RadiusY="15" 
+                       RadiusX="15"/>
+            <Label Content="{Binding TEN_DIEMDEN}"
+                   VerticalContentAlignment="Center"
+                   HorizontalContentAlignment="Center"
+                   Foreground="#FFFFFF"
+                   FontSize="30" FontWeight="Bold"/>
         </Grid>
-        <TextBlock Width="350" Margin="0 210 0 0" TextWrapping="WrapWithOverflow" Foreground="#FF6665"
-            Text="Du lịch Hội An chưa bao giờ hết hot với nhiều địa điểm lưu giữ lịch sử, không thể không kể đến Rừng dừa Bảy Mẫu, một nơi mà bạn chắc chắn sẽ thích thú khi được khám phá cảnh quan tuyệt đẹp và còn được chèo thuyền thúng để thử cái cảm giác lâng lâng khi lênh đênh trên sông nước nữa đấy."/>
+        <TextBlock Width="350"
+                   Margin="0 210 0 0"
+                   TextWrapping="WrapWithOverflow"
+                   Foreground="#FF6665"
+                   Text="{Binding THONGTIN_DD}"/>
         <Rectangle x:Name="rectangle1" Fill="#FFF4F4F5"  HorizontalAlignment="Left" VerticalAlignment="Bottom" 
                    Height="10" Width="400" />
         <Rectangle x:Name="rectangle2" Fill="#003FFF"  HorizontalAlignment="Left" VerticalAlignment="Bottom" 

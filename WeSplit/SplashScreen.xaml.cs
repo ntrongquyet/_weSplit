@@ -13,6 +13,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Windows.Threading;
+using WeSplit.SQLData;
+
 namespace WeSplit
 {
     /// <summary>
@@ -22,7 +24,6 @@ namespace WeSplit
     {
         DispatcherTimer timer = new DispatcherTimer();
         private string dataFile;
-
         public SplashScreen()
         {
 
@@ -71,6 +72,12 @@ namespace WeSplit
                 string newData = "fasle";
                 File.WriteAllText(dataFile, newData);
             }
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            var dd = DataProvider.Ins.DB.DD_DULICH.ToList();
+            DataContext = dd[0];
         }
     }
 }
