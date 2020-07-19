@@ -17,7 +17,6 @@ namespace WeSplit.SQLData
             var absolute = $"{baseFolder}Image\\trip\\{relative}";
             return absolute;
         }
-
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
             throw new NotImplementedException();
