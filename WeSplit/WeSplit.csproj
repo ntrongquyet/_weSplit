@@ -309,6 +309,7 @@
     <Resource Include="Image\icon\delete.png" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="SQLData\IsChecked.txt" />
     <Resource Include="Image\Main\Image 2%402x.png" />
     <None Include="Image\Main\New_Background.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -575,6 +576,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>dbWeSplit.mdf</DependentUpon>
     </Content>
+    <Resource Include="Image\SplashScreen\background_SplashScreen.png" />
     <Resource Include="Image\Main\detete_search.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

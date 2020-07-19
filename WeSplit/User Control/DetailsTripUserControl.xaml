@@ -168,13 +168,23 @@
                     <ListBox Name="imageTrip">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
-                                <Image
-                                   Width="200"
-                                   Height="200"
-                                   Source="{Binding Converter={StaticResource pathConverter}}"/>
+                                <Image Height="300"
+                                       HorizontalAlignment="Center"
+                                   Source="{Binding Converter={StaticResource pathConverter}}">
+                                </Image>
                             </DataTemplate>
                         </ListBox.ItemTemplate>
                     </ListBox>
+                    <DockPanel HorizontalAlignment="Center">
+                        <Button Content="Prev"
+                                Click="Button_Prev"
+                                Margin="0 0 10 0"
+                                Width="80"></Button>
+                        <Button Content="Next"
+                                Click="Button_Next"
+                                Margin="10 0 0 0 "
+                                Width="80"></Button>
+                    </DockPanel>
                     <StackPanel Orientation="Horizontal" >
                         <Image Margin="10 10 0 0" HorizontalAlignment="Left" Grid.Column="1" Grid.Row="1" 
                                Name="imageDD" Source="/Image/Main/add_image.png"
