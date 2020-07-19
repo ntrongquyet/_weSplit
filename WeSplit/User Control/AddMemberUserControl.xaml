@@ -89,7 +89,7 @@
                         </ComboBox.ItemTemplate>
                     </ComboBox>
                     <TextBox Name="money" Grid.Row="2" Foreground="#0133CD"
-                             materialDesign:HintAssist.Hint="Floating Hint"
+                             materialDesign:HintAssist.Hint="Tiền thu"
                              materialDesign:TextFieldAssist.UnderlineBrush="#0133CD"
                              Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                              VerticalAlignment="Center" />
