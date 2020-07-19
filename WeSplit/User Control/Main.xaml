@@ -30,7 +30,7 @@
                 <Rectangle Fill="#fff" Margin="0" RadiusX="25" RadiusY="25"/>
             </Border>
             <Border CornerRadius="25 25 0 0" Background="#0133CD" Grid.ColumnSpan="2">
-                <TextBlock Text="Chuyến đi đang / sắp tới" 
+                <TextBlock Text="Chuyến đang đi / sắp tới" 
                            FontWeight="Bold" FontSize="18"
                            Foreground="#fff"
                            HorizontalAlignment="Center" VerticalAlignment="Center"/>
