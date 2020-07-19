@@ -92,7 +92,7 @@
                            Foreground="#808080"/>
 
                     </StackPanel>
-                    <StackPanel Orientation="Horizontal">
+                    <StackPanel Orientation="Horizontal" Margin="0 0 0 10">
                         <TextBlock Text="Ngày về: " FontSize="15" FontWeight="Bold"
                            Foreground="#808080"/>
                         <Image Height="17" Source="/Image/Main/calendar_v2.png" Margin="4 0 4 0"/>
@@ -101,21 +101,21 @@
                            Foreground="#808080"/>
                     </StackPanel>
                     <StackPanel Name="pricePlane" Orientation="Horizontal" Visibility="Collapsed">
-                        <TextBlock FontSize="15" FontWeight="Bold" Text="Máy bay: "></TextBlock>
-                        <TextBlock FontSize="15" FontWeight="Bold" Text="{Binding MAYBAY}"></TextBlock>
+                        <TextBlock FontSize="15" Foreground="#0133CD" FontWeight="Bold" Text="Máy bay: "></TextBlock>
+                        <TextBlock FontSize="15" Foreground="#FF6665" FontWeight="Light" Text="{Binding MAYBAY}"></TextBlock>
                     </StackPanel>
                     <StackPanel Name="priceRoom" Orientation="Horizontal" Visibility="Collapsed">
-                        <TextBlock FontSize="15" FontWeight="Bold" Text="Thuê phòng: "></TextBlock>
-                        <TextBlock FontSize="15" FontWeight="Bold" Text="{Binding THUE_KS}"></TextBlock>
+                        <TextBlock FontSize="15" Foreground="#0133CD" FontWeight="Bold" Text="Thuê phòng: "></TextBlock>
+                        <TextBlock FontSize="15" Foreground="#FF6665" FontWeight="Light" Text="{Binding THUE_KS}"></TextBlock>
                     </StackPanel>
                     <StackPanel Name="priceCar" Orientation="Horizontal" Visibility="Collapsed">
-                        <TextBlock FontSize="15" FontWeight="Bold" Text="Thuê xe: "></TextBlock>
-                        <TextBlock FontSize="15" FontWeight="Bold" Text="{Binding THUE_XE}"></TextBlock>
+                        <TextBlock FontSize="15" Foreground="#0133CD" FontWeight="Bold" Text="Thuê xe: "></TextBlock>
+                        <TextBlock FontSize="15" Foreground="#FF6665" FontWeight="Light" Text="{Binding THUE_XE}"></TextBlock>
                     </StackPanel>
                 </StackPanel>
 
 
-                <StackPanel Margin="0 20 0 0">
+                <StackPanel Margin="0 10 0 0">
                     <DockPanel>
                         <Image MouseLeftButtonDown="editClick" Height="20" Source="/Image/Main/edit_route.png"  DockPanel.Dock="Right"/>
                         <TextBlock Text="Xem lộ trình đi" FontSize="15" FontWeight="Bold"
