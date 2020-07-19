@@ -183,7 +183,7 @@
             </StackPanel>
 
             <!--LiveChart binding-->
-            <StackPanel Grid.Column="2">
+            <StackPanel Grid.Column="2" Margin="0 0 0 50">
                 <StackPanel  Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Center">
                     <StackPanel Margin="0 0 10 0">
                         <lvc:PieChart Series="{Binding SeriesCollection, RelativeSource={RelativeSource AncestorType=UserControl}}"
@@ -218,16 +218,17 @@
                             <Label Content="TỔNG KẾT" Foreground="#FFFFFF" HorizontalContentAlignment="Center"
                            FontWeight="Bold"/>
                         </Border>
-                        <DataGrid Margin="10 0" CanUserAddRows="False" IsReadOnly="True" Name="listCash"
-                              Background="White" ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
-                              AutoGenerateColumns="False" BorderThickness="0" Height="250">
+                        <DataGrid Margin="10 0" MaxHeight="340" CanUserAddRows="False" IsReadOnly="True" Name="listCash"
+                              Background="White" ScrollViewer.VerticalScrollBarVisibility="Auto" 
+                                  ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
+                              AutoGenerateColumns="False" BorderThickness="0">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Thành viên"
                                         Foreground="#0133CD"
-                                        Binding="{Binding   TENTV}"/>
-                                <DataGridTextColumn Header="Tiền thừa"
+                                        Binding="{Binding TENTV}"/>
+                                <DataGridTextColumn Header="Còn lại"
                                         Foreground="#0133CD"
-                                        Binding="{Binding TIENTHU}"/>
+                                        Binding="{Binding AVG}"/>
                             </DataGrid.Columns>
                         </DataGrid>
                         <Border Height="10" CornerRadius="0 0 10 10" Margin="10 0" Background="#FFFFFF"
