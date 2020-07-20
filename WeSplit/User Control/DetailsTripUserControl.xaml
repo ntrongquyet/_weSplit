@@ -274,7 +274,7 @@
                         </DataGrid>
                         <Border Height="10" CornerRadius="0 0 10 10" Margin="10 0" Background="#FFFFFF"
                         BorderThickness="0"/>
-
+                        <Button Margin="0 20 0 0 " Width="200" Name="finishedTrip" Click="finishedTrip_Click">Kết thúc chuyến đi</Button>
                     </StackPanel>
                 </Border>
             </StackPanel>

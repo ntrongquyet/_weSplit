@@ -86,7 +86,7 @@ namespace WeSplit.User_Control
                                 };
                                 SeriesCollectionKC.Add(series);
                             }
-                            if (temp1 != 0 && mb==0)
+                            if (temp1 != 0 && mb == 0)
                             {
                                 mb = 1;
                                 PieSeries seriesMB = new PieSeries
@@ -95,7 +95,7 @@ namespace WeSplit.User_Control
                                     Title = "Máy bay"
                                 };
                                 SeriesCollectionKC.Add(seriesMB);
-                                
+
                             }
                             if (temp2 != 0 && tp == 0)
                             {
@@ -132,7 +132,7 @@ namespace WeSplit.User_Control
             var queryTrip = from trip in DataProvider.Ins.DB.CHUYENDI
                             where trip.MA_CHUYENDI == MaCD
                             select trip;
-            table_THANHVIEN.ItemsSource = (from tg in DataProvider.Ins.DB.THAMGIA 
+            table_THANHVIEN.ItemsSource = (from tg in DataProvider.Ins.DB.THAMGIA
                                            join tv in DataProvider.Ins.DB.THANHVIEN on tg.MATV equals tv.MATV
                                            select new { tv.TENTV, tv.SDT, tg.TIENTHU, tg.MACD }).Where(tg => tg.MACD == MaCD).ToList();
             var selectTrip = (from cd in DataProvider.Ins.DB.CHUYENDI
@@ -153,7 +153,7 @@ namespace WeSplit.User_Control
                                join cd in DataProvider.Ins.DB.CHUYENDI on dd.MA_DIEMDEN equals cd.DIEMDEN
                                where cd.MA_CHUYENDI == MaCD
                                select dd.HINHANH).ToList<string>()[0];
-            
+
             var baseFolder = AppDomain.CurrentDomain.BaseDirectory;
             var absolute = $"{baseFolder}Image\\dd\\{selectImage}";
             imageSites.ImageSource = new BitmapImage(new Uri($"{absolute}"));
@@ -184,9 +184,9 @@ namespace WeSplit.User_Control
             var avg = (SUM / count);
             show_qualiltyMem.Content = $"Tổng {count} thành viên";
             listCash.ItemsSource = (from tg in DataProvider.Ins.DB.THAMGIA
-                                    join tv in DataProvider.Ins.DB.THANHVIEN on tg.MATV equals tv.MATV 
+                                    join tv in DataProvider.Ins.DB.THANHVIEN on tg.MATV equals tv.MATV
                                     where tg.MACD == MaCD
-                                    select new { tv.TENTV, AVG = (int)tg.TIENTHU - (int)avg} ).ToList();  
+                                    select new { tv.TENTV, AVG = (int)tg.TIENTHU - (int)avg }).ToList();
             sumTC.Text = Convert.ToString(SUM);
             double mul = (double)sumKT - (double)SUM;
             if (mul < 0)
@@ -219,10 +219,12 @@ namespace WeSplit.User_Control
             {
                 addMember.Visibility = Visibility.Hidden;
                 btnEdit.Visibility = Visibility.Hidden;
+                finishedTrip.Visibility = Visibility.Hidden;
+
             }
             img = (from cd in DataProvider.Ins.DB.HINHANH_CHUYENDI
-                                     where cd.CHUYENDI == MaCD
-                                     select cd.TENANH_CD).ToList<string>();
+                   where cd.CHUYENDI == MaCD
+                   select cd.TENANH_CD).ToList<string>();
             imageTrip.ItemsSource = img.Take(1);
             div = img.Count() / 1;
         }
@@ -251,7 +253,7 @@ namespace WeSplit.User_Control
         {
             DialogAddImage dlg = new DialogAddImage(MaCD);
             dlg.ShowDialog();
-            if(dlg.DialogResult == true)
+            if (dlg.DialogResult == true)
             {
                 img = (from cd in DataProvider.Ins.DB.HINHANH_CHUYENDI
                        where cd.CHUYENDI == MaCD
@@ -273,7 +275,7 @@ namespace WeSplit.User_Control
             {
                 if (TempNext == 1)
                 {
-                    var prev = img.Skip(TempNext - 1).Take(1).ToList() ;
+                    var prev = img.Skip(TempNext - 1).Take(1).ToList();
                     imageTrip.ItemsSource = prev.ToList();
                     temp = 0;
                 }
@@ -310,6 +312,49 @@ namespace WeSplit.User_Control
                 if (temp <= tempint - 1)
                 {
                     TempNext += 1;
+                }
+            }
+        }
+
+        private void finishedTrip_Click(object sender, RoutedEventArgs e)
+        {
+            var date = (from cd in DataProvider.Ins.DB.CHUYENDI
+                        where cd.MA_CHUYENDI == MaCD
+                        select new { cd.NGAYDI, cd.NGAYVE }).ToList()[0];
+            if (date.NGAYDI > DateTime.Now)
+            {
+                var result = MessageBox.Show("Chuyến đi chưa bắt đầu bạn có chắc chắn muốn kết thúc", "Thông báo", MessageBoxButton.YesNo);
+                if (result == MessageBoxResult.Yes)
+                {
+                    var chuyendi = DataProvider.Ins.DB.CHUYENDI.Find(MaCD);
+                    chuyendi.TRANGTHAI = true;
+                    DataProvider.Ins.DB.SaveChanges();
+                    DataContext = new HistoryTripUserControl();
+                    this.Content = new HistoryTripUserControl();
+                }
+            }
+            if (date.NGAYVE > DateTime.Now)
+            {
+                var result = MessageBox.Show("Chuyến đi chưa kết thúc bạn có chắc chắn muốn dừng ở đây", "Thông báo", MessageBoxButton.YesNo);
+                if (result == MessageBoxResult.Yes)
+                {
+                    var chuyendi = DataProvider.Ins.DB.CHUYENDI.Find(MaCD);
+                    chuyendi.TRANGTHAI = true;
+                    DataProvider.Ins.DB.SaveChanges();
+                    DataContext = new HistoryTripUserControl();
+                    this.Content = new HistoryTripUserControl();
+                }
+            }
+            else
+            {
+                var result = MessageBox.Show("Bạn có muốn hoàn thành chuyến đi", "Thông báo", MessageBoxButton.YesNo);
+                if (result == MessageBoxResult.Yes)
+                {
+                    var chuyendi = DataProvider.Ins.DB.CHUYENDI.Find(MaCD);
+                    chuyendi.TRANGTHAI = true;
+                    DataProvider.Ins.DB.SaveChanges();
+                    DataContext = new HistoryTripUserControl();
+                    this.Content = new HistoryTripUserControl();
                 }
             }
         }
