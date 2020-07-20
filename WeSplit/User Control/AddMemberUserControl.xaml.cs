@@ -145,7 +145,11 @@ namespace WeSplit.User_Control
                 {
                     MACD = CD,
                     MATV = TV,
-                    TIENTHU = Convert.ToDouble(money.Text.Trim())
+                    TIENTHU = Convert.ToDouble(money.Text.Trim()),
+                    THANHVIEN = (from tv in DataProvider.Ins.DB.THANHVIEN
+                                where tv.MATV == TV
+                                select tv).ToList()[0],
+                    
                 };
                 DataProvider.Ins.DB.THAMGIA.Add(tg);
                 DataProvider.Ins.DB.SaveChanges();

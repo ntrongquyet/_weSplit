@@ -40,6 +40,9 @@ namespace WeSplit.User_Control
             SeriesCollection = new SeriesCollection();
             foreach (THAMGIA itemTG in DataProvider.Ins.DB.THAMGIA.ToList())
             {
+                var test = (from tg in DataProvider.Ins.DB.THAMGIA
+                            where tg.MACD == MaCD
+                            select tg).ToList();
                 if (itemTG.MACD == MaCD)
                 {
                     ChartValues<double> cost = new ChartValues<double>();
