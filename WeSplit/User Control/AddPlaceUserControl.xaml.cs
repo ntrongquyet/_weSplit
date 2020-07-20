@@ -68,10 +68,12 @@ namespace WeSplit.User_Control
                 DataProvider.Ins.DB.DD_DULICH.Add(dd);
                 DataProvider.Ins.DB.SaveChanges();
                 MessageBox.Show($"Thêm thành công địa điểm{dd.TEN_DIEMDEN}","Hoàn thành",MessageBoxButton.OK,MessageBoxImage.Information);
+                namePlace.Text = default;
+                nameAddress.Text = default;
+                infomation.Text = default;
+                loadList.ItemsSource = DataProvider.Ins.DB.DD_DULICH.ToList();
             }
-            namePlace.Text = default;
-            nameAddress.Text = default;
-            loadList.ItemsSource = DataProvider.Ins.DB.DD_DULICH.ToList();
+           
         }
         string path = "";
         //Thêm ảnh từ các nguồn

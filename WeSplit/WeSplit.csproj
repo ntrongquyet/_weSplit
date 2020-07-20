@@ -54,6 +54,15 @@
   <PropertyGroup>
     <ApplicationIcon>icon.ico</ApplicationIcon>
   </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>941AFA73D1EB8F73BD7D99CC1B1742150CE12F19</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>WeSplit_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
@@ -140,7 +149,6 @@
     <Compile Include="SQLData\DataProvider.cs" />
     <Compile Include="SQLData\RelativeToAbsolutePathForPlace.cs" />
     <Compile Include="SQLData\RelativeToAbsolutePathForTrip.cs" />
-    <Compile Include="SQLData\usingData.cs" />
     <Compile Include="THAMGIA.cs">
       <DependentUpon>dbWeSplit.tt</DependentUpon>
     </Compile>
