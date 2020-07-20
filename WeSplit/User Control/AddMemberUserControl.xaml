@@ -4,10 +4,13 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WeSplit.User_Control"
-             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:local1="clr-namespace:WeSplit.SQLData"
              mc:Ignorable="d" 
              Loaded="UserControl_Loaded"
              d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <local1:CurrencyConveter x:Key="Currency"/>
+    </UserControl.Resources>
     <UserControl.Triggers>
         <EventTrigger RoutedEvent="Loaded">
             <BeginStoryboard>
@@ -116,15 +119,16 @@
                         </Button>
                     </DockPanel>
                 </Grid>
-                <ListView Name="tableMemberofTrip" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Center">
+                <Grid Grid.Row="3" Grid.Column="1">
+                <ListView Name="tableMemberofTrip"  HorizontalAlignment="Center">
                     <ListView.View>
                         <GridView>
                             <GridViewColumn Header="Tên thành viên" DisplayMemberBinding="{Binding TENTV}"/>
-                            <GridViewColumn Header="Tiền thu" DisplayMemberBinding="{Binding TIENTHU}"/>
+                            <GridViewColumn Header="Tiền thu" Width="100" DisplayMemberBinding="{Binding TIENTHU, Converter={StaticResource Currency}}"/>
                         </GridView>
                     </ListView.View>
                 </ListView>
-
+                </Grid>
             </Grid>
         </Border>
 

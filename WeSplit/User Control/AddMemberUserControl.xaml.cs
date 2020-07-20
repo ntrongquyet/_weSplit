@@ -51,7 +51,7 @@ namespace WeSplit.User_Control
                 trip.SelectedItem = (from item in DataProvider.Ins.DB.CHUYENDI
                                   where item.MA_CHUYENDI == maCD
                                      select item).ToList()[0];
-
+                trip.IsEnabled = false;
             }
             else
             {

@@ -163,7 +163,7 @@ namespace WeSplit.User_Control
                            select new { tv.TENTV, tv.SDT, tg.TIENTHU, tg.MACD });
             var sumtt = placeKT.Where(tg => tg.MACD == MaCD).ToList();
             var sumKT = sumtt.Select(s => s.TIENTHU).Sum();
-            sumTT.Text = Convert.ToString(sumKT);
+            sumTT.Text = $"{Convert.ToString(sumKT)} VNĐ";
             // Khoản chi CĐ
             var KCPlace = (from cd in DataProvider.Ins.DB.CHUYENDI
                            select new { cd.MA_CHUYENDI, cd.MAYBAY, cd.THUE_KS, cd.THUE_XE });
@@ -187,15 +187,15 @@ namespace WeSplit.User_Control
                                     join tv in DataProvider.Ins.DB.THANHVIEN on tg.MATV equals tv.MATV
                                     where tg.MACD == MaCD
                                     select new { tv.TENTV, AVG = (int)tg.TIENTHU - (int)avg }).ToList();
-            sumTC.Text = Convert.ToString(SUM);
+            sumTC.Text = $"{Convert.ToString(SUM)} VNĐ";
             double mul = (double)sumKT - (double)SUM;
             if (mul < 0)
             {
-                confirmMoney.Text = "Thiếu " + Convert.ToString(Math.Abs(mul));
+                confirmMoney.Text = "Thiếu " + Convert.ToString(Math.Abs(mul)) + " VNĐ";
             }
             else if (mul > 0)
             {
-                confirmMoney.Text = "Dư " + Convert.ToString(mul);
+                confirmMoney.Text = "Dư " + Convert.ToString(mul) + " VNĐ";
             }
             else if (mul == 0)
             {
@@ -214,6 +214,7 @@ namespace WeSplit.User_Control
             {
                 pricePlane.Visibility = Visibility.Visible;
             }
+
             // Hiện thị nút add thành viên cho chuyến đi chưa kết thúc
             if (selectTrip.ToList()[0].TRANGTHAI == true)
             {
