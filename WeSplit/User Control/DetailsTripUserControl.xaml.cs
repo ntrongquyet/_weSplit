@@ -49,10 +49,11 @@ namespace WeSplit.User_Control
                     cost.Add(Convert.ToDouble(itemTG.TIENTHU));
                     PieSeries series = new PieSeries
                     {
-                        Values = cost,
+                        Values = cost, // show tiền ở đây                         
                         Title = itemTG.THANHVIEN.TENTV,
                     };
                     SeriesCollection.Add(series);
+                    
                 }
             }
             //Vẽ biểu đồ khoản chi trong chuyến đi
@@ -166,7 +167,7 @@ namespace WeSplit.User_Control
                            select new { tv.TENTV, tv.SDT, tg.TIENTHU, tg.MACD });
             var sumtt = placeKT.Where(tg => tg.MACD == MaCD).ToList();
             var sumKT = sumtt.Select(s => s.TIENTHU).Sum();
-            sumTT.Text = $"{Convert.ToString(sumKT)} VNĐ";
+            sumTT.Text = $"{string.Format("{0:n0}", sumKT)} VNĐ";
             // Khoản chi CĐ
             var KCPlace = (from cd in DataProvider.Ins.DB.CHUYENDI
                            select new { cd.MA_CHUYENDI, cd.MAYBAY, cd.THUE_KS, cd.THUE_XE });
@@ -190,19 +191,19 @@ namespace WeSplit.User_Control
                                     join tv in DataProvider.Ins.DB.THANHVIEN on tg.MATV equals tv.MATV
                                     where tg.MACD == MaCD
                                     select new { tv.TENTV, AVG = (int)tg.TIENTHU - (int)avg }).ToList();
-            sumTC.Text = $"{Convert.ToString(SUM)} VNĐ";
+            sumTC.Text = $"{string.Format("{0:n0}", SUM)} VNĐ";
             double mul = (double)sumKT - (double)SUM;
             if (mul < 0)
             {
-                confirmMoney.Text = "Thiếu " + Convert.ToString(Math.Abs(mul)) + " VNĐ";
+                confirmMoney.Text = "Thiếu " + string.Format("{0:n0}", Math.Abs(mul)) + " VNĐ";
             }
             else if (mul > 0)
             {
-                confirmMoney.Text = "Dư " + Convert.ToString(mul) + " VNĐ";
+                confirmMoney.Text = "Dư " + string.Format("{0:n0}", mul) + " VNĐ";
             }
             else if (mul == 0)
             {
-                confirmMoney.Text = Convert.ToString(mul);
+                confirmMoney.Text = string.Format("{0:n0}", mul) + " VNĐ";
             }
             // Hiển thị thông tin chi tiêu trước khi đi
             if (selectTrip.ToList()[0].THUE_XE > 0)
@@ -245,7 +246,7 @@ namespace WeSplit.User_Control
             }
             else
             {
-                route_trip.Visibility = Visibility.Visible;             
+                route_trip.Visibility = Visibility.Visible;
                 show.Content = "Ẩn lộ trình";
                 show.Background = new SolidColorBrush(Color.FromRgb(255, 102, 101));
             }
@@ -341,7 +342,7 @@ namespace WeSplit.User_Control
                     this.Content = new HistoryTripUserControl();
                 }
             }
-            if (date.NGAYVE > DateTime.Now)
+            else if (date.NGAYVE > DateTime.Now)
             {
                 var result = MessageBox.Show("Chuyến đi chưa kết thúc bạn có chắc chắn muốn dừng ở đây", "Thông báo", MessageBoxButton.YesNo);
                 if (result == MessageBoxResult.Yes)

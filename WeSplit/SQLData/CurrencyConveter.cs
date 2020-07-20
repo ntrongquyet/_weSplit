@@ -12,7 +12,8 @@ namespace WeSplit.SQLData
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            return $"{value} VNĐ";
+            var text = string.Format("{0:n0}", value);
+            return $"{text} VNĐ";
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
