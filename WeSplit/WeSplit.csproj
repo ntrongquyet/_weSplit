@@ -315,9 +315,6 @@
   <ItemGroup>
     <Resource Include="SQLData\IsChecked.txt" />
     <Resource Include="Image\Main\Image 2%402x.png" />
-    <None Include="Image\Main\New_Background.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
     <Resource Include="Image\Main\Image 5%402x.png" />
     <Resource Include="Image\Main\calendar_v2.png" />
     <None Include="Image\Main\Backround_Trip_Console.png">
@@ -591,6 +588,9 @@
     <Resource Include="Image\Main\add_image_trip.png" />
     <Resource Include="new_logo.ico" />
     <Resource Include="logo_WeSplit.ico" />
+    <None Include="Image\Main\New_Background.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <Content Include="QLCD.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>dbWeSplit.edmx</DependentUpon>
