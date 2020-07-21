@@ -140,6 +140,7 @@
     <Compile Include="SplashScreen.xaml.cs">
       <DependentUpon>SplashScreen.xaml</DependentUpon>
     </Compile>
+    <Compile Include="SQLData\ConverterColor.cs" />
     <Compile Include="SQLData\CurrencyConveter.cs" />
     <Compile Include="SQLData\DataProvider.cs" />
     <Compile Include="SQLData\RelativeToAbsolutePathForPlace.cs" />

@@ -14,6 +14,7 @@
         <local1:RelativeToAbsolutePathForTrip x:Key="pathConverter"/>
         <local1:RelativeToAbsolutePathForPlace x:Key="pathConverterPlace"/>
         <local1:CurrencyConveter x:Key="Currency"/>
+        <local1:ConverterColor x:Key="CoverterChangeColor"/>
     </UserControl.Resources>
     <UserControl.Triggers>
         <EventTrigger RoutedEvent="Loaded">
@@ -262,16 +263,16 @@
                            FontWeight="Bold"/>
                         </Border>
                         <DataGrid Margin="10 0" MaxHeight="340" CanUserAddRows="False" IsReadOnly="True" Name="listCash"
-                              Background="White" ScrollViewer.VerticalScrollBarVisibility="Auto" 
+                                  Background="White" ScrollViewer.VerticalScrollBarVisibility="Auto" 
                                   ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
-                              AutoGenerateColumns="False" BorderThickness="0">
+                                AutoGenerateColumns="False" BorderThickness="0">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Thành viên"
                                         Foreground="#0133CD"
                                         Binding="{Binding  TENTV}"/>
                                 <DataGridTextColumn Header="Còn lại"
-                                        Foreground="#0133CD"
-                                        Binding="{Binding AVG, Converter={StaticResource Currency}}"/>
+                                                    Binding="{Binding AVG, Converter={StaticResource Currency}}"
+                                                    Foreground="#0133CD"/>
                             </DataGrid.Columns>
                         </DataGrid>
                         <Border Height="10" CornerRadius="0 0 10 10" Margin="10 0" Background="#FFFFFF"
