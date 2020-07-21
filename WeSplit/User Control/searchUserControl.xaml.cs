@@ -67,7 +67,10 @@ namespace WeSplit.User_Control
                 }
                 else if (futureSelect.IsChecked == true)
                 {
-                    var strings = placeList.Where(diadiem => convertToUnSign3(diadiem.TEN_CHUYENDI.ToLower()).Contains(convertToUnSign3(Search.Text.ToLower())));
+                    var newList = (from cd in DataProvider.Ins.DB.CHUYENDI
+                                   join dd in DataProvider.Ins.DB.DD_DULICH on cd.DIEMDEN equals dd.MA_DIEMDEN
+                                   select new { cd.MA_CHUYENDI, cd.TEN_CHUYENDI, dd.HINHANH }).ToList();
+                    var strings = newList.Where(diadiem => convertToUnSign3(diadiem.TEN_CHUYENDI.ToLower()).Contains(convertToUnSign3(Search.Text.ToLower())));
                     if (strings.Count() != 0)
                     {
                         listPlace.ItemsSource = strings.ToList();
@@ -105,7 +108,7 @@ namespace WeSplit.User_Control
                                 join tv in DataProvider.Ins.DB.THANHVIEN on tg.MATV equals tv.MATV
                                 join cd in DataProvider.Ins.DB.CHUYENDI on tg.MACD equals cd.MA_CHUYENDI
                                 join dd in DataProvider.Ins.DB.DD_DULICH on cd.DIEMDEN equals dd.MA_DIEMDEN
-                                select new { tv.TENTV, cd.TEN_CHUYENDI, cd.MA_CHUYENDI, cd.TRANGTHAI, dd.HINHANH }).Distinct();
+                                select new { cd.MA_CHUYENDI, tv.TENTV, cd.TEN_CHUYENDI, cd.TRANGTHAI, dd.HINHANH }).Distinct();
                     var strings = name.Where(thanhvien => (thanhvien.TENTV.ToLower()).Contains((Search.Text.ToLower())));
                     var stsr = strings.Where(p => p.TRANGTHAI == false).ToList();
                     if (stsr.Count() != 0)
@@ -119,7 +122,10 @@ namespace WeSplit.User_Control
                 }
                 else if (oldSelect.IsChecked == true)
                 {
-                    var strings = placeList.Where(diadiem => convertToUnSign3(diadiem.TEN_CHUYENDI.ToLower()).Contains(convertToUnSign3(Search.Text.ToLower())));
+                    var newList = (from cd in DataProvider.Ins.DB.CHUYENDI
+                                   join dd in DataProvider.Ins.DB.DD_DULICH on cd.DIEMDEN equals dd.MA_DIEMDEN
+                                   select new { cd.MA_CHUYENDI, cd.TEN_CHUYENDI, dd.HINHANH }).ToList();
+                    var strings = newList.Where(diadiem => convertToUnSign3(diadiem.TEN_CHUYENDI.ToLower()).Contains(convertToUnSign3(Search.Text.ToLower())));
                     if (strings.Count() != 0)
                     {
                         listPlace.ItemsSource = strings.ToList();
