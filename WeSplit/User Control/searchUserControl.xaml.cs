@@ -53,7 +53,7 @@ namespace WeSplit.User_Control
                                 join tv in DataProvider.Ins.DB.THANHVIEN on tg.MATV equals tv.MATV
                                 join cd in DataProvider.Ins.DB.CHUYENDI on tg.MACD equals cd.MA_CHUYENDI
                                 join dd in DataProvider.Ins.DB.DD_DULICH on cd.DIEMDEN equals dd.MA_DIEMDEN
-                                select new { tv.TENTV, cd.TEN_CHUYENDI, cd.MA_CHUYENDI, cd.TRANGTHAI, dd.HINHANH }).Distinct();
+                                select new { cd.MA_CHUYENDI, cd.TEN_CHUYENDI, tv.TENTV, cd.TRANGTHAI, dd.HINHANH }).Distinct();
                     var strings = name.Where(thanhvien => (thanhvien.TENTV.ToLower()).Contains((Search.Text.ToLower())));
                     var stsr = strings.Where(p => p.TRANGTHAI == true).ToList();
                     if (stsr.Count() != 0)
@@ -62,7 +62,7 @@ namespace WeSplit.User_Control
                     }
                     else
                     {
-                        MessageBox.Show("Không tìm thấy","Thông báo",MessageBoxButton.OK,MessageBoxImage.Information);
+                        MessageBox.Show("Không tìm thấy", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
                     }
                 }
                 else if (futureSelect.IsChecked == true)
@@ -80,8 +80,11 @@ namespace WeSplit.User_Control
                 //Chỉ search theo đã đi
                 else
                 {
-                    var stsr = placeList.Where(p => p.TRANGTHAI == true).ToList();
-                    var strings = stsr.Where(diadiem => convertToUnSign3(diadiem.TEN_CHUYENDI.ToLower()).Contains(convertToUnSign3(Search.Text.ToLower())));
+                    var newList = (from cd in DataProvider.Ins.DB.CHUYENDI
+                                   join dd in DataProvider.Ins.DB.DD_DULICH on cd.DIEMDEN equals dd.MA_DIEMDEN
+                                   where cd.TRANGTHAI == true
+                                   select new { cd.MA_CHUYENDI, cd.TEN_CHUYENDI, dd.HINHANH }).ToList();
+                    var strings = newList.Where(diadiem => convertToUnSign3(diadiem.TEN_CHUYENDI.ToLower()).Contains(convertToUnSign3(Search.Text.ToLower())));
                     if (strings.Count() != 0)
                     {
                         listPlace.ItemsSource = strings.ToList();
@@ -129,8 +132,11 @@ namespace WeSplit.User_Control
                 //Chỉ search theo chưa đi
                 else
                 {
-                    var stsr = placeList.Where(p => p.TRANGTHAI == false).ToList();
-                    var strings = stsr.Where(diadiem => convertToUnSign3(diadiem.TEN_CHUYENDI.ToLower()).Contains(convertToUnSign3(Search.Text.ToLower())));
+                    var newList = (from cd in DataProvider.Ins.DB.CHUYENDI
+                                   join dd in DataProvider.Ins.DB.DD_DULICH on cd.DIEMDEN equals dd.MA_DIEMDEN
+                                   where cd.TRANGTHAI == false
+                                   select new { cd.MA_CHUYENDI, cd.TEN_CHUYENDI, dd.HINHANH }).ToList();
+                    var strings = newList.Where(diadiem => convertToUnSign3(diadiem.TEN_CHUYENDI.ToLower()).Contains(convertToUnSign3(Search.Text.ToLower())));
                     if (strings.Count() != 0)
                     {
                         listPlace.ItemsSource = strings.ToList();
@@ -161,29 +167,32 @@ namespace WeSplit.User_Control
             }
             else
             {
-                var strings = placeList.Where(diadiem => convertToUnSign3(diadiem.TEN_CHUYENDI.ToLower()).Contains(convertToUnSign3(Search.Text.ToLower())));
+                var newList = (from cd in DataProvider.Ins.DB.CHUYENDI
+                               join dd in DataProvider.Ins.DB.DD_DULICH on cd.DIEMDEN equals dd.MA_DIEMDEN
+                               select new { cd.MA_CHUYENDI, cd.TEN_CHUYENDI, dd.HINHANH }).ToList();
+                var strings = newList.Where(diadiem => convertToUnSign3(diadiem.TEN_CHUYENDI.ToLower()).Contains(convertToUnSign3(Search.Text.ToLower())));
                 var name = (from tg in DataProvider.Ins.DB.THAMGIA
                             join tv in DataProvider.Ins.DB.THANHVIEN on tg.MATV equals tv.MATV
                             join cd in DataProvider.Ins.DB.CHUYENDI on tg.MACD equals cd.MA_CHUYENDI
                             join dd in DataProvider.Ins.DB.DD_DULICH on cd.DIEMDEN equals dd.MA_DIEMDEN
-                            select new { tv.TENTV, cd.TEN_CHUYENDI, cd.MA_CHUYENDI, cd.TRANGTHAI, dd.HINHANH }).Distinct();
+                            select new { cd.MA_CHUYENDI, cd.TEN_CHUYENDI, tv.TENTV, cd.TRANGTHAI, dd.HINHANH }).Distinct();
                 var str = name.Where(thanhvien => ((thanhvien.TENTV.ToLower())).Contains((Search.Text.ToLower())));
                 if (strings.Count() != 0 || str.Count() != 0)
                 {
-                   if(strings.Count() != 0)
+                    if (strings.Count() != 0)
                     {
                         listPlace.ItemsSource = strings.ToList();
-                    }    
-                   if (str.Count() != 0)
+                    }
+                    if (str.Count() != 0)
                     {
                         listPlace.ItemsSource = str.ToList();
-                    }    
+                    }
                 }
                 else
                 {
                     MessageBox.Show("Không tìm thấy", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
-            }    
+            }
             int num = listPlace.Items.Count;
             numbers.Text = Convert.ToString(num);
         }
@@ -211,19 +220,19 @@ namespace WeSplit.User_Control
                 else
                 {
                     var MACD = listPlace.SelectedItem.ToString();
-                    MACD = MACD.Split(',')[2];
+                    MACD = MACD.Split(',')[0];
                     MACD = MACD.Substring(MACD.IndexOf("CD"));
                     DataContext = new DetailsTripUserControl(MACD);
                     this.Content = new DetailsTripUserControl(MACD);
                 }
             }
-            
+
         }
 
         private void Clear_Search(object sender, RoutedEventArgs e)
         {
             Search.Text = "";
         }
-       
+
     }
 }
