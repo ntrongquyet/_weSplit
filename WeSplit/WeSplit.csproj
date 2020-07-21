@@ -586,7 +586,9 @@
     </None>
     <Resource Include="Image\icon\back.png" />
     <Resource Include="Image\Main\add_image_trip.png" />
-    <Resource Include="Image\Main\New_Background.png" />
+    <None Include="Image\Main\New_Background.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <Content Include="QLCD.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>dbWeSplit.edmx</DependentUpon>
