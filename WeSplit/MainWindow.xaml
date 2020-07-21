@@ -42,7 +42,8 @@
                        FontSize="25"
                        FontWeight="Bold"
                        MouseLeftButtonDown="Button_Home"
-                       Foreground="#0133CD"/>
+                       Foreground="#0133CD"
+                       ToolTip="Cửa xổ chính"/>
             <TextBlock Text="LỊCH SỬ"
                        Grid.Column="2"
                        HorizontalAlignment="Center"
@@ -50,7 +51,8 @@
                        FontSize="15"
                        FontWeight="Light"
                        MouseLeftButtonDown="Button_TripHasGone"
-                       Foreground="#0133CD"/>
+                       Foreground="#0133CD"
+                       ToolTip="Các chuyến đi đã đi"/>
             <TextBlock Text="THÀNH VIÊN"
                        Grid.Column="3"
                        HorizontalAlignment="Center"
@@ -58,7 +60,8 @@
                        FontSize="15"
                        FontWeight="Light"
                        MouseLeftButtonDown="Button_Member"
-                       Foreground="#0133CD"/>
+                       Foreground="#0133CD"
+                       ToolTip="Xem các thành viên trong nhóm"/>
             <TextBlock Text="ĐỊA DANH"
                        Grid.Column="4"
                        HorizontalAlignment="Center"
@@ -66,7 +69,8 @@
                        FontSize="15"
                        FontWeight="Light"
                        MouseLeftButtonDown="Button_Sites"
-                       Foreground="#0133CD"/>
+                       Foreground="#0133CD"
+                       ToolTip="Xem và thêm các địa danh"/>
             <TextBlock Text="TÌM KIẾM"
                        Grid.Column="5"
                        HorizontalAlignment="Center"
@@ -74,7 +78,8 @@
                        FontSize="15"
                        FontWeight="Light"
                        MouseLeftButtonDown="Button_Search"
-                       Foreground="#0133CD"/>
+                       Foreground="#0133CD"
+                       ToolTip="Tìm kiếm chuyến đi"/>
             <TextBlock Text="THÔNG TIN"
                        Grid.Column="6"
                        HorizontalAlignment="Center"
@@ -82,7 +87,8 @@
                        FontSize="15"
                        FontWeight="Light"
                        MouseLeftButtonDown="Button_Infomation"
-                       Foreground="#0133CD"/>
+                       Foreground="#0133CD"
+                       ToolTip="Thông tin nhóm thực hiện WeShlpit"/>
         </Grid>
 
         <ContentControl Grid.Row="1" Content="{Binding}"/>
