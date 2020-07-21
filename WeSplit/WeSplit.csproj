@@ -586,7 +586,6 @@
     </None>
     <Resource Include="Image\icon\back.png" />
     <Resource Include="Image\Main\add_image_trip.png" />
-    <Resource Include="new_logo.ico" />
     <Resource Include="logo_WeSplit.ico" />
     <None Include="Image\Main\New_Background.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
