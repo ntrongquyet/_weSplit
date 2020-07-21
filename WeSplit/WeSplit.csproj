@@ -561,10 +561,10 @@
     <None Include="Image\dd\DD1_Dao_khi_Can_Gio.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Image\dd\DD2_Bien_Vung_Tau.png">
+    <None Include="Image\dd\DD3_Bien_Vung_Tau.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Image\dd\DD3_Ran_Nam_O.png">
+    <None Include="Image\dd\DD2_Ran_Nam_O.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Image\dd\DD4_Coco_Beach_Phan_Thiet.png">

@@ -122,7 +122,7 @@
                     </StackPanel>
                     <StackPanel Name="pricePlane" Orientation="Horizontal" Visibility="Collapsed">
                         <TextBlock FontSize="15" Foreground="#0133CD" FontWeight="Bold" Text="Máy bay: "></TextBlock>
-                        <TextBlock FontSize="15" Foreground="#FF6665" FontWeight="Light" Text="{Binding MAYBAY, Converter={StaticResource Currency}, StringFormat={}{0:###}}"></TextBlock>
+                        <TextBlock FontSize="15" Foreground="#FF6665" FontWeight="Light" Text="{Binding MAYBAY, Converter={StaticResource Currency}}"></TextBlock>
                     </StackPanel>
                     <StackPanel Name="priceRoom" Orientation="Horizontal" Visibility="Collapsed">
                         <TextBlock FontSize="15" Foreground="#0133CD" FontWeight="Bold" Text="Thuê phòng: "></TextBlock>
