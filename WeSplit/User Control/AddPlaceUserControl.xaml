@@ -50,6 +50,7 @@
                     </Border>
                     <TextBox Grid.Row="1"  Grid.Column="0" Height="60"
                                 Margin="10 0 10 0" Name="namePlace"
+                                
                                 VerticalContentAlignment="Center"
                                 materialDesign:HintAssist.Hint="Tên địa danh"
                                 Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
@@ -64,6 +65,7 @@
                     <TextBox Grid.Row="2" Height="60"
                                  Margin="10,0.4,1.4,0.2"
                                  Name="infomation"
+                                 
                                  TextWrapping="Wrap"
                                  AcceptsReturn="True"
                                  VerticalContentAlignment="Center"

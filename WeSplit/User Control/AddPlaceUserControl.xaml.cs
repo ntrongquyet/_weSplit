@@ -63,7 +63,7 @@ namespace WeSplit.User_Control
                     TEN_DIEMDEN = namePlace.Text.Trim(),
                     DCHI_DIEMDEN = nameAddress.Text.Trim(),
                     THONGTIN_DD = infomation.Text.Trim(),
-                    HINHANH = "dd\\" + name,
+                    HINHANH = name+info.Extension,
                 };
                 DataProvider.Ins.DB.DD_DULICH.Add(dd);
                 DataProvider.Ins.DB.SaveChanges();

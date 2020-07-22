@@ -337,6 +337,7 @@ namespace WeSplit.User_Control
                 {
                     var chuyendi = DataProvider.Ins.DB.CHUYENDI.Find(MaCD);
                     chuyendi.TRANGTHAI = true;
+                    // Đổi trạng thái chuyến đi thôi
                     DataProvider.Ins.DB.SaveChanges();
                     DataContext = new HistoryTripUserControl();
                     this.Content = new HistoryTripUserControl();
